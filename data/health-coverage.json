@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "OSECAC",
+        "plan": "Standard",
+        "logo": "assets/coverages/osecac.jpeg"
+    },
+    {
+        "id": 2,
+        "name": "OSECAC",
+        "plan": "Premium",
+        "logo": "assets/coverages/osecac.jpeg"
+    },
+    {
+        "id": 3,
+        "name": "IOMA",
+        "plan": "Standard",
+        "logo": "assets/coverages/ioma.png"
+    },
+    {
+        "id": 4,
+        "name": "OSDE",
+        "plan": "110",
+        "logo": "assets/coverages/osde.png"
+    },
+    {
+        "id": 5,
+        "name": "OSDE",
+        "plan": "210",
+        "logo": "assets/coverages/osde.png"
+    },
+    {
+        "id": 6,
+        "name": "OSDE",
+        "plan": "310",
+        "logo": "assets/coverages/osde.png"
+    },
+    {
+        "id": 7,
+        "name": "OSDE",
+        "plan": "410",
+        "logo": "assets/coverages/osde.png"
+    },
+    {
+        "id": 8,
+        "name": "Swiss medical",
+        "plan": "Standard",
+        "logo": "assets/coverages/swiss.png"
+    },
+    {
+        "id": 9,
+        "name": "Swiss medical",
+        "plan": "Premium",
+        "logo": "assets/coverages/swiss.png"
+    },
+    {
+        "id": 10,
+        "name": "OSDE Pym",
+        "plan": "Standard",
+        "logo": "assets/coverages/osdepym.png"
+    }
+]

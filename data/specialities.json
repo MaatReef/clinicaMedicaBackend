@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Ginecología"
+    },
+    {
+        "id": 2,
+        "name": "Odontología"
+    },
+    {
+        "id": 3,
+        "name": "Laboratorio"
+    },
+    {
+        "id": 4,
+        "name": "Rayos"
+    },
+    {
+        "id": 5,
+        "name": "Medicina general"
+    },
+    {
+        "id": 6,
+        "name": "Pediatría"
+    },
+    {
+        "id": 7,
+        "name": "Tomografía"
+    },
+    {
+        "id": 8,
+        "name": "Oftalmología"
+    },
+    {
+        "id": 9,
+        "name": "Prevención COVID"
+    },
+    {
+        "id": 10,
+        "name": "Obstetricia"
+    }
+]

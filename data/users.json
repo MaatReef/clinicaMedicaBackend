@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "Bret",
+        "email": "incere@april.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874"
+        },
+        "phone": "112-736-8031",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSDE Pym",
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "Antonette",
+        "email": "hanna@melissa.tv",
+        "address": {
+            "street": "Victor Plains",
+            "suite": "Suite 879",
+            "city": "Wisokyburgh",
+            "zipcode": "112-566-7771"
+        },
+        "phone": "110-692-6593",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSDE 410",
+        "active": true
+    },
+    {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+        "email": "athan@yesenia.net",
+        "address": {
+            "street": "Douglas Extension",
+            "suite": "Suite 847",
+            "city": "McKenziehaven",
+            "zipcode": "59590-4157"
+        },
+        "phone": "123-123-4447",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "IOMA",
+        "active": true
+    },
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "Karianne",
+        "email": "ulianne.onner@kory.org",
+        "address": {
+            "street": "Hoeger Mall",
+            "suite": "Apt. 692",
+            "city": "South Elvis",
+            "zipcode": "53919-4257"
+        },
+        "phone": "113-170-9623",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSECAC",
+        "active": true
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+        "email": "ucio_ettinger@annie.ca",
+        "address": {
+            "street": "Skiles Walks",
+            "suite": "Suite 351",
+            "city": "Roscoeview",
+            "zipcode": "33263"
+        },
+        "phone": "115-954-1289",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSECAC",
+        "active": true
+    },
+    {
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "Leopoldo_Corkery",
+        "email": "arley_ach@jasper.info",
+        "address": {
+            "street": "Norberto Crossing",
+            "suite": "Apt. 950",
+            "city": "South Christy",
+            "zipcode": "23505-1337"
+        },
+        "phone": "127-935-8478",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSDE 310",
+        "active": true
+    },
+    {
+        "id": 7,
+        "name": "Kurtis Weissnat",
+        "username": "Elwyn.Skiles",
+        "email": "elly.oeger@billy.biz",
+        "address": {
+            "street": "Rex Trail",
+            "suite": "Suite 280",
+            "city": "Howemouth",
+            "zipcode": "58804-1099"
+        },
+        "phone": "110-067-6132",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSDE 110",
+        "active": true
+    },
+    {
+        "id": 8,
+        "name": "Nicholas Runolfsdottir V",
+        "username": "Maxime_Nienow",
+        "email": "herwood@rosamond.me",
+        "address": {
+            "street": "Ellsworth Summit",
+            "suite": "Suite 729",
+            "city": "Aliyaview",
+            "zipcode": "45169"
+        },
+        "phone": "113-543-6544",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSDE 210",
+        "active": true
+    },
+    {
+        "id": 9,
+        "name": "Glenna Reichert",
+        "username": "Delphine",
+        "email": "haim_ermott@dana.io",
+        "address": {
+            "street": "Dayna Park",
+            "suite": "Suite 449",
+            "city": "Bartholomebury",
+            "zipcode": "76495-3109"
+        },
+        "phone": "114-976-6794",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSECAC",
+        "active": true
+    },
+    {
+        "id": 10,
+        "name": "Clementina DuBuque",
+        "username": "Moriah.Stanton",
+        "email": "ey.adberg@karina.biz",
+        "address": {
+            "street": "Kattie Turnpike",
+            "suite": "Suite 198",
+            "city": "Lebsackbury",
+            "zipcode": "31428-2261"
+        },
+        "phone": "124-648-3804",
+        "appointments": [],
+        "avatar": "assets/default-user.png",
+        "medical-studies": [],
+        "healthCoverage": "OSDE 210",
+        "active": true
+    }
+]

@@ -1,0 +1,192 @@
+[
+    {
+        "id": 1,
+        "name": "Maria Graham",
+        "username": "Bret",
+        "email": "sincere@april.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874"
+        },
+        "phone": "1-770-736-8031",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-1.jpg",
+        "scheduleAttention": "L a V de 7:00 hs a 12:00 hs",
+        "speciality": "Ginecología",
+        "active": true,
+        "attention": "Clínica Villa Urquiza"
+    },
+    {
+        "id": 2,
+        "name": "Lucia Howell",
+        "username": "Antonette",
+        "email": "shanna@melissa.tv",
+        "address": {
+            "street": "Victor Plains",
+            "suite": "Suite 879",
+            "city": "Wisokyburgh",
+            "zipcode": "90566-7771"
+        },
+        "phone": "010-692-6593",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-2.jpg",
+        "scheduleAttention": "L a V de 7:00 hs a 12:00 hs",
+        "speciality": "Obstetricia",
+        "active": true,
+        "attention": "Clínica Turdera"
+    },
+    {
+        "id": 3,
+        "name": "Jorge Bauch",
+        "username": "Samantha",
+        "email": "nathan@yesenia.net",
+        "address": {
+            "street": "Douglas Extension",
+            "suite": "Suite 847",
+            "city": "McKenziehaven",
+            "zipcode": "59590-4157"
+        },
+        "phone": "1-463-123-4447",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-3.jpg",
+        "scheduleAttention": "L a V de 8:00 hs a 15:00 hs",
+        "speciality": "Odontología",
+        "active": true,
+        "attention": "Clínica San Isidro"
+    },
+    {
+        "id": 4,
+        "name": "Patricio Lebsack",
+        "username": "Karianne",
+        "email": "julianne.conner@kory.org",
+        "address": {
+            "street": "Hoeger Mall",
+            "suite": "Apt. 692",
+            "city": "South Elvis",
+            "zipcode": "53919-4257"
+        },
+        "phone": "493-170-9623",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-4.jpg",
+        "scheduleAttention": "L a V de 8:00 hs a 12:00 hs",
+        "speciality": "Oftalmología",
+        "active": true,
+        "attention": "Atención virtual"
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+        "email": "lucio_ettinger@annie.ca",
+        "address": {
+            "street": "Skiles Walks",
+            "suite": "Suite 351",
+            "city": "Roscoeview",
+            "zipcode": "33263"
+        },
+        "phone": "(254)954-1289",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-5.jpg",
+        "scheduleAttention": "L a V de 8:00 hs a 10:00 hs",
+        "speciality": "Odontología",
+        "active": true,
+        "attention": "Clínica Abasto"
+    },
+    {
+        "id": 6,
+        "name": "Elisa Schulist",
+        "username": "Leopoldo_Corkery",
+        "email": "karley_ach@jasper.info",
+        "address": {
+            "street": "Norberto Crossing",
+            "suite": "Apt. 950",
+            "city": "South Christy",
+            "zipcode": "23505-1337"
+        },
+        "phone": "1-477-935-8478",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-6.jpg",
+        "scheduleAttention": "L a V de 9:00 hs a 14:00 hs",
+        "speciality": "Rayos",
+        "active": true,
+        "attention": "Clínica Barrio Norte"
+    },
+    {
+        "id": 7,
+        "name": "Kurtis Weissnat",
+        "username": "Elwyn.Skiles",
+        "email": "helly.oeger@billy.biz",
+        "address": {
+            "street": "Rex Trail",
+            "suite": "Suite 280",
+            "city": "Howemouth",
+            "zipcode": "58804-1099"
+        },
+        "phone": "210.067.6132",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-7.jpg",
+        "scheduleAttention": "L a V de 18:00 hs a 21:00 hs",
+        "speciality": "Neurología",
+        "active": true,
+        "attention": "Clínica Microcentro"
+    },
+    {
+        "id": 8,
+        "name": "Adele Runol",
+        "username": "Maxime_Nienow",
+        "email": "sherwood@rosamond.me",
+        "address": {
+            "street": "Ellsworth Summit",
+            "suite": "Suite 729",
+            "city": "Aliyaview",
+            "zipcode": "45169"
+        },
+        "phone": "586.493.6943",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-8.jpg",
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "speciality": "Pediatría",
+        "active": true,
+        "attention": "Atención virtual"
+    },
+    {
+        "id": 9,
+        "name": "Glenna Reichert",
+        "username": "Delphine",
+        "email": "caim_dermott@dana.io",
+        "address": {
+            "street": "Dayna Park",
+            "suite": "Suite 449",
+            "city": "Bartholomebury",
+            "zipcode": "76495-3109"
+        },
+        "phone": "(775)976-6794",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-9.jpg",
+        "scheduleAttention": "L a V de 14:00 hs a 16:00 hs",
+        "speciality": "Traumatología",
+        "active": true,
+        "attention": "Atención virtual"
+    },
+    {
+        "id": 10,
+        "name": "Clementina DuBuque",
+        "username": "Moriah.Stanton",
+        "email": "rey.dberg@karina.biz",
+        "address": {
+            "street": "Kattie Turnpike",
+            "suite": "Suite 198",
+            "city": "Lebsackbury",
+            "zipcode": "31428-2261"
+        },
+        "phone": "024-648-3804",
+        "health-coverage": [],
+        "avatar": "assets/doctors/doctor-10.jpg",
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "speciality": "Medicina general",
+        "active": true,
+        "attention": "Atención virtual"
+    }
+]

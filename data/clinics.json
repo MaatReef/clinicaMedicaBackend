@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "name": "Más Salud",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874"
+        },
+        "phone": "1-770-736-8031",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-57.94942885637284%2C-34.919380299309665%2C-57.946918308734894%2C-34.91803651628651&amp;layer=mapnik"
+    },
+    {
+        "id": 2,
+        "name": "Central Ambulatoria",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Victor Plains",
+            "suite": "Suite 879",
+            "city": "Wisokyburgh",
+            "zipcode": "90566-7771"
+        },
+        "phone": "010-692-6593",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-57.94942885637284%2C-34.919380299309665%2C-57.946918308734894%2C-34.91803651628651&amp;layer=mapnik"
+    },
+    {
+        "id": 3,
+        "name": "Corpus Hippocraticum",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Douglas Extension",
+            "suite": "Suite 847",
+            "city": "McKenziehaven",
+            "zipcode": "59590-4157"
+        },
+        "phone": "1-463-123-4447",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-68.14353168010713%2C-16.508104687743106%2C-68.14308106899263%2C-16.506538548283434&amp;layer=mapnik&amp;marker=-16.507321619599107%2C-68.14330637454987"
+    },
+    {
+        "id": 4,
+        "name": "Salud Óptima",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Hoeger Mall",
+            "suite": "Apt. 692",
+            "city": "South Elvis",
+            "zipcode": "53919-4257"
+        },
+        "phone": "493-170-9623",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.427127599716194%2C-34.58395203942527%2C-58.425325155258186%2C-34.57857256760139&amp;layer=mapnik&amp;marker=-34.58126234703642%2C-58.42622637748718"
+    },
+    {
+        "id": 5,
+        "name": "Cuidando Futuro",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Skiles Walks",
+            "suite": "Suite 351",
+            "city": "Roscoeview",
+            "zipcode": "33263"
+        },
+        "phone": "(254)954-1289",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.445463180542%2C-34.60343535547256%2C-58.441858291625984%2C-34.5926785863703&amp;layer=mapnik&amp;marker=-34.59805714505263%2C-58.443660736083984"
+    },
+    {
+        "id": 6,
+        "name": "Armonía",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Norberto Crossing",
+            "suite": "Apt. 950",
+            "city": "South Christy",
+            "zipcode": "23505-1337"
+        },
+        "phone": "1-477-935-8478",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-57.94942885637284%2C-34.919380299309665%2C-57.946918308734894%2C-34.91803651628651&amp;layer=mapnik"
+    },
+    {
+        "id": 7,
+        "name": "Activa Salud",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Rex Trail",
+            "suite": "Suite 280",
+            "city": "Howemouth",
+            "zipcode": "58804-1099"
+        },
+        "phone": "210.067.6132",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-57.94942885637284%2C-34.919380299309665%2C-57.946918308734894%2C-34.91803651628651&amp;layer=mapnik"
+    },
+    {
+        "id": 8,
+        "name": "Plena Salud",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Ellsworth Summit",
+            "suite": "Suite 729",
+            "city": "Aliyaview",
+            "zipcode": "45169"
+        },
+        "phone": "586.493.6943",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-68.14353168010713%2C-16.508104687743106%2C-68.14308106899263%2C-16.506538548283434&amp;layer=mapnik&amp;marker=-16.507321619599107%2C-68.14330637454987"
+    },
+    {
+        "id": 9,
+        "name": "Centro de Rayos",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Dayna Park",
+            "suite": "Suite 449",
+            "city": "Bartholomebury",
+            "zipcode": "76495-3109"
+        },
+        "phone": "(775)976-6794",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.427127599716194%2C-34.58395203942527%2C-58.425325155258186%2C-34.57857256760139&amp;layer=mapnik&amp;marker=-34.58126234703642%2C-58.42622637748718"
+    },
+    {
+        "id": 10,
+        "name": "Eleva tu salud",
+        "email": "clinic@clinic.biz",
+        "address": {
+            "street": "Kattie Turnpike",
+            "suite": "Suite 198",
+            "city": "Lebsackbury",
+            "zipcode": "31428-2261"
+        },
+        "phone": "024-648-3804",
+        "health-coverage": [],
+        "scheduleAttention": "L a V de 8:00 hs a 21:00 hs",
+        "active": true,
+        "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.445463180542%2C-34.60343535547256%2C-58.441858291625984%2C-34.5926785863703&amp;layer=mapnik&amp;marker=-34.59805714505263%2C-58.443660736083984"
+    }
+]

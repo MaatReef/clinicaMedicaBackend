@@ -1,0 +1,155 @@
+:root{
+    --col-black: #000;
+    --col-white: #fff;
+    
+    --col-pri: #358dda;
+    --col-pri-dye: #2048ab;
+    --col-pri-light: #12a9db;
+
+    --col-aluminium-light: #fffffe;
+    --col-aluminium-medium: #ded7cf;
+    --col-aluminium-dye: #babdb6;
+
+    --font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+    background-color: var(--col-white);
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#topmenu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 9;
+}
+
+ul{
+    padding: 0;
+}
+
+.img-table-doctor{
+    max-width: 50px;
+}
+
+.img-table-user{
+    max-width: 30px;
+}
+
+.titlePrincipal{
+    color: var(--col-black);
+    font-family: var(--font-family);
+    font-size: 4rem;
+}
+
+.red{
+    background-color: red;
+}
+
+.slider-inner {
+    max-height: 700px;
+}
+
+.slider-item {
+    margin-top: -200px;
+}
+
+.slider-caption {
+    bottom: 23.25rem; 
+    background-color: var(--col-pri);
+}
+
+.carrusel {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.carrusel-items {
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 30px 0px;
+}
+
+.carrusel-item {
+    min-width: 300px;
+    max-width: 300px;
+    cursor: pointer;
+    margin: 0rem 2rem;
+    background-color: transparent;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrusel-item:hover {
+    transform: scale(1.1);
+    transition: 0.2s ;
+}
+
+#sidebarMenu {
+    height: 100vh;
+}
+
+.links {
+    text-decoration: none;
+}
+
+@media (max-width: 1440px) {
+
+    .slider-caption {
+        bottom: 8.25rem;
+    }
+}
+@media (max-width: 1024px) {
+    .slider-caption {
+        bottom: 4.25rem;
+    }
+}
+@media (max-width: 768px) {
+    .slider-item {
+        margin-top: -160px;
+    }
+    .slider-caption h3{
+        font-size: 1rem;
+    }
+    .slider-caption {
+        bottom: 1.25rem;
+    }
+}
+@media (max-width: 450px) {
+    .slider-inner {
+        max-height: unset;
+    }
+
+    .slider-item {
+        margin-top: unset;
+    }
+
+    .slider-caption {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: inline-block !important;
+        bottom: 1.25rem;
+    }
+
+    .slider-caption p {
+        display: none !important;
+    }
+
+}
+
+.modal{
+    height: auto; 
+    height: 100vh;  
+    /* background: rgba( var(--col-pri), var(--col-pri), var(--col-pri), 0.5); */
+    /* background-color: rgba( var(--col-pri), var(--col-pri), var(--col-pri), 0.5); */
+    background: var(--col-white);
+}
