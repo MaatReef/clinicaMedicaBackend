@@ -24,8 +24,8 @@ Tutor: Mariano Mendez
 
 Abrir terminal en la raíz del directorio y ejecutar:
 
-> ~~python3 -m http.server
 > flask run
+~~python3 -m http.server
 
 ### Boceto
 
