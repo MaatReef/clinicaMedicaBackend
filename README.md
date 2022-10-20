@@ -28,4 +28,4 @@ Abrir terminal en la raíz del directorio y ejecutar:
 
 ### Boceto
 
-![Home](./assets/sketch.png)
+![Home](./static/assets/sketch.png)
