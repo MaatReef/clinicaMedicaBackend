@@ -1,0 +1,21 @@
+Vamos comentando lo que sea necesario.. Luego este fichero lo borramos.
+
+Instale:
+    - python3 -m venv cudi          "Cree el entorno virtual llamado cudi" 
+    - cudi\Scripts\activate         "Levante el entorno virtual"
+    - pip install flask             "Instale flask dentro del entorno cudi"
+
+app.py como "puerta de acceso" a la aplicación
+
+from flask import Flask, url_for, render_template
+    - con url_for apuntamos a las rutas en los html, lo use dentro del index.html
+    Ejemplo: Con static se le indica de manera obliga la carpeta
+        -     <link rel="stylesheet" href="{{ url_for ('static',filename='css/styles.css') }}">
+    - con render template para renderizar el html necesario
+
+# La carpeta static tiene el css, js, data y assets(imgs) 
+# La carpeta templates los html que "desarmaremos" y usaremos con jinja
+
+Desde consola:
+    - cudi\Scripts\activate         "Levantamos el entorno virtual"
+    - flask run                     "Levantamos el servidor"
