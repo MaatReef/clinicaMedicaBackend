@@ -69,7 +69,6 @@
     </header> <!-- close header + navbar -->
 
     <!-- Open Modal -->
-    
     <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
         <div class="modal-dialog rounded-3 border border-primary">
             <div class="modal-content">
@@ -248,6 +247,9 @@
         </div>
     </div><!--close carrousel -->
     
+        
+
+
     <h2 class="text-center mt-5 mb-2">SEDE CENTRAL</h2>
     <div class="map-container mt-3"> <!--open Google map-->
         <iframe
@@ -285,6 +287,16 @@
                       </tr>
                     </thead>
                     <tbody id="table_staff">
+
+                        <tr> 
+                            <td>             
+                            <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->
+                            <p>{{list_doctors[0]}}</p>
+                            <p>{{list_doctors[1]}}</p>
+                            <p>{{list_doctors[2]}}</p>
+                            </td> 
+                        </tr>
+
                     </tbody>
                 </table>
             </div> 
@@ -376,18 +388,7 @@
                 $('#carrousel').append(clinic);
                 $('#table_clinic').append(table_clinic);
             });
-            $.getJSON("{{ url_for ('static',filename='data/doctors.json') }}",
-            function (data) {
-                var table_staff = '';
-                $.each(data, function (key, value) {
-
-                    table_staff += '<tr> <td>' +
-                        value.name +
-                      '</td> </tr>';
-                });
-
-                $('#table_staff').append(table_staff);
-            });
+            
         });
 
         let login = document.getElementById("loginForm");
