@@ -290,10 +290,10 @@
 
                         <tr> 
                             <td>             
-                            <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->
-                            <p>{{list_doctors[0]}}</p>
-                            <p>{{list_doctors[1]}}</p>
-                            <p>{{list_doctors[2]}}</p>
+                                <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->         
+                                {% for doctor in list_doctors %}
+                                <p> {{ doctor }} </p>
+                                {% endfor %}
                             </td> 
                         </tr>
 
