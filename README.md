@@ -30,4 +30,4 @@ Abrir terminal en la raíz del directorio y ejecutar:
 
 ### Boceto
 
-![Home](./static/assets/sketch.png)
+![Home](./app/views/static/assets/sketch.png)

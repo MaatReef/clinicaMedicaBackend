@@ -1,3 +1,20 @@
+--------------------------------------Data reciente------------------------------------
+
+Ordenando el proyecto considerando el patrón MVC.
+
+---------------------------------------Data Última-------------------------------------
+
+----------------------------------------
+
+Agregué la base de Datos.. 
+Es así o entrar con el patrón Modelo Vista Controlador (MVC).
+
+En el archivo .env cargamos variables de entorno de manera global..
+
+En el archivo index.html que será la raíz del proyecto ruta armada desde app.py.. @app.route("/")
+Ya estamos consumiendo la data servida desde la Base de datos.
+
+----------------------------------------
 Vamos comentando lo que sea necesario.. Luego este fichero lo borramos.
 
 Instale:
