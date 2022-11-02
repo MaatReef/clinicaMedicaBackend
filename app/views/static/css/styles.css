@@ -151,5 +151,5 @@ ul{
     height: 100vh;  
     /* background: rgba( var(--col-pri), var(--col-pri), var(--col-pri), 0.5); */
     /* background-color: rgba( var(--col-pri), var(--col-pri), var(--col-pri), 0.5); */
-    background: var(--col-white);
+    /* background: var(--col-white); */
 }
