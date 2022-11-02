@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clínicas Médicas</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/fav/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/fav/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/fav/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="assets/fav/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for ('static',filename='assets/fav/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for ('static',filename='assets/fav/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for ('static',filename='assets/fav/favicon-16x16.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for ('static',filename='assets/fav/favicon.ico') }}">
     <!-- Style Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- Ours Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="{{ url_for ('static',filename='css/styles.css') }}">
 </head>
 <body>
     <header class="navbar navbar-expand-lg navbar-white bg-white bd-navbar sticky-top p-y5 m-auto container">
@@ -38,7 +38,7 @@
             <div class="offcanvas-body p-4 pt-0 p-lg-0">
               <ul class="navbar-nav flex-row flex-wrap ms-md-auto sm-col-4  align-content-center">
                     <li class="nav-item col-3 col-lg-auto mx-auto text-center">
-                        <a class="nav-link py-2 px-0 px-lg-2" href="index.html" rel="noopener">
+                        <a class="nav-link py-2 px-0 px-lg-2" href="/" rel="noopener">
                             <p class="text-center">Inicio</p>
                         </a>
                     </li>
@@ -389,7 +389,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
         $(document).ready(function () {
-            $.getJSON("data/doctors.json",
+            $.getJSON("../static/data/doctors.json",
             function (data) {
                 var doctor = '';
                 $.each(data, function (key, value) {
@@ -398,7 +398,7 @@
                         value.id + '</th>';
 
                     doctor += '<td>' +
-                        '<img src="' + value.avatar  + '" class="img-fluid img-thumbnail rounded img-table-doctor" alt="doctor">' +
+                        '<img src="../static/' + value.avatar  + '" class="img-fluid img-thumbnail rounded img-table-doctor" alt="doctor">' +
                         '</td>';
 
                     doctor += '<td>' +
@@ -427,7 +427,7 @@
                 });
                 $('#table-doctors').append(doctor);
             });
-            $.getJSON("data/users.json",
+            $.getJSON("../static/data/users.json",
             function (data) {
                 var user = '';
                 $.each(data, function (key, value) {
@@ -436,7 +436,7 @@
                         value.id + '</th>';
 
                     user += '<td>' +
-                        '<img src="' + value.avatar + '" class="img-fluid img-thumbnail rounded img-table-user" alt="user">' +
+                        '<img src="../static/' + value.avatar + '" class="img-fluid img-thumbnail rounded img-table-user" alt="user">' +
                         '</td>';
 
                     user += '<td>' +
@@ -465,7 +465,7 @@
                 });
                 $('#table-users').append(user);
             });
-            $.getJSON("data/health-coverage.json",
+            $.getJSON("../static/data/health-coverage.json",
             function (data) {
                 var coverage = '';
                 $.each(data, function (key, value) {
@@ -474,7 +474,7 @@
                         value.id + '</th>';
                     
                     coverage += '<td>' +
-                        '<img src="' + value.logo + '" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">' +
+                        '<img src="../static/' + value.logo + '" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">' +
                         '</td>';
 
                     coverage += '<td>' +
@@ -486,7 +486,7 @@
                     });
                 $('#table-health').append(coverage);
             });
-            $.getJSON("data/clinics.json",
+            $.getJSON("../static/data/clinics.json",
             function (data) {
                 var clinic = '';
                 $.each(data, function (key, value) {
@@ -518,7 +518,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Js Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
-    <script src="js/bootstrap.bundle.min.js"></script> 
-    <script src="js/admin_crud.js"></script>
+    <script src="{{ url_for ('static',filename='js/bootstrap.bundle.min.js') }}"></script> 
+    <script src="{{ url_for ('static',filename='js/admin_crud.js') }}"></script> 
 </body>
 </html>

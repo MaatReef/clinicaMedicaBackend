@@ -7,3 +7,8 @@ global_scope = Blueprint("views", __name__)                                     
 def view_home():
 
     return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics)          # Se renderiza la plantilla y le paso como argumento la lista 
+
+@global_scope.route("/admin.html", methods=['GET'])
+def view_admin():
+
+    return render_template("admin.html")          
