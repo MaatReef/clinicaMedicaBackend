@@ -244,6 +244,25 @@
     <h2 class="text-center m-0">NUESTRAS SEDES</h2> <!-- carrousel clinics-->
     <div class="carrusel mb-4 mt-4">
         <div class="carrusel-items" id="carrousel">
+
+
+            {% for clinic in list_clinics %}
+                <div class="card carrusel-item rounded-0">
+                    <iframe src={{ clinic[4] }} class="card-img-top"></iframe>
+                    <div class="card-body border-primary border border-top-0">
+                        <h4 class="card-text text-center bg-primary text-light py-2">
+                            {{ clinic[0] }}
+                        </h4>
+                        <p class="card-text text-center">
+                            {{ clinic[1] }}
+                        </p>
+                        <p class="card-text text-center"> {{ clinic[2] }}</p>
+                        <p class="card-text text-center"> {{ clinic[3] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            
         </div>
     </div><!--close carrousel -->
     
@@ -292,7 +311,7 @@
                             <td>             
                                 <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->         
                                 {% for doctor in list_doctors %}
-                                <p> {{ doctor }} </p>
+                                    <p>{{ doctor }}</p>
                                 {% endfor %}
                             </td> 
                         </tr>
@@ -308,6 +327,16 @@
                     </tr>
                     </thead>
                     <tbody id="table_clinic">
+
+                        <tr> 
+                            <td>             
+                                <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->         
+                                {% for clinic in list_clinics %}
+                                    <p>{{ clinic[0] }}</p>
+                                {% endfor %}
+                            </td> 
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -355,41 +384,7 @@
     <!-- Load data -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
-        $(document).ready(function () {
-            $.getJSON("{{ url_for ('static',filename='data/clinics.json') }}",
-            function (data) {
-                var clinic = '';
-                var table_clinic = '';
-                var table_staff = '';
-                $.each(data, function (key, value) {
-                    clinic += '<div class="card carrusel-item rounded-0">';
-                    clinic += '<iframe src="'+value.photo+'" class="card-img-top"></iframe>';
-                    clinic += '<div class="card-body border-primary border border-top-0">'; 
-                   
-                    clinic += '<h4 class="card-text text-center bg-primary text-light py-2">' +
-                        value.name + '</h2>';
-            
-                    clinic += '<p class="card-text text-center">' +
-                        value.scheduleAttention + '</p>';
-            
-                    clinic += '<p class="card-text text-center">' +
-                        value.phone + '</p>';
-            
-                    clinic += '<p class="card-text text-center">' +
-                        value.address.city  + '</p>';
-                    clinic += '</div>';
-                    clinic += '</div>';
 
-                    table_clinic += '<tr> <td>' +
-                        value.name +
-                      '</td> </tr>';
-
-                });
-                $('#carrousel').append(clinic);
-                $('#table_clinic').append(table_clinic);
-            });
-            
-        });
 
         let login = document.getElementById("loginForm");
 
