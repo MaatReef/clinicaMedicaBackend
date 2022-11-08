@@ -2,10 +2,11 @@
 from app.models.models import Doctors, Clinics, Users, HealthCoverage    # Traigo los modelos que realizan la búsqueda en la bd
 
 def view_doctors():
+    
     list_adminDoctors = []                                 # Data para la tabla de Doctores de la sección Admin
     for doctor in Doctors.db_doctorsAdmin:
         only_doctor = []                    
-        doctor_addId = doctor["id"]
+        doctor_addId = doctor["dni"]
         only_doctor.append(doctor_addId)  
 
         doctor_addAvatar = doctor["avatar"]

@@ -96,19 +96,19 @@
                 <table id="table-doctors" class="table align-middle table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Dni</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Nombre y apellido</th>
                             <th scope="col">Especialidad</th>
                             <th scope="col">Email</th>
                             <th scope="col">Sede</th>
                             <th scope="col">Horario de atención</th>
-                            <th scope="col">Estado</th>
+                            <th scope="col">Disponible</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
                         {% for doctor in data_admin[0] %}
-                        <tr>
+                        <tr >
                             <th scope="row">
                                 {{ doctor[0] }}
                             </th>
@@ -131,15 +131,68 @@
                                 {% if doctor[7]  == true %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" checked disabled>
-                                    <label class="form-check-label" for="flexSwitchCheckChecked">Disponible</label>
-                                </div>
                                 {%  else %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled>
-                                    <label class="form-check-label" for="flexSwitchCheckChecked">No Disponible</label>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                 </div>
                                 {% endif %}
                             </td> 
+                            <td>
+                                <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#{{ doctor[3] }}">Editar</button>
+                                
+                                <div class="modal fade" id="{{ doctor[3] }}" tabindex="-1" aria-labelledby="add_doctorLabel" aria-hidden="true">
+                                    <div class="modal-dialog rounded-3 border border-primary">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="add_doctorLabel">EDITAR DOCTOR:</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Foto:</label>
+                                                    <input class="form-control" type="file" id="formFile">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="name-doctor" class="form-label">Dni:</label>
+                                                    <input type="text" class="form-control" id="name-doctor" value="{{ doctor[0] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="name-doctor" class="form-label">Nombre y Apellido (Requerido):</label>
+                                                    <input type="text" class="form-control" id="name-doctor" value="{{ doctor[2] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="specialty-doctor" class="form-label">Especialidad:</label>
+                                                    <input type="text" class="form-control" id="specialty-doctor" value="{{ doctor[3] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email-doctor" class="col-form-label">Email:</label>
+                                                    <input type="email" class="form-control" id="email-doctor" value="{{ doctor[4] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="campus-doctor" class="col-form-label">Sede:</label>
+                                                    <input type="text" class="form-control" id="campus-doctor" value="{{ doctor[5] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="horary-doctor" class="col-form-label">Horario de atención:</label>
+                                                    <input type="text" class="form-control" id="horary-doctor" value="{{ doctor[6] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="state-doctor" class="col-form-label">Disponible:</label>
+                                                    <input type="text" class="form-control" id="state-doctor" value="{{ doctor[7] }}">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-primary rounded-0" id="add_doctorForm">Editar Doctor</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -163,27 +216,27 @@
                             </div>
                             <div class="mb-3">
                                 <label for="name-doctor" class="col-form-label">Nombre y Apellido (Requerido):</label>
-                                <textarea class="form-control" id="name-doctor"></textarea>
+                                <input class="form-control" id="name-doctor">
                             </div>
                             <div class="mb-3">
                                 <label for="specialty-doctor" class="col-form-label">Especialidad:</label>
-                                <textarea class="form-control" id="specialty-doctor"></textarea>
+                                <input class="form-control" id="specialty-doctor">
                             </div>
                             <div class="mb-3">
                                 <label for="email-doctor" class="col-form-label">Email:</label>
-                                <textarea class="form-control" id="email-doctor"></textarea>
+                                <input class="form-control" id="email-doctor">
                             </div>
                             <div class="mb-3">
                                 <label for="campus-doctor" class="col-form-label">Sede:</label>
-                                <textarea class="form-control" id="campus-doctor"></textarea>
+                                <input class="form-control" id="campus-doctor">
                             </div>
                             <div class="mb-3">
                                 <label for="horary-doctor" class="col-form-label">Horario de atención:</label>
-                                <textarea class="form-control" id="horary-doctor"></textarea>
+                                <input class="form-control" id="horary-doctor">
                             </div>
                             <div class="mb-3">
-                                <label for="state-doctor" class="col-form-label">Estado:</label>
-                                <textarea class="form-control" id="state-doctor"></textarea>
+                                <label for="state-doctor" class="col-form-label">Disponible:</label>
+                                <input class="form-control" id="state-doctor">
                             </div>
                         </form>
                     </div>
@@ -200,14 +253,14 @@
                 <table id="table-users" class="table align-middle table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Dni</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Nombre y apellido</th>
                             <th scope="col">Obra social</th>
                             <th scope="col">Email</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Domicilio</th>
-                            <th scope="col">Estado</th>
+                            <th scope="col">Disponible</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -233,14 +286,18 @@
                                 {% if user[7]  == true %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" checked disabled>
-                                    <label class="form-check-label" for="flexSwitchCheckChecked">Disponible</label>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                 </div>
                                 {%  else %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled>
-                                    <label class="form-check-label" for="flexSwitchCheckChecked">No Disponible</label>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                 </div>
                                 {% endif %}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#edit_User">Editar</button>
                             </td>
                         </tr>
                         {% endfor %}
@@ -264,27 +321,27 @@
                             </div>
                             <div class="mb-3">
                                 <label for="name-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
-                                <textarea class="form-control" id="name-patient"></textarea>
+                                <input class="form-control" id="name-patient">
                             </div>
                             <div class="mb-3">
                                 <label for="socialWork-patient" class="col-form-label">Obra social:</label>
-                                <textarea class="form-control" id="socialWork-patient"></textarea>
+                                <input class="form-control" id="socialWork-patient">
                             </div>
                             <div class="mb-3">
                                 <label for="email-patient" class="col-form-label">Email:</label>
-                                <textarea class="form-control" id="email-patient"></textarea>
+                                <input class="form-control" id="email-patient">
                             </div>
                             <div class="mb-3">
                                 <label for="phone-patient" class="col-form-label">Teléfono:</label>
-                                <textarea class="form-control" id="phone-patient"></textarea>
+                                <input class="form-control" id="phone-patient">
                             </div>
                             <div class="mb-3">
                                 <label for="adress-patient" class="col-form-label">Domicilio:</label>
-                                <textarea class="form-control" id="adress-patient"></textarea>
+                                <input class="form-control" id="adress-patient">
                             </div>
                             <div class="mb-3">
-                                <label for="state-patient" class="col-form-label">Estado:</label>
-                                <textarea class="form-control" id="state-patient"></textarea>
+                                <label for="state-patient" class="col-form-label">Disponible:</label>
+                                <input class="form-control" id="state-patient">
                             </div>
                         </form>
                     </div>
@@ -320,6 +377,10 @@
                                 <td>{{ healthCoverage[2] }}</td>
             
                                 <td>{{ healthCoverage[3] }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#edit_HealthCoverage">Editar</button>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -342,11 +403,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="socialWork-form" class="col-form-label">Obra Social (Requerido):</label>
-                                <textarea class="form-control" id="socialWork-form"></textarea>
+                                <input class="form-control" id="socialWork-form">
                             </div>
                             <div class="mb-3">
                                 <label for="plan-form" class="col-form-label">Plan:</label>
-                                <textarea class="form-control" id="plan-form"></textarea>
+                                <input class="form-control" id="plan-form">
                             </div>
                         </form>
                     </div>
@@ -385,8 +446,56 @@
                                 <td>{{ clinic[4] }}</td>
                     
                                 <td>{{ clinic[5] }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#edit_Clinic">Editar</button>
+                                </td>
                             </tr>
                         {% endfor %}
+
+                        <div class="modal fade" id="add_clinic" tabindex="-1" aria-labelledby="add_clinicLabel" aria-hidden="true">
+                            <div class="modal-dialog rounded-3 border border-primary">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="add_clinicLabel">AGREGAR CLÍNICA:</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="name-clinic" class="col-form-label">Clínica (Requerido):</label>
+                                            <input type="text" class="form-control" id="name-clinic">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="schedule-clinic" class="col-form-label">Horario de atención:</label>
+                                            <input class="form-control" id="schedule-clinic">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email-clinic" class="col-form-label">Email:</label>
+                                            <input class="form-control" id="email-clinic">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="phone-clinic" class="col-form-label">Teléfono:</label>
+                                            <input class="form-control" id="phone-clinic">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="campus-clinic" class="col-form-label">Sede:</label>
+                                            <input class="form-control" id="campus-clinic">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="campus-clinic" class="col-form-label">Sede:</label>
+                                            <input class="form-control" id="campus-clinic">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                    <button type="button" class="btn btn-primary rounded-0" id="add_clinicForm">AGREGAR CLÍNICA</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- Close Modal Add Clinic-->
                         
                     </tbody>
                 </table>
@@ -408,23 +517,23 @@
                             </div>
                             <div class="mb-3">
                                 <label for="schedule-clinic" class="col-form-label">Horario de atención:</label>
-                                <textarea class="form-control" id="schedule-clinic"></textarea>
+                                <input class="form-control" id="schedule-clinic">
                             </div>
                             <div class="mb-3">
                                 <label for="email-clinic" class="col-form-label">Email:</label>
-                                <textarea class="form-control" id="email-clinic"></textarea>
+                                <input class="form-control" id="email-clinic">
                             </div>
                             <div class="mb-3">
                                 <label for="phone-clinic" class="col-form-label">Teléfono:</label>
-                                <textarea class="form-control" id="phone-clinic"></textarea>
+                                <input class="form-control" id="phone-clinic">
                             </div>
                             <div class="mb-3">
                                 <label for="campus-clinic" class="col-form-label">Sede:</label>
-                                <textarea class="form-control" id="campus-clinic"></textarea>
+                                <input class="form-control" id="campus-clinic">
                             </div>
                             <div class="mb-3">
-                                <label for="campus-clinic" class="col-form-label">Sede:</label>
-                                <textarea class="form-control" id="campus-clinic"></textarea>
+                                <label for="campus-clinic" class="col-form-label">  ede:</label>
+                                <input class="form-control" id="campus-clinic">
                             </div>
                         </form>
                     </div>
