@@ -142,6 +142,7 @@
                                 <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
                                 <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#{{ doctor[3] }}">Editar</button>
                                 
+                                <!-- Edit modal doctor open -->
                                 <div class="modal fade" id="{{ doctor[3] }}" tabindex="-1" aria-labelledby="add_doctorLabel" aria-hidden="true">
                                     <div class="modal-dialog rounded-3 border border-primary">
                                         <div class="modal-content">
@@ -191,7 +192,8 @@
                                         </div>
                                         </div>
                                     </div>
-                                    </div>
+                                </div>
+                                <!-- Close Edit modal doctor -->
                             </td>
                         </tr>
                         {% endfor %}
@@ -297,7 +299,56 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#edit_User">Editar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#{{ user[6] }}">Editar</button>
+                                
+                                <!-- Edit modal user open -->
+                                <div class="modal fade" id="{{ user[6] }}" tabindex="-1" aria-labelledby="add_doctorLabel" aria-hidden="true">
+                                    <div class="modal-dialog rounded-3 border border-primary">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="add_patientLabel">AGREGAR PACIENTE:</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="col-form-label">Foto:</label>
+                                                    <input class="form-control" type="file" id="formFile">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="name-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
+                                                    <input class="form-control" id="name-patient" value="{{ user[2] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="socialWork-patient" class="col-form-label">Obra social:</label>
+                                                    <input class="form-control" id="socialWork-patient" value="{{ user[3] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email-patient" class="col-form-label">Email:</label>
+                                                    <input class="form-control" id="email-patient" value="{{ user[4] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="phone-patient" class="col-form-label">Teléfono:</label>
+                                                    <input class="form-control" id="phone-patient" value="{{ user[5] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="adress-patient" class="col-form-label">Domicilio:</label>
+                                                    <input class="form-control" id="adress-patient" value="{{ user[6] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="state-patient" class="col-form-label">Disponible:</label>
+                                                    <input class="form-control" id="state-patient" value="{{ user[7] }}">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                            <button type="button" class="btn btn-primary rounded-0" id="add_patientForm">AGREGAR PACIENTE</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Close Edit modal User -->
                             </td>
                         </tr>
                         {% endfor %}

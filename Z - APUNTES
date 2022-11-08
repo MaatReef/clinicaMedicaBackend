@@ -2,9 +2,10 @@
 
 ---------------------------------------- 8 - 11
 - Información agregada en las Tablas del Admin.. Conectada con la Base de datos.
-- Botones de disponiblidad validados desde la base de datos, de acuerdo a su valor booleano.
+- Botones de disponiblidad validados desde la base de datos.
 - Botones para editar y eliminar agregados.
 - Funcionalidad de Editar Doctores agregada (Aún sin conexión a la base de datos)
+- Funcionalidad de Editar Users agregada (Aún sin conexión a la base de datos)
 
 ---------------------------------------Data Antigua-------------------------------------
 ---------------------------------------- 2 - 11
