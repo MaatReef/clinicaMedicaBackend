@@ -1,5 +1,11 @@
 --------------------------------------Data Actual------------------------------------
 
+---------------------------------------- 8 - 11
+- Información agregada en las Tablas del Admin.. Conectada con la Base de datos.
+- Botones de disponiblidad validados desde la base de datos, de acuerdo a su valor booleano.
+
+
+---------------------------------------Data Antigua-------------------------------------
 ---------------------------------------- 2 - 11
 
 Para instalar todas las librerías necesarias, de ser necesario:
@@ -9,9 +15,6 @@ En local en la raíz crear el archivo .env más la string de conexión de mongod
 
 O bien revisar desde la siguiente url luego de realizar cada push (5 minutos aprox)
     https://cudi-clinicamedica.onrender.com/
-
-
----------------------------------------Data Antigua-------------------------------------
 
 ---------------------------------------- 31 - 10
 

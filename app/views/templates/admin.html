@@ -107,6 +107,41 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
+                        {% for doctor in data_admin[0] %}
+                        <tr>
+                            <th scope="row">
+                                {{ doctor[0] }}
+                            </th>
+
+                            <td>
+                                <img src="../static/{{ doctor[1] }}" class="img-fluid img-thumbnail rounded img-table-doctor" alt="doctor">
+                            </td>
+
+                            <td> {{ doctor[2] }} </td>
+
+                            <td> {{ doctor[3] }} </td>
+
+                            <td> {{ doctor[4] }} </td>
+
+                            <td> {{ doctor[5] }} </td>
+
+                            <td> {{ doctor[6] }} </td>
+                                
+                            <td>
+                                {% if doctor[7]  == true %}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" checked disabled>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">Disponible</label>
+                                </div>
+                                {%  else %}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">No Disponible</label>
+                                </div>
+                                {% endif %}
+                            </td> 
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
 
@@ -176,6 +211,39 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
+                        {% for user in data_admin[1] %}
+                        <tr>
+                            <th scope="row">{{ user[0] }} </th>
+
+                            <td>
+                                <img src="../static/{{ user[1] }} " class="img-fluid img-thumbnail rounded img-table-user" alt="user">
+                            </td>
+
+                            <td>{{ user[2] }}</td>
+
+                            <td>{{ user[3] }}</td>
+
+                            <td>{{ user[4] }}</td>
+
+                            <td>{{ user[5] }}</td>
+
+                            <td>{{ user[6] }}</td>
+                        
+                            <td>
+                                {% if user[7]  == true %}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" checked disabled>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">Disponible</label>
+                                </div>
+                                {%  else %}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">No Disponible</label>
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
                 
@@ -240,6 +308,20 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
+                        {% for healthCoverage in data_admin[2] %}
+                        
+                            <tr>
+                                <th scope="row">{{ healthCoverage[0] }}</th>
+                                
+                                <td>
+                                    <img src="../static/{{ healthCoverage[1] }}" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">
+                                </td>
+            
+                                <td>{{ healthCoverage[2] }}</td>
+            
+                                <td>{{ healthCoverage[3] }}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
                 <!-- Open Modal Add social work -->
@@ -290,6 +372,22 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
+                        {% for clinic in data_admin[3] %}
+                            <tr>
+                                <th scope="row"> {{ clinic[0] }} </th>
+                    
+                                <td>{{ clinic[1] }}</td>
+                    
+                                <td>{{ clinic[2] }}</td>
+                    
+                                <td>{{ clinic[3] }}</td>
+                    
+                                <td>{{ clinic[4] }}</td>
+                    
+                                <td>{{ clinic[5] }}</td>
+                            </tr>
+                        {% endfor %}
+                        
                     </tbody>
                 </table>
                 <!-- Open Modal Add Clinic -->
@@ -387,132 +485,7 @@
     
     <!-- Load data -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script>
-        $(document).ready(function () {
-            $.getJSON("../static/data/doctors.json",
-            function (data) {
-                var doctor = '';
-                $.each(data, function (key, value) {
-                    doctor += '<tr>';
-                    doctor += '<th scope="row">' +
-                        value.id + '</th>';
 
-                    doctor += '<td>' +
-                        '<img src="../static/' + value.avatar  + '" class="img-fluid img-thumbnail rounded img-table-doctor" alt="doctor">' +
-                        '</td>';
-
-                    doctor += '<td>' +
-                        value.name + '</td>';
-
-                    doctor += '<td>' +
-                        value.speciality + '</td>';
-
-                    doctor += '<td>' +
-                        value.email + '</td>';
-
-                    doctor += '<td>' +
-                        value.attention + '</td>';
-
-                    doctor += '<td>' +
-                        value.scheduleAttention + '</td>';
-
-                    doctor += 
-                        '<td>' +
-                            '<div class="form-check form-switch">' +
-                                '<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>' +
-                                '<label class="form-check-label" for="flexSwitchCheckChecked">Disponible</label>' +
-                            '</div>' +
-                        '</td>';
-                    doctor += '</tr>';
-                });
-                $('#table-doctors').append(doctor);
-            });
-            $.getJSON("../static/data/users.json",
-            function (data) {
-                var user = '';
-                $.each(data, function (key, value) {
-                    user += '<tr>';
-                    user += '<th scope="row">' +
-                        value.id + '</th>';
-
-                    user += '<td>' +
-                        '<img src="../static/' + value.avatar + '" class="img-fluid img-thumbnail rounded img-table-user" alt="user">' +
-                        '</td>';
-
-                    user += '<td>' +
-                        value.name + '</td>';
-
-                    user += '<td>' +
-                        value.healthCoverage + '</td>';
-
-                    user += '<td>' +
-                        value.email + '</td>';
-
-                    user += '<td>' +
-                        value.phone + '</td>';
-
-                    user += '<td>' +
-                        value.address.city  + '</td>';
-
-                    user += 
-                        '<td>' +
-                            '<div class="form-check form-switch">' +
-                                '<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>' +
-                                '<label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>' +
-                            '</div>' +
-                        '</td>';
-                    user += '</tr>';
-                });
-                $('#table-users').append(user);
-            });
-            $.getJSON("../static/data/health-coverage.json",
-            function (data) {
-                var coverage = '';
-                $.each(data, function (key, value) {
-                    coverage += '<tr>';
-                    coverage += '<th scope="row">' +
-                        value.id + '</th>';
-                    
-                    coverage += '<td>' +
-                        '<img src="../static/' + value.logo + '" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">' +
-                        '</td>';
-
-                    coverage += '<td>' +
-                        value.name + '</td>';
-
-                    coverage += '<td>' +
-                        value.plan + '</td>';
-                        
-                    });
-                $('#table-health').append(coverage);
-            });
-            $.getJSON("../static/data/clinics.json",
-            function (data) {
-                var clinic = '';
-                $.each(data, function (key, value) {
-                    clinic += '<tr>';
-                    clinic += '<th scope="row">' +
-                        value.id + '</th>';
-            
-                    clinic += '<td>' +
-                        value.name + '</td>';
-            
-                    clinic += '<td>' +
-                        value.scheduleAttention + '</td>';
-            
-                    clinic += '<td>' +
-                        value.email + '</td>';
-            
-                    clinic += '<td>' +
-                        value.phone + '</td>';
-            
-                    clinic += '<td>' +
-                        value.address.city  + '</td>';
-                });
-                $('#table-clinics').append(clinic);
-            });
-        });
-    </script>
 
     <!-- js sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
