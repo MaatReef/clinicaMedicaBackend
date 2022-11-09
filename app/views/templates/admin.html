@@ -110,25 +110,25 @@
                         {% for doctor in data_admin[0] %}
                         <tr >
                             <th scope="row">
-                                {{ doctor[0] }}
+                                {{ doctor["dni"] }}
                             </th>
 
                             <td>
-                                <img src="../static/{{ doctor[1] }}" class="img-fluid img-thumbnail rounded img-table-doctor" alt="doctor">
+                                <img src="../static/{{ doctor['avatar'] }}" class="img-fluid img-thumbnail rounded img-table-doctor" alt="doctor">
                             </td>
 
-                            <td> {{ doctor[2] }} </td>
+                            <td> {{ doctor["name"] }} </td>
 
-                            <td> {{ doctor[3] }} </td>
+                            <td> {{ doctor["speciality"] }} </td>
 
-                            <td> {{ doctor[4] }} </td>
+                            <td> {{ doctor["email"] }} </td>
 
-                            <td> {{ doctor[5] }} </td>
+                            <td> {{ doctor["attention"] }} </td>
 
-                            <td> {{ doctor[6] }} </td>
+                            <td> {{ doctor["scheduleAttention"] }} </td>
                                 
                             <td>
-                                {% if doctor[7]  == true %}
+                                {% if doctor["active"]  == true %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" checked disabled>
                                 {%  else %}
@@ -140,56 +140,55 @@
                             </td> 
                             <td>
                                 <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#{{ doctor[3] }}">Editar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ doctor['dni'] }}">Editar</button>
                                 
                                 <!-- Edit modal doctor open -->
-                                <div class="modal fade" id="{{ doctor[3] }}" tabindex="-1" aria-labelledby="add_doctorLabel" aria-hidden="true">
+                                <div class="modal fade" id="id{{ doctor['dni'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
                                     <div class="modal-dialog rounded-3 border border-primary">
                                         <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="add_doctorLabel">EDITAR DOCTOR:</h1>
+                                            <h1 class="modal-title fs-5" id="edit_doctorLabel">EDITAR DOCTOR:</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <form>
                                                 <div class="mb-3">
-                                                    <label for="formFile" class="form-label">Foto:</label>
-                                                    <input class="form-control" type="file" id="formFile">
+                                                    <label for="editFormFile" class="form-label">Foto:</label>
+                                                    <input class="form-control" type="file" id="editFormFile">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="name-doctor" class="form-label">Dni:</label>
-                                                    <input type="text" class="form-control" id="name-doctor" value="{{ doctor[0] }}">
+                                                    <label for="editName-doctor" class="form-label">Dni:</label>
+                                                    <input type="text" class="form-control" id="editName-doctor" value="{{ doctor['dni'] }}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="name-doctor" class="form-label">Nombre y Apellido (Requerido):</label>
-                                                    <input type="text" class="form-control" id="name-doctor" value="{{ doctor[2] }}">
+                                                    <label for="editName-doctor" class="form-label">Nombre y Apellido (Requerido):</label>
+                                                    <input type="text" class="form-control" id="editName-doctor" value="{{ doctor['name'] }}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="specialty-doctor" class="form-label">Especialidad:</label>
-                                                    <input type="text" class="form-control" id="specialty-doctor" value="{{ doctor[3] }}">
+                                                    <input type="text" class="form-control" id="specialty-doctor" value="{{ doctor['speciality'] }}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="email-doctor" class="col-form-label">Email:</label>
-                                                    <input type="email" class="form-control" id="email-doctor" value="{{ doctor[4] }}">
+                                                    <label for="editEmail-doctor" class="col-form-label">Email:</label>
+                                                    <input type="email" class="form-control" id="editEmail-doctor" value="{{ doctor['email'] }}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="campus-doctor" class="col-form-label">Sede:</label>
-                                                    <input type="text" class="form-control" id="campus-doctor" value="{{ doctor[5] }}">
+                                                    <label for="editCampus-doctor" class="col-form-label">Sede:</label>
+                                                    <input type="text" class="form-control" id="editCampus-doctor" value="{{ doctor['address']['city'] }}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="horary-doctor" class="col-form-label">Horario de atención:</label>
-                                                    <input type="text" class="form-control" id="horary-doctor" value="{{ doctor[6] }}">
+                                                    <label for="editHorary-doctor" class="col-form-label">Horario de atención:</label>
+                                                    <input type="text" class="form-control" id="editHorary-doctor" value="{{ doctor['scheduleAttention'] }}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="state-doctor" class="col-form-label">Disponible:</label>
-                                                    <input type="text" class="form-control" id="state-doctor" value="{{ doctor[7] }}">
+                                                    <label for="editState-doctor" class="col-form-label">Disponible:</label>
+                                                    <input type="text" class="form-control" id="editState-doctor" value="{{ doctor['active'] }}">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">EDITAR DOCTOR</button>
                                                 </div>
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn btn-primary rounded-0" id="add_doctorForm">Editar Doctor</button>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -268,24 +267,24 @@
                     <tbody class="table-group-divider">
                         {% for user in data_admin[1] %}
                         <tr>
-                            <th scope="row">{{ user[0] }} </th>
+                            <th scope="row">{{ user["dni"] }} </th>
 
                             <td>
-                                <img src="../static/{{ user[1] }} " class="img-fluid img-thumbnail rounded img-table-user" alt="user">
+                                <img src="../static/{{ user['avatar'] }} " class="img-fluid img-thumbnail rounded img-table-user" alt="user">
                             </td>
 
-                            <td>{{ user[2] }}</td>
+                            <td>{{ user["name"] }}</td>
 
-                            <td>{{ user[3] }}</td>
+                            <td>{{ user["healthCoverage"] }}</td>
 
-                            <td>{{ user[4] }}</td>
+                            <td>{{ user["email"] }}</td>
 
-                            <td>{{ user[5] }}</td>
+                            <td>{{ user["phone"] }}</td>
 
-                            <td>{{ user[6] }}</td>
+                            <td>{{ user["address"]["city"] }}</td>
                         
                             <td>
-                                {% if user[7]  == true %}
+                                {% if user["active"]  == true %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" checked disabled>
                                     <label class="form-check-label" for="flexSwitchCheckChecked"></label>
@@ -299,52 +298,54 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#{{ user[6] }}">Editar</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target='#id{{ user["dni"] }}'>Editar</button>
                                 
                                 <!-- Edit modal user open -->
-                                <div class="modal fade" id="{{ user[6] }}" tabindex="-1" aria-labelledby="add_doctorLabel" aria-hidden="true">
+                                <div class="modal fade" id='id{{ user["dni"] }}' tabindex="-1" aria-labelledby="editAdd_doctorLabel" aria-hidden="true">
                                     <div class="modal-dialog rounded-3 border border-primary">
                                         <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="add_patientLabel">AGREGAR PACIENTE:</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label for="formFile" class="col-form-label">Foto:</label>
-                                                    <input class="form-control" type="file" id="formFile">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="name-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
-                                                    <input class="form-control" id="name-patient" value="{{ user[2] }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="socialWork-patient" class="col-form-label">Obra social:</label>
-                                                    <input class="form-control" id="socialWork-patient" value="{{ user[3] }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="email-patient" class="col-form-label">Email:</label>
-                                                    <input class="form-control" id="email-patient" value="{{ user[4] }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="phone-patient" class="col-form-label">Teléfono:</label>
-                                                    <input class="form-control" id="phone-patient" value="{{ user[5] }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="adress-patient" class="col-form-label">Domicilio:</label>
-                                                    <input class="form-control" id="adress-patient" value="{{ user[6] }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="state-patient" class="col-form-label">Disponible:</label>
-                                                    <input class="form-control" id="state-patient" value="{{ user[7] }}">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                            <button type="button" class="btn btn-primary rounded-0" id="add_patientForm">AGREGAR PACIENTE</button>
-                                        </div>
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="editAdd_doctorLabel">Editar PACIENTE:</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="editFormFile" class="col-form-label">Foto:</label>
+                                                        <input class="form-control" type="file" id="editFormFile">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editName-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
+                                                        <input class="form-control" id="editName-patient" value="{{ user['name'] }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editSocialWork-patient" class="col-form-label">Obra social:</label>
+                                                        <input class="form-control" id="editSocialWork-patient" value="{{ user['healthCoverage'] }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editEmail-patient" class="col-form-label">Email:</label>
+                                                        <input class="form-control" id="editEmail-patient" value="{{ user['email'] }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editPhone-patient" class="col-form-label">Teléfono:</label>
+                                                        <input class="form-control" id="editPhone-patient" value="{{ user['phone'] }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editAdress-patient" class="col-form-label">Domicilio:</label>
+                                                        <input class="form-control" id="editAdress-patient" value="{{ user['address']['city'] }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editState-patient" class="col-form-label">Disponible:</label>
+                                                        <input class="form-control" id="editState-patient" value="{{ user['active'] }}">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                                <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">EDITAR PACIENTE</button>
+                                            </div>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -419,20 +420,50 @@
                         {% for healthCoverage in data_admin[2] %}
                         
                             <tr>
-                                <th scope="row">{{ healthCoverage[0] }}</th>
+                                <th scope="row">{{ healthCoverage["id"] }}</th>
                                 
                                 <td>
-                                    <img src="../static/{{ healthCoverage[1] }}" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">
+                                    <img src="../static/{{ healthCoverage['logo'] }}" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">
                                 </td>
             
-                                <td>{{ healthCoverage[2] }}</td>
+                                <td>{{ healthCoverage["name"] }}</td>
             
-                                <td>{{ healthCoverage[3] }}</td>
+                                <td>{{ healthCoverage["plan"] }}</td>
                                 <td>
                                     <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#edit_HealthCoverage">Editar</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{healthCoverage['id'] }}">Editar</button>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="id{{healthCoverage['id'] }}" tabindex="-1" aria-labelledby="edit_socialWorkLabel" aria-hidden="true">
+                                <div class="modal-dialog rounded-3 border border-primary">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="edit_socialWorkLabel">AGREGAR OBRA SOCIAL:</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="form-file" class="form-label">Logo:</label>
+                                                <input class="form-control" type="file" id="form-file"> 
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="socialWork-form" class="col-form-label">Obra Social (Requerido):</label>
+                                                <input class="form-control" id="socialWork-form" value="{{ healthCoverage['name'] }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="plan-form" class="col-form-label">Plan:</label>
+                                                <input class="form-control" id="plan-form" value="{{ healthCoverage['plan'] }}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                        <button type="button" class="btn btn-primary rounded-0" id="add_socialWorkForm">EDITAR OBRA</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -471,6 +502,7 @@
                 </div>
                 <!-- Close Modal Add social work-->
             </div>
+
             <div class="tab-pane fade py-3 overflow-auto" id="clinics-tab-pane" role="tabpanel" aria-labelledby="clinics-tab" tabindex="0">
                 <table id="table-clinics" class="table align-middle table-hover">
                     <thead>
@@ -486,70 +518,67 @@
                     <tbody class="table-group-divider">
                         {% for clinic in data_admin[3] %}
                             <tr>
-                                <th scope="row"> {{ clinic[0] }} </th>
+                                <th scope="row"> {{ clinic["id"] }} </th>
                     
-                                <td>{{ clinic[1] }}</td>
+                                <td>{{ clinic["name"] }}</td>
                     
-                                <td>{{ clinic[2] }}</td>
+                                <td>{{ clinic["scheduleAttention"] }}</td>
                     
-                                <td>{{ clinic[3] }}</td>
+                                <td>{{ clinic["email"] }}</td>
                     
-                                <td>{{ clinic[4] }}</td>
+                                <td>{{ clinic["phone"] }}</td>
                     
-                                <td>{{ clinic[5] }}</td>
+                                <td>{{ clinic["address"]["city"] }}</td>
                                 <td>
                                     <button type="button" class="btn btn-danger rounded-0">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#edit_Clinic">Editar</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ clinic['_id'] }}">Editar</button>
                                 </td>
                             </tr>
-                        {% endfor %}
-
-                        <div class="modal fade" id="add_clinic" tabindex="-1" aria-labelledby="add_clinicLabel" aria-hidden="true">
-                            <div class="modal-dialog rounded-3 border border-primary">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="add_clinicLabel">AGREGAR CLÍNICA:</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="name-clinic" class="col-form-label">Clínica (Requerido):</label>
-                                            <input type="text" class="form-control" id="name-clinic">
+                            <!-- Edit modal user open -->
+                            <div class="modal fade" id="id{{ clinic['_id'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
+                                <div class="modal-dialog rounded-3 border border-primary">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="edit_doctorLabel">EDITAR CLÍNICA:</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="schedule-clinic" class="col-form-label">Horario de atención:</label>
-                                            <input class="form-control" id="schedule-clinic">
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="editName-clinic" class="col-form-label">Nombre:</label>
+                                                    <input class="form-control" id="editName-clinic" value="{{ clinic['name'] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editScheduleAttention-clinic" class="col-form-label">Horario de Atención:</label>
+                                                    <input class="form-control" id="editScheduleAttention-clinic" value="{{ clinic['scheduleAttention'] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editEmail-clinic" class="col-form-label">Email:</label>
+                                                    <input class="form-control" id="editEmail-clinic" value="{{ clinic['email'] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editPhone-clinic" class="col-form-label">Teléfono:</label>
+                                                    <input class="form-control" id="editPhone-clinic" value="{{ clinic['phone'] }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editCity-clinic" class="col-form-label">Sede:</label>
+                                                    <input class="form-control" id="editCity-clinic" value="{{ clinic['address']['city'] }}">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_clinicForm">EDITAR CLINICA</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="email-clinic" class="col-form-label">Email:</label>
-                                            <input class="form-control" id="email-clinic">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="phone-clinic" class="col-form-label">Teléfono:</label>
-                                            <input class="form-control" id="phone-clinic">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="campus-clinic" class="col-form-label">Sede:</label>
-                                            <input class="form-control" id="campus-clinic">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="campus-clinic" class="col-form-label">Sede:</label>
-                                            <input class="form-control" id="campus-clinic">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                    <button type="button" class="btn btn-primary rounded-0" id="add_clinicForm">AGREGAR CLÍNICA</button>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                            <!-- Close Modal Add Clinic-->
+                            <!-- Close Edit modal User -->
                         
+                        {% endfor %}
                     </tbody>
                 </table>
+
                 <!-- Open Modal Add Clinic -->
                 <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#add_clinic">AGREGAR CLÍNICA</button>
 
@@ -582,10 +611,6 @@
                                 <label for="campus-clinic" class="col-form-label">Sede:</label>
                                 <input class="form-control" id="campus-clinic">
                             </div>
-                            <div class="mb-3">
-                                <label for="campus-clinic" class="col-form-label">  ede:</label>
-                                <input class="form-control" id="campus-clinic">
-                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -599,8 +624,7 @@
             </div>
         </div>
     </section><!-- close tabs-->
-
-
+                
     <footer class="py-0 m-auto container "> <!-- open footer -->
         <ul class="navbar-nav flex-row flex-wrap align-content-center pb-3">
             <table class="table table-borderless">
@@ -650,8 +674,10 @@
     <!-- js sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Js Bootstrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
-    <script src="{{ url_for ('static',filename='js/bootstrap.bundle.min.js') }}"></script> 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  -->
+    <!-- <script src="{{ url_for ('static',filename='js/bootstrap.bundle.min.js') }}"></script>  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
+
     <script src="{{ url_for ('static',filename='js/admin_crud.js') }}"></script> 
 </body>
 </html>

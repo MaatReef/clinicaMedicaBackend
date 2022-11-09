@@ -1,6 +1,6 @@
 [
     {
-        "dni": 30567345,
+        "dni": "30567345",
         "name": "Maria Graham",
         "username": "Bret",
         "email": "sincere@april.biz",
@@ -19,7 +19,7 @@
         "attention": "Clínica Villa Urquiza"
     },
     {
-        "dni": 33457345,
+        "dni": "33457345",
         "name": "Lucia Howell",
         "username": "Antonette",
         "email": "shanna@melissa.tv",
@@ -38,7 +38,7 @@
         "attention": "Clínica Turdera"
     },
     {
-        "dni": 32395678,
+        "dni": "32395678",
         "name": "Jorge Bauch",
         "username": "Samantha",
         "email": "nathan@yesenia.net",
@@ -57,7 +57,7 @@
         "attention": "Clínica San Isidro"
     },
     {
-        "dni": 24578356,
+        "dni": "24578356",
         "name": "Patricio Lebsack",
         "username": "Karianne",
         "email": "julianne.conner@kory.org",
@@ -76,7 +76,7 @@
         "attention": "Atención virtual"
     },
     {
-        "dni": 12456478,
+        "dni": "12456478",
         "name": "Chelsey Dietrich",
         "username": "Kamren",
         "email": "lucio_ettinger@annie.ca",
@@ -95,7 +95,7 @@
         "attention": "Clínica Abasto"
     },
     {
-        "dni": 26789546,
+        "dni": "26789546",
         "name": "Elisa Schulist",
         "username": "Leopoldo_Corkery",
         "email": "karley_ach@jasper.info",
@@ -114,7 +114,7 @@
         "attention": "Clínica Barrio Norte"
     },
     {
-        "dni": 24567843,
+        "dni": "24567843",
         "name": "Kurtis Weissnat",
         "username": "Elwyn.Skiles",
         "email": "helly.oeger@billy.biz",
@@ -133,7 +133,7 @@
         "attention": "Clínica Microcentro"
     },
     {
-        "dni": 24567985,
+        "dni": "24567985",
         "name": "Adele Runol",
         "username": "Maxime_Nienow",
         "email": "sherwood@rosamond.me",
@@ -152,7 +152,7 @@
         "attention": "Atención virtual"
     },
     {
-        "dni": 23567456,
+        "dni": "23567456",
         "name": "Glenna Reichert",
         "username": "Delphine",
         "email": "caim_dermott@dana.io",
@@ -171,7 +171,7 @@
         "attention": "Atención virtual"
     },
     {
-        "dni": 34567234,
+        "dni": "34567234",
         "name": "Clementina DuBuque",
         "username": "Moriah.Stanton",
         "email": "rey.dberg@karina.biz",

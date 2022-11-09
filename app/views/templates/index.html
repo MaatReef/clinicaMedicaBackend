@@ -248,16 +248,16 @@
 
             {% for clinic in list_clinics %}
                 <div class="card carrusel-item rounded-0">
-                    <iframe src={{ clinic[4] }} class="card-img-top"></iframe>
+                    <iframe src="{{ clinic['photo'] }}" class="card-img-top"></iframe>
                     <div class="card-body border-primary border border-top-0">
                         <h4 class="card-text text-center bg-primary text-light py-2">
-                            {{ clinic[0] }}
+                            {{ clinic["name"] }}
                         </h4>
                         <p class="card-text text-center">
-                            {{ clinic[1] }}
+                            {{ clinic["scheduleAttention"] }}
                         </p>
-                        <p class="card-text text-center"> {{ clinic[2] }}</p>
-                        <p class="card-text text-center"> {{ clinic[3] }}</p>
+                        <p class="card-text text-center"> {{ clinic["address"]["city"] }}</p>
+                        <p class="card-text text-center"> {{ clinic["phone"] }}</p>
                     </div>
                 </div>
             {% endfor %}
@@ -311,7 +311,7 @@
                             <td>             
                                 <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->         
                                 {% for doctor in list_doctors %}
-                                    <p>{{ doctor }}</p>
+                                    <p>{{ doctor["name"] }}</p>
                                 {% endfor %}
                             </td> 
                         </tr>
@@ -332,7 +332,7 @@
                             <td>             
                                 <!-- Armar un ciclo for con jinja y recorrer la lista que provee la base de datos -->         
                                 {% for clinic in list_clinics %}
-                                    <p>{{ clinic[0] }}</p>
+                                    <p>{{ clinic["name"] }}</p>
                                 {% endfor %}
                             </td> 
                         </tr>

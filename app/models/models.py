@@ -1,18 +1,26 @@
 from app.database.connection import db          # Traemos la base de datos
 
 class Doctors:
-    db_doctors = db.doctors.find()              # Dentro de la base de datos, accedo a doctors.. Con la función find() de mongo db
-    db_doctorsAdmin = db.doctors.find()        
+    def toList_doctorsAdmin():
+        db_doctorsAdmin = db.doctors.find()
+        return db_doctorsAdmin   
     
 class Clinics:
-    db_clinics = db.clinics.find()
-    db_clinicsAdmin = db.clinics.find()        
+    def toList_clinicsAdmin():
+        db_clinicsAdmin = db.clinics.find()
+        return db_clinicsAdmin
 
 class HealthCoverage:
-    db_healthCoverage = db.healthCoverage.find()
+    def toList_healthCoverage():
+        db_healthCoverage = db.healthCoverage.find()
+        return db_healthCoverage
 
 class Users:
-    db_usersAdmin = db.users.find()
+    def toList_usersAdmin():
+        db_usersAdmin = db.users.find()
+        return db_usersAdmin
 
-# class Specialities:
-    # db_specialities = db.specialities.find()
+class Specialities:
+    def toList_specialitiesAdmin():
+        db_specialitiesAdmin = db.specialities.find()
+        return db_specialitiesAdmin

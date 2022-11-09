@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "name": "Más Salud",
         "email": "clinic@clinic.biz",
         "address": {
@@ -16,7 +16,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.46647459310687%2C-34.56679497759484%2C-58.446754992429376%2C-34.55502615889428&amp;layer=mapnik&amp;marker=-34.560910776394415%2C-58.456614792768164"
     },
     {
-        "id": 2,
+        "id": "2",
         "name": "Central Ambulatoria",
         "email": "clinic@clinic.biz",
         "address": {
@@ -32,7 +32,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.48458092769213%2C-34.565468947029615%2C-58.46486132701464%2C-34.55369994069562&amp;layer=mapnik&amp;marker=-34.559584652008795%2C-58.474721127353405"
     },
     {
-        "id": 3,
+        "id": "3",
         "name": "Corpus Hippocraticum",
         "email": "clinic@clinic.biz",
         "address": {
@@ -48,7 +48,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.43441269884627%2C-34.585683862857984%2C-58.41469309816878%2C-34.573917717620596&amp;layer=mapnik&amp;marker=-34.579800998441456%2C-58.4245528985075"
     },
     {
-        "id": 4,
+        "id": "4",
         "name": "Salud Óptima",
         "email": "clinic@clinic.biz",
         "address": {
@@ -64,7 +64,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.50005109687427%2C-34.516650642651086%2C-58.48033149619678%2C-34.50487473291328&amp;layer=mapnik&amp;marker=-34.510762895792745%2C-58.4901912965355"
     },
     {
-        "id": 5,
+        "id": "5",
         "name": "Cuidando Futuro",
         "email": "clinic@clinic.biz",
         "address": {
@@ -80,7 +80,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.532001860141136%2C-34.5350034672483%2C-58.512282259463646%2C-34.52323015178342&amp;layer=mapnik&amp;marker=-34.52911701757748%2C-58.52214205980238"
     },
     {
-        "id": 6,
+        "id": "6",
         "name": "Armonía",
         "email": "clinic@clinic.biz",
         "address": {
@@ -96,7 +96,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.5456507885551%2C-34.53220661879448%2C-58.52593118787761%2C-34.52043290790162&amp;layer=mapnik&amp;marker=-34.52631997140189%2C-58.53579098821638"
     },
     {
-        "id": 7,
+        "id": "7",
         "name": "Activa Salud",
         "email": "clinic@clinic.biz",
         "address": {
@@ -112,7 +112,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.646156759857966%2C-34.49875908779411%2C-58.626437159180476%2C-34.486980650149725&amp;layer=mapnik&amp;marker=-34.49287007693262%2C-58.6362969595192"
     },
     {
-        "id": 8,
+        "id": "8",
         "name": "Plena Salud",
         "email": "clinic@clinic.biz",
         "address": {
@@ -128,7 +128,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.43441269884627%2C-34.585683862857984%2C-58.41469309816878%2C-34.573917717620596&amp;layer=mapnik&amp;marker=-34.579800998441456%2C-58.4245528985075"
     },
     {
-        "id": 9,
+        "id": "9",
         "name": "Centro de Rayos",
         "email": "clinic@clinic.biz",
         "address": {
@@ -144,7 +144,7 @@
         "photo": "https://www.openstreetmap.org/export/embed.html?bbox=-58.46647459310687%2C-34.56679497759484%2C-58.446754992429376%2C-34.55502615889428&amp;layer=mapnik&amp;marker=-34.560910776394415%2C-58.456614792768164"
     },
     {
-        "id": 10,
+        "id": "10",
         "name": "Eleva tu salud",
         "email": "clinic@clinic.biz",
         "address": {
