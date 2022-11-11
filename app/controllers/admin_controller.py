@@ -40,3 +40,15 @@ def view_clinics():
     
     dblist_clinics.close()
     return total_clinics
+
+def delete_doctorAdmin(dni):
+    delete_doctor = Doctors.delete_doctorAdmin(dni)
+    
+def delete_clinicAdmin(id):
+    delete_clinic = Clinics.delete_clinicAdmin(id)
+
+def delete_coverageAdmin(id):
+    delete_coverage = HealthCoverage.delete_coverageAdmin(id)
+
+def delete_userAdmin(dni):
+    delete_user = Users.delete_userAdmin(dni)
