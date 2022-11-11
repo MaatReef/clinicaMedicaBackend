@@ -139,8 +139,8 @@
                                 {% endif %}
                             </td> 
                             <td>
-                                <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ doctor['dni'] }}">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ doctor['dni'] }}">Editar</button>
+                                <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ doctor['dni'] }}">ELIMINAR</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ doctor['dni'] }}">EDITAR</button>
                                 
                                 <!-- Confirm the deletion open -->
                                 <div class="modal fade" id="id_delete{{ doctor['dni'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
@@ -155,8 +155,8 @@
                                                     <h3>Nombre: {{ doctor["name"] }} </h3>
                                                     <h3>Dni: {{ doctor["dni"] }}</h3>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancelar</button>
-                                                        <a type="button" class="btn btn-primary rounded-0" href="{{url_for('views.delete_doctor', dni=doctor['dni'])}}">Eliminar</a>
+                                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
+                                                        <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_doctor', dni=doctor['dni'])}}">ELIMINAR</a>
                                                     </div>
                                                 </form>
                                             </div>
@@ -209,7 +209,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">EDITAR DOCTOR</button>
+                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -321,8 +321,8 @@
                             </td>
                             <td>
                                 
-                                <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ user['dni'] }}">Eliminar</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ user['dni'] }}">Editar</button>
+                                <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ user['dni'] }}">ELIMINAR</button>
+                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ user['dni'] }}">EDITAR</button>
                                 
                                 <!-- Confirm the deletion open -->
                                 <div class="modal fade" id="id_delete{{ user['dni'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
@@ -337,8 +337,8 @@
                                                     <h3>Nombre: {{ user["name"] }} </h3>
                                                     <h3>Dni: {{ user["dni"] }}</h3>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancelar</button>
-                                                        <a type="button" class="btn btn-primary rounded-0" href="{{url_for('views.delete_user', dni=user['dni'])}}">Eliminar</a>
+                                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
+                                                        <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_user', dni=user['dni'])}}">ELIMINAR</a>
                                                     </div>
                                                 </form>
                                             </div>
@@ -390,7 +390,7 @@
                                         
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                                <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">EDITAR PACIENTE</button>
+                                                <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
                                             </div>
                                         
                                         </div>
@@ -477,13 +477,13 @@
             
                                 <td>{{ healthCoverage["plan"] }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ healthCoverage['id'] }}">Eliminar</button>
-                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ healthCoverage['id'] }}">Editar</button>
+                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ healthCoverage['_id'] }}">ELIMINAR</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ healthCoverage['_id'] }}">EDITAR</button>
                                 </td>
                             </tr>
 
                             <!-- Confirm the deletion open -->
-                            <div class="modal fade" id="id_delete{{ healthCoverage['id'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
+                            <div class="modal fade" id="id_delete{{ healthCoverage['_id'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
                                 <div class="modal-dialog rounded-3 border border-primary">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -495,8 +495,8 @@
                                                 <h3>Nombre: {{ healthCoverage["name"] }} </h3>
                                                 <h3>Identificador: {{ healthCoverage["id"] }}</h3>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancelar</button>
-                                                    <a type="button" class="btn btn-primary rounded-0" href="{{url_for('views.delete_coverage', id=healthCoverage['id'])}}">Eliminar</a>
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
+                                                    <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_coverage', id=healthCoverage['_id'])}}">ELIMINAR</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -506,7 +506,7 @@
                             <!-- Confirm the deletion close -->
 
                             <!-- Edit modal health coverage open -->
-                            <div class="modal fade" id="id{{healthCoverage['id'] }}" tabindex="-1" aria-labelledby="edit_socialWorkLabel" aria-hidden="true">
+                            <div class="modal fade" id="id{{healthCoverage['_id'] }}" tabindex="-1" aria-labelledby="edit_socialWorkLabel" aria-hidden="true">
                                 <div class="modal-dialog rounded-3 border border-primary">
                                     <div class="modal-content">
                                     <div class="modal-header">
@@ -531,7 +531,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                        <button type="button" class="btn btn-primary rounded-0" id="add_socialWorkForm">EDITAR OBRA</button>
+                                        <button type="button" class="btn btn-primary rounded-0" id="add_socialWorkForm">CONFIRMAR</button>
                                     </div>
                                     </div>
                                 </div>
@@ -604,13 +604,13 @@
                     
                                 <td>{{ clinic["address"]["city"] }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ clinic['id'] }}">Eliminar</button>
-                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ clinic['_id'] }}">Editar</button>
+                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ clinic['_id'] }}">ELIMINAR</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ clinic['_id'] }}">EDITAR</button>
                                 </td>
                             </tr>
 
                             <!-- Confirm the deletion open -->
-                            <div class="modal fade" id="id_delete{{ clinic['id'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
+                            <div class="modal fade" id="id_delete{{ clinic['_id'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
                                 <div class="modal-dialog rounded-3 border border-primary">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -622,8 +622,8 @@
                                                 <h3>Nombre: {{ clinic["name"] }} </h3>
                                                 <h3>Identificador: {{ clinic["id"] }}</h3>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancelar</button>
-                                                    <a type="button" class="btn btn-primary rounded-0" href="{{url_for('views.delete_clinic', id=clinic['id'])}}">Eliminar</a>
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
+                                                    <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_clinic', id=clinic['_id'])}}">ELIMINAR</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -664,7 +664,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_clinicForm">EDITAR CLINICA</button>
+                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_clinicForm">CONFIRMAR</button>
                                                 </div>
                                             </form>
                                         </div>

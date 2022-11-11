@@ -1,5 +1,16 @@
 --------------------------------------Data Actual------------------------------------
 
+---------------------------------------- 11 - 11
+- Acción Eliminar del Admin contra la Base de datos.
+- Consideraciones respescto al id:
+    - Pymongo provee un identificador ->  "_id" , nosotros tenemos nuestro propio id, el cual en clinicas y obras sociales se mantiene, mientras tanto en doctores y usuarios los reemplazo por dni. Con las clínicas y obras sociales utilizo el _id ( ejemplo.. clinic['_id'] )
+    - Extra, al momento de abrir los modales bootstrap no toma el id como número, es necesario colocarle un string delante, por ejemplo.. "id_delete" 
+            data-bs-target="#id_delete{{ clinic['_id'] }}" 
+        el cual apunta a..
+            id="id_delete{{ clinic['_id'] }}"
+
+---------------------------------------Data Antigua-------------------------------------
+
 ---------------------------------------- 8 - 11
 - Información agregada en las Tablas del Admin.. Conectada con la Base de datos.
 - Botones de disponiblidad validados desde la base de datos.
@@ -7,7 +18,6 @@
 - Funcionalidad de Editar Doctores agregada (Aún sin conexión a la base de datos)
 - Funcionalidad de Editar Users agregada (Aún sin conexión a la base de datos)
 
----------------------------------------Data Antigua-------------------------------------
 ---------------------------------------- 2 - 11
 
 Para instalar todas las librerías necesarias, de ser necesario:
