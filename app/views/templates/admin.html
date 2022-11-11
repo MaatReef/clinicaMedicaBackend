@@ -496,7 +496,7 @@
                                                 <h3>Identificador: {{ healthCoverage["id"] }}</h3>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
-                                                    <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_coverage', id=healthCoverage['_id'])}}">ELIMINAR</a>
+                                                    <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_coverage', id=healthCoverage['id'])}}">ELIMINAR</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -623,7 +623,7 @@
                                                 <h3>Identificador: {{ clinic["id"] }}</h3>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
-                                                    <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_clinic', id=clinic['_id'])}}">ELIMINAR</a>
+                                                    <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_clinic', id=clinic['id'])}}">ELIMINAR</a>
                                                 </div>
                                             </form>
                                         </div>
