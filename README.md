@@ -32,7 +32,8 @@ Abrir terminal en la raíz del directorio y ejecutar:
 > python3 -m venv cudi
 > source ./cudi/bin/activate
 > pip install -r requirements.txt
-> flask run
+# flask run (usualmente usaríamos éste comando pero para usar hot reload y con F5 ver los cambios, ejecutamos...)
+> python3 run.py
 ```
 
 ### Posible error || Import "dotenv" could not be resolved (reportMissingImports)
