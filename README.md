@@ -1,32 +1,41 @@
-# Trabajo Práctico Final - Integrador
+# Trabajo Práctico Integrador
 
 ## [Diplomatura en Desarrollo de Software WEB](https://www.cudi.ar/oferta-academica/area-diplomaturas/desarrollo-de-software/)
 
 <!-- Front Matter -->
-Integrantes: Daniela - Matias
+Integrantes: Daniela Colombo - Matias Riffo
 
 Tutor: Mariano Mendez
 
 ---
 
 <!-- Body -->
-### Guía propuesta por el corrector:
+### Propuesta
 
-1. Web con lo estatico (Footer, header, navbar, Frames(google maps)) / Frontend - El sitio web tendrá 2 páginas, la visible y la administrativa (unidas ambas en la propia interacción).
 
-2. ABM (CRUD) de doctores: nombre, foto, especialidad, horario de atención. ABM (CRUD) de usuarios: datos personales, turnos, estudios.
+1. Webapp para cadena de clínicas y centros médicos - El sitio web tendrá varias páginas: una pública, un área privada para los usuarios y otra administrativa para los centros médicos para brindar turnos, dar de alta usuarios, médicos, planes sociales, etc.
 
-3. Armar en el sitio web un html que sea Staff y muestre todos los doctores.
+2. CRUD de doctores: nombre, foto, especialidad, horario de atención || CRUD de usuarios: datos personales, turnos, estudios.
 
-4. Formulario de contacto / registración de usuarios / pedido de turnos: doctor y horario.
+3. Formulario de contacto / ingreso al portal de salud para los usuarios / pedido de turnos:fecha, centro médico, especialidad y horario.
 
-### Datos fake
+### Inicializar el proyecto
 
 Abrir terminal en la raíz del directorio y ejecutar:
 
+> python3 -m venv cudi
+
+> source ./cudi/bin/activate
+
+> pip install -r requirements.txt
+
 > flask run
 
-~~python3 -m http.server~~
+### Posible error || Import "dotenv" could not be resolved (reportMissingImports)
+
+> deactivate
+> source ./cudi/bin/activate
+
 
 ### Boceto
 

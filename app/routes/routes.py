@@ -11,7 +11,7 @@ def view_home():
 
     return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics)          # Se renderiza la plantilla y le paso como argumento la lista 
 
-@global_scope.route("/admin.html", methods=['GET'])
+@global_scope.route("/admin", methods=['GET'])
 def view_admin():
     list_adminDoctors = view_doctors()
     list_adminUsers = view_users()
@@ -20,6 +20,14 @@ def view_admin():
     data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
 
     return render_template("admin.html", data_admin=data_admin)          
+
+@global_scope.route("/appointment", methods=['GET'])
+def view_appointment():
+    return render_template("appointment.html")
+
+@global_scope.route("/portal", methods=['GET'])
+def view_portal():
+    return render_template("portal.html")
 
 # delete 
 @global_scope.route('/delete_doctor/<dni>')
@@ -41,4 +49,3 @@ def delete_coverage(id):
 def delete_user(dni):
     delete = delete_userAdmin(dni)
     return redirect(url_for("views.view_admin"))
-    
