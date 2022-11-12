@@ -77,9 +77,11 @@
                                 {% endif %}
                             </td> 
                             <td>
-                                <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ doctor['dni'] }}">ELIMINAR</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ doctor['dni'] }}">EDITAR</button>
-                                
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-danger  rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ doctor['dni'] }}">ELIMINAR</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ doctor['dni'] }}">EDITAR</button>
+                                </div>
+
                                 <!-- Confirm the deletion open -->
                                 <div class="modal fade" id="id_delete{{ doctor['dni'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
                                     <div class="modal-dialog rounded-3 border border-primary">
@@ -112,42 +114,45 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label for="editFormFile" class="form-label">Foto:</label>
-                                                    <input class="form-control" type="file" id="editFormFile">
-                                                </div>
+                                            <form method="POST" action="/edit_doctor">
+                                                <input type="hidden" value="{{ doctor['_id'] }}" name="_id">
+                                                
                                                 <div class="mb-3">
                                                     <label for="editName-doctor" class="form-label">Dni:</label>
-                                                    <input type="text" class="form-control" id="editName-doctor" value="{{ doctor['dni'] }}">
+                                                    <input type="text" class="form-control" id="editName-doctor" value="{{ doctor['dni'] }}" name="dni">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editName-doctor" class="form-label">Nombre y Apellido (Requerido):</label>
-                                                    <input type="text" class="form-control" id="editName-doctor" value="{{ doctor['name'] }}">
+                                                    <input type="text" class="form-control" id="editName-doctor" value="{{ doctor['name'] }}" name="name">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="specialty-doctor" class="form-label">Especialidad:</label>
-                                                    <input type="text" class="form-control" id="specialty-doctor" value="{{ doctor['speciality'] }}">
+                                                    <input type="text" class="form-control" id="specialty-doctor" value="{{ doctor['speciality'] }}" name="speciality">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editEmail-doctor" class="col-form-label">Email:</label>
-                                                    <input type="email" class="form-control" id="editEmail-doctor" value="{{ doctor['email'] }}">
+                                                    <input type="email" class="form-control" id="editEmail-doctor" value="{{ doctor['email'] }}" name="email">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editCampus-doctor" class="col-form-label">Sede:</label>
-                                                    <input type="text" class="form-control" id="editCampus-doctor" value="{{ doctor['address']['city'] }}">
+                                                    <input type="text" class="form-control" id="editCampus-doctor" value="{{ doctor['address']['city'] }}" name="city">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editHorary-doctor" class="col-form-label">Horario de atención:</label>
-                                                    <input type="text" class="form-control" id="editHorary-doctor" value="{{ doctor['scheduleAttention'] }}">
+                                                    <input type="text" class="form-control" id="editHorary-doctor" value="{{ doctor['scheduleAttention'] }}" name="scheduleAttention">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editState-doctor" class="col-form-label">Disponible:</label>
-                                                    <input type="text" class="form-control" id="editState-doctor" value="{{ doctor['active'] }}">
-                                                </div>
+                                                    <select id="editSocialWork-doctor" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active">
+                                                        <option value="True" selected>Disponible</option>
+                                                        <option value="False" >No Disponible</option>
+                                                    </select>
+                                                </div>  
+                                            </div>
+                                                
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
+                                                    <button type="submit" class="btn btn-primary rounded-0" id="edit_doctorForm">CONFIRMAR</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -258,10 +263,11 @@
                                 {% endif %}
                             </td>
                             <td>
-                                
-                                <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ user['dni'] }}">ELIMINAR</button>
-                                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ user['dni'] }}">EDITAR</button>
-                                
+                                <div class="d-grid gap-2">                                
+                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ user['dni'] }}">ELIMINAR</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ user['dni'] }}">EDITAR</button>
+                                </div>
+
                                 <!-- Confirm the deletion open -->
                                 <div class="modal fade" id="id_delete{{ user['dni'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
                                     <div class="modal-dialog rounded-3 border border-primary">
@@ -294,42 +300,54 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
+                                                <form method="POST" action="/edit_user">
+                                                    <input type="hidden" value="{{ user['_id'] }}" name="_id">
+                                                    <input type="hidden" value="{{ user['avatar'] }}" name="avatar">
+
                                                     <div class="mb-3">
-                                                        <label for="editFormFile" class="col-form-label">Foto:</label>
-                                                        <input class="form-control" type="file" id="editFormFile">
+                                                        <label for="editDni-patient" class="col-form-label">Dni:</label>
+                                                        <input class="form-control" id="editDni-patient" value="{{ user['dni'] }}" name="dni">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="editName-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
-                                                        <input class="form-control" id="editName-patient" value="{{ user['name'] }}">
+                                                        <input class="form-control" id="editName-patient" value="{{ user['name'] }}" name="name">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="editSocialWork-patient" class="col-form-label">Obra social:</label>
-                                                        <input class="form-control" id="editSocialWork-patient" value="{{ user['healthCoverage'] }}">
+                                                        <select id="editSocialWork-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="healthCoverage">
+                                                            <option value="OSECAC">OSECAC</option>
+                                                            <option value="IOMA" selected>IOMA</option>
+                                                            <option value="OSDE">OSDE</option>
+                                                            <option value="Swiss-medical">Swiss-medical</option>
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="editEmail-patient" class="col-form-label">Email:</label>
-                                                        <input class="form-control" id="editEmail-patient" value="{{ user['email'] }}">
+                                                        <input class="form-control" id="editEmail-patient" value="{{ user['email'] }}" name="email">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="editPhone-patient" class="col-form-label">Teléfono:</label>
-                                                        <input class="form-control" id="editPhone-patient" value="{{ user['phone'] }}">
+                                                        <input class="form-control" id="editPhone-patient" value="{{ user['phone'] }}" name="phone">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="editAdress-patient" class="col-form-label">Domicilio:</label>
-                                                        <input class="form-control" id="editAdress-patient" value="{{ user['address']['city'] }}">
+                                                        <input class="form-control" id="editAdress-patient" value="{{ user['address']['city'] }}" name="city">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="editState-patient" class="col-form-label">Disponible:</label>
-                                                        <input class="form-control" id="editState-patient" value="{{ user['active'] }}">
-                                                    </div>
-                                                </form>
-                                            </div>
+                                                        <select id="editSocialWork-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active">
+                                                            <option value="True" selected>Disponible</option>
+                                                            <option value="False" >No Disponible</option>
+                                                        </select>
+                                                    </div>                                                    
+                                                        
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                                    <button type="submit" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
+                                                </div>
+                                            </form>
                                         
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                                <button type="button" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
-                                            </div>
                                         
                                         </div>
                                     </div>
@@ -415,8 +433,10 @@
             
                                 <td>{{ healthCoverage["plan"] }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ healthCoverage['_id'] }}">ELIMINAR</button>
-                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ healthCoverage['_id'] }}">EDITAR</button>
+                                    <div class="d-flex gap-2 col-6 mx-auto">
+                                            <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ healthCoverage['_id'] }}">ELIMINAR</button>
+                                        <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ healthCoverage['_id'] }}">EDITAR</button>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -452,25 +472,31 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
+                                        <form method="POST" action="/edit_coverage">
+                                            <input type="hidden" value="{{ healthCoverage['_id'] }}" name="_id">
+                                            <input type="hidden" value="{{ healthCoverage['id'] }}" name="id">
+
+                                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="logo">
+                                                <option value="OSECAC">OSECAC</option>
+                                                <option value="IOMA" selected>IOMA</option>
+                                                <option value="OSDE">OSDE</option>
+                                                <option value="Swiss-medical">Swiss-medical</option>
+                                            </select>
                                             <div class="mb-3">
-                                                <label for="form-file" class="form-label">Logo:</label>
-                                                <input class="form-control" type="file" id="form-file"> 
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="socialWork-form" class="col-form-label">Obra Social (Requerido):</label>
-                                                <input class="form-control" id="socialWork-form" value="{{ healthCoverage['name'] }}">
+                                                <label for="{{ healthCoverage['name'] }}" class="col-form-label">Obra Social (Requerido):</label>
+                                                <input class="form-control" name="name" value="{{ healthCoverage['name'] }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="plan-form" class="col-form-label">Plan:</label>
-                                                <input class="form-control" id="plan-form" value="{{ healthCoverage['plan'] }}">
+                                                <input class="form-control" id="plan-form" value="{{ healthCoverage['plan'] }}" name="plan">
+                                            </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                                <button type="submit" class="btn btn-primary rounded-0" name="edit_coverage">CONFIRMAR</button>
                                             </div>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                        <button type="button" class="btn btn-primary rounded-0" id="add_socialWorkForm">CONFIRMAR</button>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -579,30 +605,32 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form method="POST" action="/edit_clinic">
+                                                <input type="hidden" value="{{ clinic['_id'] }}" name="_id">
+
                                                 <div class="mb-3">
                                                     <label for="editName-clinic" class="col-form-label">Nombre:</label>
-                                                    <input class="form-control" id="editName-clinic" value="{{ clinic['name'] }}">
+                                                    <input class="form-control" id="editName-clinic" value="{{ clinic['name'] }}" name="name">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editScheduleAttention-clinic" class="col-form-label">Horario de Atención:</label>
-                                                    <input class="form-control" id="editScheduleAttention-clinic" value="{{ clinic['scheduleAttention'] }}">
+                                                    <input class="form-control" id="editScheduleAttention-clinic" value="{{ clinic['scheduleAttention'] }}" name="scheduleAttention">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editEmail-clinic" class="col-form-label">Email:</label>
-                                                    <input class="form-control" id="editEmail-clinic" value="{{ clinic['email'] }}">
+                                                    <input class="form-control" id="editEmail-clinic" value="{{ clinic['email'] }}" name="email">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editPhone-clinic" class="col-form-label">Teléfono:</label>
-                                                    <input class="form-control" id="editPhone-clinic" value="{{ clinic['phone'] }}">
+                                                    <input class="form-control" id="editPhone-clinic" value="{{ clinic['phone'] }}" name="phone">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editCity-clinic" class="col-form-label">Sede:</label>
-                                                    <input class="form-control" id="editCity-clinic" value="{{ clinic['address']['city'] }}">
+                                                    <input class="form-control" id="editCity-clinic" value="{{ clinic['address']['city'] }}" name="city">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
-                                                    <button type="button" class="btn btn-primary rounded-0" id="edit_clinicForm">CONFIRMAR</button>
+                                                    <button type="submit" class="btn btn-primary rounded-0" id="edit_clinicForm">CONFIRMAR</button>
                                                 </div>
                                             </form>
                                         </div>
