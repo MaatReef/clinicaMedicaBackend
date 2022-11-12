@@ -26,9 +26,15 @@
             <div class="offcanvas-body p-4 pt-0 p-lg-0">
                 <ul class="navbar-nav flex-row flex-wrap ms-md-auto sm-col-4  align-content-center">
                     <li class="nav-item col-3 col-lg-auto mx-auto text-center">
-                        <a class="nav-link py-2 px-0 px-lg-2" href="/admin" rel="noopener">
-                            <p class="text-center">Admin</p>
+                        {% if title %}
+                        <a class="nav-link py-2 px-0 px-lg-2" href="/{{title}}" rel="noopener">
+                            <p class="text-center">{{title|capitalize}}</p>
                         </a>
+                        {% else %}
+                        <a class="nav-link py-2 px-0 px-lg-2" href="/" rel="noopener">
+                            <p class="text-center">Inicio</p>
+                        </a>
+                        {% endif %}
                     </li>
                     <li class="nav-item col-3 col-lg-auto mx-auto text-center">
                         <a class="nav-link py-2 px-0 px-lg-2" href="/" target="_blank" rel="noopener">
@@ -61,10 +67,18 @@
                             </svg>
                         </a>
                     </li>
+                    {% if online %}
                     <li class="col-sm-6 col-lg-auto mx-auto px-2 mt-4 mt-md-0">
                         <button type="button" class="btn btn-primary btn-lg rounded-0 fw-bold fs-6"
                             data-bs-toggle="modal" data-bs-target="#login">TURNOS ONLINE</button>
                     </li>
+                    {% elif internalonline %}
+                    <li class="col-sm-6 col-lg-auto mx-auto px-2 mt-4 mt-md-0">
+                        <a class="" href="/appointment" rel="noopener">
+                            <button type="button" class="btn btn-primary btn-lg rounded-0 fw-bold fs-6">TURNOS ONLINE</button>
+                        </a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
