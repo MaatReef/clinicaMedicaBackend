@@ -52,3 +52,25 @@ def delete_coverageAdmin(id):
 
 def delete_userAdmin(dni):
     delete_user = Users.delete_userAdmin(dni)
+
+# Edit
+def edit_coverageAdmin(list_coverage):
+    if list_coverage[4] == "OSECAC":
+        list_coverage[4] = "assets/coverages/osecac.jpeg"
+    elif list_coverage[4] == "IOMA":
+        list_coverage[4] = "assets/coverages/ioma.png"
+    elif list_coverage[4] == "OSDE":
+        list_coverage[4] = "assets/coverages/osde.png"
+    elif list_coverage[4] == "Swiss-medical":
+        list_coverage[4] = "assets/coverages/swiss.png"
+    
+    list_complet = HealthCoverage.edit_coverageAdmin(list_coverage)
+    
+def edit_userAdmin(list_user):
+    list_complet = Users.edit_userAdmin(list_user)
+
+def edit_doctorAdmin(list_doctor):
+    list_complet = Doctors.edit_doctorAdmin(list_doctor)
+
+def edit_clinicAdmin(list_clinic):
+    list_complet = Clinics.edit_clinicAdmin(list_clinic)
