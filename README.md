@@ -16,9 +16,15 @@ Tutor: Mariano Mendez
 
 2. CRUD de doctores: nombre, foto, especialidad, horario de atención || CRUD de usuarios: datos personales, turnos, estudios.
 
-3. Formulario de contacto / ingreso al portal de salud para los usuarios / pedido de turnos:fecha, centro médico, especialidad y horario.
+3. Formulario de contacto / ingreso al portal de salud para los usuarios / pedido de turnos: fecha, centro médico, especialidad y horario.
 
 ### Inicializar el proyecto
+
+Crear el archivo .env y agregar:
+
+```console
+MONGO_URI = "mongodb+srv://mongoUser:example.mongodb.net/?retryWrites=true&w=majority"
+```
 
 Abrir terminal en la raíz del directorio y ejecutar:
 
