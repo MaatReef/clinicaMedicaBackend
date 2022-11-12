@@ -30,6 +30,10 @@ def view_appointment():
 def view_portal():
     return render_template("portal.html")
 
+@global_scope.route('/cudi')
+def externals():
+    return redirect("https://www.cudi.ar")
+
 # delete 
 @global_scope.route('/delete_doctor/<dni>')
 def delete_doctor(dni):
