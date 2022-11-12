@@ -12,7 +12,6 @@ Tutor: Mariano Mendez
 <!-- Body -->
 ### Propuesta
 
-
 1. Webapp para cadena de clínicas y centros médicos - El sitio web tendrá varias páginas: una pública, un área privada para los usuarios y otra administrativa para los centros médicos para brindar turnos, dar de alta usuarios, médicos, planes sociales, etc.
 
 2. CRUD de doctores: nombre, foto, especialidad, horario de atención || CRUD de usuarios: datos personales, turnos, estudios.
@@ -24,18 +23,14 @@ Tutor: Mariano Mendez
 Abrir terminal en la raíz del directorio y ejecutar:
 
 > python3 -m venv cudi
-
 > source ./cudi/bin/activate
-
 > pip install -r requirements.txt
-
 > flask run
 
 ### Posible error || Import "dotenv" could not be resolved (reportMissingImports)
 
 > deactivate
 > source ./cudi/bin/activate
-
 
 ### Boceto
 
