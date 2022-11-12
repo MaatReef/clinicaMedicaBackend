@@ -22,15 +22,19 @@ Tutor: Mariano Mendez
 
 Abrir terminal en la raíz del directorio y ejecutar:
 
+```console
 > python3 -m venv cudi
 > source ./cudi/bin/activate
 > pip install -r requirements.txt
 > flask run
+```
 
 ### Posible error || Import "dotenv" could not be resolved (reportMissingImports)
 
+```console
 > deactivate
 > source ./cudi/bin/activate
+```
 
 ### Boceto
 
