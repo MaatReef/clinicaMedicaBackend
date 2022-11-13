@@ -42,25 +42,27 @@ def view_clinics():
     dblist_clinics.close()
     return total_clinics
 
+
 # Delete_ : Funciones para Eliminar la data filtrada en la base de Datos
-def delete_doctorAdmin(dni):
-    delete_doctor = Doctors.delete_doctorAdmin(dni)
+def delete_doctorAdmin(_id):
+    delete_doctor = Doctors.delete_doctorAdmin(_id)
     return 
     
-def delete_clinicAdmin(id):
-    delete_clinic = Clinics.delete_clinicAdmin(id)
+def delete_clinicAdmin(_id):
+    delete_clinic = Clinics.delete_clinicAdmin(_id)
     return 
 
-def delete_coverageAdmin(id):
-    delete_coverage = HealthCoverage.delete_coverageAdmin(id)
+def delete_coverageAdmin(_id):
+    delete_coverage = HealthCoverage.delete_coverageAdmin(_id)
     return delete_coverage
 
-def delete_userAdmin(dni):
-    delete_user = Users.delete_userAdmin(dni)
+def delete_userAdmin(_id):
+    delete_user = Users.delete_userAdmin(_id)
     return delete_user
 
+
 # Edit_ : Funciones para Editar la Data filtrada en la base de Datos
-def edit_coverageAdmin(list_coverage):     # Si la opción es seleccionada le asigno el logo por defecto.
+def edit_coverageAdmin(list_coverage):     # Si la opción es seleccionada le asigno el logo por defecto asociado a la obra social.
     if list_coverage[4] == "OSECAC":
         list_coverage[4] = "assets/coverages/osecac.jpeg"
     elif list_coverage[4] == "IOMA":
@@ -85,6 +87,7 @@ def edit_clinicAdmin(list_clinic):
     list_complet = Clinics.edit_clinicAdmin(list_clinic)
     return list_complet
 
+
 # Post : Funciones para Agregar filtrando la Data en la base de Datos
 def post_doctorAdmin(list_doctor):          # Si la imagen no es seleccionada le agrego la imagen por defecto
     if list_doctor[3] == '':
@@ -93,3 +96,27 @@ def post_doctorAdmin(list_doctor):          # Si la imagen no es seleccionada le
         list_doctor[3] = "assets/default-user.png"
     list_complet = Doctors.post_doctorAdmin(list_doctor)
     return list_complet
+
+def post_userAdmin(list_user):              # Si la imagen no es seleccionada le agrego la imagen por defecto
+    if list_user[0] == '':
+        list_user[0] = "assets/default-user.png" 
+    else:                                   # Si se selecciona alguna también, debido al servidor por el momento
+        list_user[0] = "assets/default-user.png"
+    list_complet = Users.post_userAdmin(list_user)
+    return list_complet
+
+def post_healthAdmin(list_healthCoverage):  # Si la opción es seleccionada le asigno el logo por defecto asociado a la obra social
+    if list_healthCoverage[0] == "OSECAC":
+        list_healthCoverage[0] = "assets/coverages/osecac.jpeg"
+    elif list_healthCoverage[0] == "IOMA":
+        list_healthCoverage[0] = "assets/coverages/ioma.png"
+    elif list_healthCoverage[0] == "OSDE":
+        list_healthCoverage[0] = "assets/coverages/osde.png"
+    elif list_healthCoverage[0] == "Swiss-medical":
+        list_healthCoverage[0] = "assets/coverages/swiss.png"
+    list_complet = HealthCoverage.post_healthAdmin(list_healthCoverage)
+    return list_complet
+
+def post_clinicAdmin(list_clinic):
+    list_clinic = Clinics.post_clinicAdmin(list_clinic)
+    return list_clinic
