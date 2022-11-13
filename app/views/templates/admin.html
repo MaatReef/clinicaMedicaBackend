@@ -66,7 +66,7 @@
                             <td> {{ doctor["scheduleAttention"] }} </td>
                                 
                             <td>
-                                {% if doctor["active"]  == true %}
+                                {% if doctor["active"]  == "True" %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" checked disabled>
                                 {%  else %}
@@ -92,8 +92,9 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <h3>Nombre: {{ doctor["name"] }} </h3>
-                                                    <h3>Dni: {{ doctor["dni"] }}</h3>
+                                                    <h4>Nombre: {{ doctor["name"] }} </h4>
+                                                    <h4>Dni: {{ doctor["dni"] }}</h4>
+                                                    <h4>Especialidad: {{ doctor["speciality"] }}</h4>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
                                                         <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_doctor', dni=doctor['dni'])}}">ELIMINAR</a>
@@ -135,14 +136,14 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editCampus-doctor" class="col-form-label">Sede:</label>
-                                                    <input type="text" class="form-control" id="editCampus-doctor" value="{{ doctor['address']['city'] }}" name="city">
+                                                    <input type="text" class="form-control" id="editCampus-doctor" value="{{ doctor['attention'] }}" name="city">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="editHorary-doctor" class="col-form-label">Horario de atención:</label>
                                                     <input type="text" class="form-control" id="editHorary-doctor" value="{{ doctor['scheduleAttention'] }}" name="scheduleAttention">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="editState-doctor" class="col-form-label">Disponible:</label>
+                                                    <label for="editState-doctor" class="col-form-label">Disponibilidad:</label>
                                                     <select id="editSocialWork-doctor" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active">
                                                         <option value="True" selected>Disponible</option>
                                                         <option value="False" >No Disponible</option>
@@ -176,40 +177,47 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="POST" action="/post_doctor">
                             <div class="mb-3">
                                 <label for="formFile" class="col-form-label">Foto:</label>
-                                <input class="form-control" type="file" id="formFile">
+                                <input class="form-control" type="file" id="formFile" name="avatar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="name-doctor" class="col-form-label">Dni:</label>
+                                <input class="form-control" id="dni-doctor" name="dni" required>
                             </div>
                             <div class="mb-3">
                                 <label for="name-doctor" class="col-form-label">Nombre y Apellido (Requerido):</label>
-                                <input class="form-control" id="name-doctor">
+                                <input class="form-control" id="name-doctor" name="name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="specialty-doctor" class="col-form-label">Especialidad:</label>
-                                <input class="form-control" id="specialty-doctor">
+                                <input class="form-control" id="specialty-doctor" name="speciality" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email-doctor" class="col-form-label">Email:</label>
-                                <input class="form-control" id="email-doctor">
+                                <input class="form-control" id="email-doctor" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="campus-doctor" class="col-form-label">Sede:</label>
-                                <input class="form-control" id="campus-doctor">
+                                <input class="form-control" id="campus-doctor" name="attention" required>
                             </div>
                             <div class="mb-3">
                                 <label for="horary-doctor" class="col-form-label">Horario de atención:</label>
-                                <input class="form-control" id="horary-doctor">
+                                <input class="form-control" id="horary-doctor" name="scheduleAttention" required>
                             </div>
                             <div class="mb-3">
-                                <label for="state-doctor" class="col-form-label">Disponible:</label>
-                                <input class="form-control" id="state-doctor">
+                                <label for="editState-doctor" class="col-form-label">Disponibilidad:</label>
+                                <select id="editSocialWork-doctor" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active" required>
+                                    <option value="True" selected>Disponible</option>
+                                    <option value="False" >No Disponible</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary rounded-0" id="add_doctorForm">Agregar Doctor</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary rounded-0" id="add_doctorForm">Agregar Doctor</button>
                     </div>
                     </div>
                 </div>
@@ -250,7 +258,7 @@
                             <td>{{ user["address"]["city"] }}</td>
                         
                             <td>
-                                {% if user["active"]  == true %}
+                                {% if user["active"]  == "True" %}
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" checked disabled>
                                     <label class="form-check-label" for="flexSwitchCheckChecked"></label>
@@ -278,8 +286,8 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <h3>Nombre: {{ user["name"] }} </h3>
-                                                    <h3>Dni: {{ user["dni"] }}</h3>
+                                                    <h4>Nombre: {{ user["name"] }}</h4>
+                                                    <h4>Dni: {{ user["dni"] }}</h4>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
                                                         <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_user', dni=user['dni'])}}">ELIMINAR</a>
@@ -334,7 +342,7 @@
                                                         <input class="form-control" id="editAdress-patient" value="{{ user['address']['city'] }}" name="city">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="editState-patient" class="col-form-label">Disponible:</label>
+                                                        <label for="editState-patient" class="col-form-label">Disponibilidad:</label>
                                                         <select id="editSocialWork-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active">
                                                             <option value="True" selected>Disponible</option>
                                                             <option value="False" >No Disponible</option>
@@ -347,8 +355,6 @@
                                                     <button type="submit" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
                                                 </div>
                                             </form>
-                                        
-                                        
                                         </div>
                                     </div>
                                 </div>
@@ -450,8 +456,8 @@
                                         </div>
                                         <div class="modal-body">
                                             <form>
-                                                <h3>Nombre: {{ healthCoverage["name"] }} </h3>
-                                                <h3>Identificador: {{ healthCoverage["id"] }}</h3>
+                                                <h4>Nombre: {{ healthCoverage["name"] }} </h4>
+                                                <h4>Plan: {{ healthCoverage["plan"] }}</h4>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
                                                     <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_coverage', id=healthCoverage['id'])}}">ELIMINAR</a>
@@ -583,8 +589,8 @@
                                         </div>
                                         <div class="modal-body">
                                             <form>
-                                                <h3>Nombre: {{ clinic["name"] }} </h3>
-                                                <h3>Identificador: {{ clinic["id"] }}</h3>
+                                                <h4>Nombre: {{ clinic["name"] }} </h4>
+                                                <h4>Sede: {{ clinic["address"]["city"] }}</h4>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
                                                     <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_clinic', id=clinic['id'])}}">ELIMINAR</a>

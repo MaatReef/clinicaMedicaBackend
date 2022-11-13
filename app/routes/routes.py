@@ -4,6 +4,8 @@ from app.controllers.admin_controller import *
 
 global_scope = Blueprint("views", __name__)                                                             # La carpeta views posee los ficheros estáticos
 
+
+# View: Las siguientes rutas se encargan de presentar la data traída desde la Base de DATOS
 @global_scope.route("/", methods=['GET'])
 def view_home():
     list_doctors = view_doctors()
@@ -21,13 +23,19 @@ def view_admin():
 
     return render_template("admin.html", data_admin=data_admin)          
 
-# delete 
+@global_scope.route("/appointment.html", methods=['GET'])
+def view_appointment():
+
+    return render_template("appointment.html")          
+
+
+# Delete: Las siguientes rutas se encargan de eliminar la data en la base de datos desde el formulario de la sección admin
 @global_scope.route('/delete_doctor/<dni>')
 def delete_doctor(dni):
     delete = delete_doctorAdmin(dni)
     return redirect(url_for("views.view_admin"))
     
-@global_scope.route('/delete_clinic/<id>')
+@global_scope.route('/delete_clinic/<id>' )
 def delete_clinic(id):
     delete = delete_clinicAdmin(id)
     return redirect(url_for("views.view_admin"))
@@ -42,7 +50,8 @@ def delete_user(dni):
     delete = delete_userAdmin(dni)
     return redirect(url_for("views.view_admin"))
     
-# edit
+
+# Edit: Las siguientes rutas se encargan de la edición de la data en la Base de Datos desde la sección admin
 @global_scope.route('/edit_coverage', methods=['GET', 'POST'])
 def edit_coverage():
     if request.method == 'POST':
@@ -97,4 +106,21 @@ def edit_clinic():
         city = request.form['city']
         list_clinic = [_id, name, scheduleAttention, email, phone, city]
         list_complet = edit_clinicAdmin(list_clinic)
+    return redirect(url_for("views.view_admin"))
+
+
+# Post : Las siguientes rutas se encargan de agregar data en la base de datos desde el formulario de la sección Admin
+@global_scope.route('/post_doctor', methods=['GET', 'POST'])
+def post_doctor():
+    if request.method == 'POST':
+        dni = request.form['dni']
+        name = request.form['name']
+        email = request.form['email']
+        avatar = request.form['avatar']
+        scheduleAttention = request.form['scheduleAttention']
+        speciality = request.form['speciality']
+        active = request.form['active']
+        attention = request.form['attention']
+        list_doctor = [dni, name, email, avatar, scheduleAttention, speciality, active, attention]
+        list_complet = post_doctorAdmin(list_doctor)
     return redirect(url_for("views.view_admin"))
