@@ -11,9 +11,10 @@ def view_home():
     list_doctors = view_doctors()
     list_clinics = view_clinics()
 
-    return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics)          # Se renderiza la plantilla y le paso como argumento la lista 
+    # Se renderiza la plantilla y le paso como argumento la lista
+    return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics, title="admin", online=True)
 
-@global_scope.route("/admin.html", methods=['GET'])
+@global_scope.route("/admin", methods=['GET'])
 def view_admin():
     list_adminDoctors = view_doctors()
     list_adminUsers = view_users()
@@ -21,13 +22,16 @@ def view_admin():
     list_adminClinics = view_clinics()
     data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
 
-    return render_template("admin.html", data_admin=data_admin)          
+    return render_template("admin.html", data_admin=data_admin, internalonline=True)
 
-@global_scope.route("/appointment.html", methods=['GET'])
+@global_scope.route("/appointment", methods=['GET'])
 def view_appointment():
+    return render_template("appointment.html")
 
-    return render_template("appointment.html")          
 
+@global_scope.route("/portal", methods=['GET'])
+def view_portal():
+    return render_template("portal.html")
 
 # Delete: Las siguientes rutas se encargan de eliminar la data en la base de datos desde el formulario de la sección admin
 @global_scope.route('/delete_doctor/<_id>')
