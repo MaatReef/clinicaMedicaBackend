@@ -7,8 +7,8 @@ class Doctors:
         db_doctorsAdmin = db.doctors.find()
         return db_doctorsAdmin   
     
-    def delete_doctorAdmin(dni):
-        query = {"dni": dni}
+    def delete_doctorAdmin(_id):
+        query = {"_id": ObjectId(_id)}
         delete_doctorsAdmin = db.doctors.delete_one(query)
         return delete_doctorsAdmin
 
@@ -33,8 +33,8 @@ class Doctors:
                     "speciality": list_doctor[5],
                     "active": list_doctor[6], 
                     "attention": list_doctor[7] }
-        editOne_doctorAdmin = db.doctors.insert_one(query)
-        return editOne_doctorAdmin
+        postOne_doctorAdmin = db.doctors.insert_one(query)
+        return postOne_doctorAdmin
     
 
 class Clinics:
@@ -42,8 +42,8 @@ class Clinics:
         db_clinicsAdmin = db.clinics.find()
         return db_clinicsAdmin
 
-    def delete_clinicAdmin(id):
-        query = {"id": id}
+    def delete_clinicAdmin(_id):
+        query = {"_id": ObjectId(_id)}
         deleteOne_clinicAdmin = db.clinics.delete_one(query)
         return deleteOne_clinicAdmin
 
@@ -57,14 +57,24 @@ class Clinics:
         editOne_clinicAdmin = db.clinics.update_one(search, query)
         return editOne_clinicAdmin
 
+    def post_clinicAdmin(list_clinic):
+        query = {   "name": list_clinic[0], 
+                    "scheduleAttention": list_clinic[1], 
+                    "email": list_clinic[2], 
+                    "phone": list_clinic[3],
+                    "address": { "city": list_clinic[4] },
+                    "photo": list_clinic[5]} 
+        postOne_clinicAdmin = db.clinics.insert_one(query)
+        return postOne_clinicAdmin
+
 
 class HealthCoverage:
     def toList_healthCoverage():
         db_healthCoverage = db.healthCoverage.find()
         return db_healthCoverage
     
-    def delete_coverageAdmin(id):
-        query = {"id": id}
+    def delete_coverageAdmin(_id):
+        query = {"_id": ObjectId(_id)}
         deleteOne_coverageAdmin = db.healthCoverage.delete_one(query)
         return deleteOne_coverageAdmin
 
@@ -76,6 +86,13 @@ class HealthCoverage:
                             "logo": list_coverage[4]}}
         editOne_coverageAdmin = db.healthCoverage.update_one(search, query)
         return editOne_coverageAdmin
+    
+    def post_healthAdmin(list_healthCoverage):
+        query = {   "logo": list_healthCoverage[0], 
+                    "name": list_healthCoverage[1], 
+                    "plan": list_healthCoverage[2] }
+        postOne_coverageAdmin = db.healthCoverage.insert_one(query)
+        return postOne_coverageAdmin
 
 
 class Users:
@@ -83,8 +100,8 @@ class Users:
         db_usersAdmin = db.users.find()
         return db_usersAdmin
 
-    def delete_userAdmin(dni):
-        query = {"dni": dni}
+    def delete_userAdmin(_id):
+        query = {"_id": ObjectId(_id)}
         deleteOne_userAdmin = db.users.delete_one(query)
         return deleteOne_userAdmin
 
@@ -102,6 +119,18 @@ class Users:
                             "active": list_user[8],}}
         editOne_userAdmin = db.users.update_one(search, query)
         return editOne_userAdmin
+
+    def post_userAdmin(list_user):
+        query = {   "avatar": list_user[0], 
+                    "dni": list_user[1], 
+                    "name": list_user[2], 
+                    "healthCoverage": list_user[3], 
+                    "email": list_user[4], 
+                    "phone": list_user[5],
+                    "address": { "city": list_user[6] },
+                    "active": list_user[7] }
+        postOne_userAdmin = db.users.insert_one(query)
+        return postOne_userAdmin
     
 
 class Specialities:
