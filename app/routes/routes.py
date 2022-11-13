@@ -28,10 +28,13 @@ def view_admin():
 def view_appointment():
     return render_template("appointment.html")
 
-
 @global_scope.route("/portal", methods=['GET'])
 def view_portal():
     return render_template("portal.html")
+
+@global_scope.route('/cudi')
+def externals():
+    return redirect("https://www.cudi.ar")
 
 # Delete: Las siguientes rutas se encargan de eliminar la data en la base de datos desde el formulario de la sección admin
 @global_scope.route('/delete_doctor/<_id>')
