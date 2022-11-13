@@ -1,5 +1,14 @@
 --------------------------------------Data Actual------------------------------------
 
+---------------------------------------- 12 - 11
+- Acción Editar del Admin contra la Base de datos agregada. Usando los Formularios y rutas Correspondientes.
+    - < form method="POST" action="/edit_doctor">
+- Accion Agregar Doctor del Admin contra la base de Datos Agregada. Usando los Formularios y rutas Correspondientes..
+    - < form method="POST" action="/post_doctor">
+    
+
+---------------------------------------Data Antigua-------------------------------------
+
 ---------------------------------------- 11 - 11
 - Acción Eliminar del Admin contra la Base de datos.
 - Consideraciones respescto al id:
@@ -8,8 +17,6 @@
             data-bs-target="#id_delete{{ clinic['_id'] }}" 
         el cual apunta a..
             id="id_delete{{ clinic['_id'] }}"
-
----------------------------------------Data Antigua-------------------------------------
 
 ---------------------------------------- 8 - 11
 - Información agregada en las Tablas del Admin.. Conectada con la Base de datos.
