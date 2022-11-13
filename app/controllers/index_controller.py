@@ -1,5 +1,5 @@
-from app.models.models import Doctors, Clinics      # Traigo el modelo que realiza la búsqueda en la bd
-
+# Traigo el modelo que realiza la búsqueda en la bd
+from app.models.models import Doctors, Clinics, Contacts
 
 def view_doctors():
     dblist_doctors = Doctors.toList_doctorsAdmin()
@@ -21,3 +21,8 @@ def view_clinics():
     
     dblist_clinics.close()
     return total_clinics
+
+# Post : Funciones para Agregar filtrando la Data en la base de Datos
+def post_contact(contact):
+    user_contact = Contacts.post_contact(contact)
+    return user_contact

@@ -36,9 +36,12 @@ Abrir terminal en la raíz del directorio y ejecutar:
 > python3 run.py
 ```
 
+También se puede acceder desde [aquí](https://cudi-clinicamedica.onrender.com/)
+
 ### Posible error || Import "dotenv" could not be resolved (reportMissingImports)
 
 ```console
+> pip install python-dotenv
 > deactivate
 > source ./cudi/bin/activate
 ```

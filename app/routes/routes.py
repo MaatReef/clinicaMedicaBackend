@@ -1,5 +1,5 @@
 from flask import Blueprint, url_for, render_template, redirect, request
-from app.controllers.index_controller import view_doctors, view_clinics                                 # Traigo la listas capturada desde el controlador.
+from app.controllers.index_controller import post_contact, view_doctors, view_clinics                                 # Traigo la listas capturada desde el controlador.
 from app.controllers.admin_controller import *
 
 global_scope = Blueprint("views", __name__)                                                             # La carpeta views posee los ficheros estáticos
@@ -169,3 +169,14 @@ def post_clinic():
         list_clinic = [name, scheduleAttention, email, phone, city, photo]
         list_complet = post_clinicAdmin(list_clinic)
     return redirect(url_for("views.view_admin"))
+
+@global_scope.route('/contact', methods=['GET', 'POST'])
+def post_contactIndex():
+    if request.method == 'POST':
+        name = request.form['name_message']
+        email = request.form['email_message']
+        message = request.form['text_message']
+        contact_form = [name, email, message]
+        contact = post_contact(contact_form)
+        print(contact)
+    return redirect(url_for("views.view_home"))

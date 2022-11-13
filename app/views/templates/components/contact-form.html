@@ -1,20 +1,44 @@
 <h2 class="text-center mt-5 mb-2">CONTACTO</h2>
 <div class="container mb-4">
     <!-- open form -->
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Ingresa tu Nombre:</label>
-        <input type="email" class="form-control" placeholder="Kurtis Weissnat" id="name_message">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Correo Electrónico:</label>
-        <input type="email" class="form-control" placeholder="nombre@ejemplo.com" id="mail_message">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Describe tu Inquietud:</label>
-        <textarea class="form-control" rows="3" id="text_message"></textarea>
-    </div>
-    <div class="mb-3 text-center">
-        <button type="button" class="btn btn-primary btn-lg rounded-0 fw-bold fs-6" id="send_message">ENVIAR
-            CONSULTA</button>
-    </div>
+    <form method="POST" action="/contact">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Ingresa tu Nombre:</label>
+            <input 
+                type="text"
+                name="name_message" 
+                required 
+                class="form-control" 
+                placeholder="Maria Gonzalez" 
+                id="name_message">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Correo Electrónico:</label>
+            <input 
+                type="email" 
+                name="email_message" 
+                required 
+                class="form-control" 
+                placeholder="nombre@example.com" 
+                id="mail_message">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Describe tu Inquietud:</label>
+            <textarea 
+                required 
+                class="form-control" 
+                rows="3" 
+                name="text_message"
+                id="text_message">
+            </textarea>
+        </div>
+        <div class="mb-3 text-center">
+            <button 
+                type="submit" 
+                class="btn btn-primary btn-lg rounded-0 fw-bold fs-6" 
+                id="send_message">
+                ENVIAR CONSULTA
+            </button>
+        </div>
+    </form>
 </div><!-- close form -->
