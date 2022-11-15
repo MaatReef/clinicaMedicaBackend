@@ -15,30 +15,32 @@
                 <div class="col-sm-4 col-xs-12">
                     <div id="pickadate"></div>
                 </div>
-                <div class="col-sm-8 col-xs-12">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" for="day-form">Día del turno</span>
-                        <input type="text" id="appointment" class="form-control" placeholder="Fecha del turno" aria-label="appointment"
-                        aria-describedby="basic-appointment">
+                <form method="POST" action="/post_appointment" class="row">
+                    <div class="col-sm-8 col-xs-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" for="appointmentDate">Día del turno</span>
+                            <input type="text" id="appointmentDate" name="appointmentDate" class="form-control" placeholder="Fecha del turno" aria-label="appointment"
+                            aria-describedby="basic-appointment">
+                        </div>
+                        <div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" for="observations">Observaciones</span>
+                                <textarea class="form-control" name="observations" id="observations" aria-label="observaciones"></textarea>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" for="speciality">Especialidad</span>
+                                <input type="text" id="speciality" name="speciality" class="form-control" placeholder="Especialidad"
+                                    aria-label="Especialidad">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" for="modality">Modalidad</span>
+                                <input type="text" id="modality" name="modality" class="form-control" placeholder="Modalidad"
+                                    aria-label="appointment" aria-describedby="basic-appointment">
+                            </div>
+                            <button type="submit" class="btn btn-primary rounded-0" id="add_appointmentForm">RESERVAR TURNO</button>
+                        </div>
                     </div>
-                    <form>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" for="obs-form">Observaciones</span>
-                            <textarea class="form-control" id="obs-form" aria-label="observaciones"></textarea>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" for="speciality-form">Especialidad</span>
-                            <input type="text" id="speciality-form" class="form-control" placeholder="Especialidad"
-                                aria-label="Especialidad">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" for="mode-form">Modalidad</span>
-                            <input type="text" id="mode-form" class="form-control" placeholder="Modalidad"
-                                aria-label="appointment" aria-describedby="basic-appointment">
-                        </div>
-                        <button type="button" class="btn btn-primary rounded-0" id="add_appointmentForm">RESERVAR TURNO</button>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -68,10 +70,10 @@
             // Formulario de turnos
             add_appointment?.addEventListener("click", function () {
                 // Validación sencilla
-                let day = document.getElementById("appointment").value;
-                let speciality = document.getElementById("speciality-form").value;
-                let mode = document.getElementById("mode-form").value;
-                let obs = document.getElementById("obs-form").value;
+                let day = document.getElementById("appointmentDate").value;
+                let speciality = document.getElementById("speciality").value;
+                let mode = document.getElementById("modality").value;
+                let obs = document.getElementById("observations").value;
 
                 // Por ahora solo con uno de todos para futuros tests.
                 // if(day && speciality...){

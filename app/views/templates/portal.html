@@ -50,7 +50,7 @@
                             </h6>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">
+                            <a class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar-check"
                                     viewBox="0 0 16 16">
                                     <path
@@ -60,7 +60,6 @@
                                 </svg>
                                 Turnos reservados
                             </a>
-
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/">
@@ -140,6 +139,117 @@
                             <a class="btn btn-secondary" href="/" role="button">Salir</a>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <table id="table-appointments" class="table align-middle table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Observaciones</th>
+                                <th scope="col">Especialidad</th>
+                                <th scope="col">Modalidad</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            {% for appointment in list_appointments %}
+                            <tr>
+                                <td> {{ appointment["appointmentDate"] }} </td>
+                    
+                                <td> {{ appointment["observations"] }} </td>
+                    
+                                <td> {{ appointment["speciality"] }} </td>
+                    
+                                <td> {{ appointment["modality"] }} </td>
+
+                                <td>
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="btn btn-danger  rounded-0" data-bs-toggle="modal"
+                                            data-bs-target="#id_delete{{ appointment['_id'] }}">ELIMINAR</button>
+                                        <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal"
+                                            data-bs-target="#id{{ appointment['_id'] }}">EDITAR</button>
+                                    </div>
+                    
+                                    <!-- Confirm the deletion open -->
+                                    <div class="modal fade" id="id_delete{{ appointment['_id'] }}" tabindex="-1"
+                                        aria-labelledby="edit_appointmentLabel" aria-hidden="true">
+                                        <div class="modal-dialog rounded-3 border border-primary">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="edit_appointmentLabel">¿Confirmar Eliminación?</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <h4>Nueva fecha: {{ appointment["appointmentDate"] }} </h4>
+                                                        <h4>Observaciones: {{ appointment["observations"] }}</h4>
+                                                        <h4>Especialidad: {{ appointment["speciality"] }}</h4>
+                                                        <h4>Modalidad: {{ appointment["modality"] }}</h4>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary rounded-0"
+                                                                data-bs-dismiss="modal">CANCELAR</button>
+                                                            <a type="button" class="btn btn-danger rounded-0"
+                                                                href="{{url_for('views.delete_appointment', _id=appointment['_id'])}}">ELIMINAR</a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Confirm the deletion close -->
+                    
+                                    <!-- Edit modal appointment open -->
+                                    <div class="modal fade" id="id{{ appointment['_id'] }}" tabindex="-1" aria-labelledby="edit_appointmentLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog rounded-3 border border-primary">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="edit_appointmentLabel">EDITAR appointment:</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST" action="/edit_appointment">
+                                                        <input type="hidden" value="{{ appointment['_id'] }}" name="_id">
+                    
+                                                        <div class="mb-3">
+                                                            <label for="editDate-appointment" class="form-label">Nueva fecha:</label>
+                                                            <input type="text" class="form-control" id="appointmentDate"
+                                                                value="{{ appointment['appointmentDate'] }}" name="appointmentDate">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="editobservations-appointment" class="form-label">Observaciones:</label>
+                                                            <input type="text" class="form-control" id="observations"
+                                                                value="{{ appointment['observations'] }}" name="observations">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="specialty-appointment" class="form-label">Especialidad:</label>
+                                                            <input type="text" class="form-control" id="speciality"
+                                                                value="{{ appointment['speciality'] }}" name="speciality">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="editModality-appointment" class="col-form-label">Modalidad:</label>
+                                                            <input type="text" class="form-control" id="modality"
+                                                                value="{{ appointment['modality'] }}" name="modality">
+                                                        </div>
+                                                </div>
+                    
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary rounded-0"
+                                                        data-bs-dismiss="modal">CERRAR</button>
+                                                    <button type="submit" class="btn btn-primary rounded-0"
+                                                        id="edit_appointmentForm">CONFIRMAR</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Edit modal appointment Close-->
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </main> <!-- close menu -->
         </div>

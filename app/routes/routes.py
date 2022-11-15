@@ -24,13 +24,14 @@ def view_admin():
 
     return render_template("admin.html", data_admin=data_admin, internalonline=True)
 
-@global_scope.route("/appointment", methods=['GET'])
+@global_scope.route("/appointment", methods=['GET', 'POST'])
 def view_appointment():
     return render_template("appointment.html")
 
 @global_scope.route("/portal", methods=['GET'])
 def view_portal():
-    return render_template("portal.html")
+    list_appointments = view_appointments()
+    return render_template("portal.html", list_appointments=list_appointments)
 
 @global_scope.route('/cudi')
 def externals():
@@ -56,6 +57,11 @@ def delete_coverage(_id):
 def delete_user(_id):
     delete = delete_userAdmin(_id)
     return redirect(url_for("views.view_admin"))
+
+@global_scope.route('/delete_appointment/<_id>')
+def delete_appointment(_id):
+    delete = delete_appointment(_id)
+    return redirect("portal")
     
 
 # Edit: Las siguientes rutas se encargan de la edición de la data en la Base de Datos desde la sección admin
@@ -114,6 +120,19 @@ def edit_clinic():
         list_clinic = [_id, name, scheduleAttention, email, phone, city]
         list_complet = edit_clinicAdmin(list_clinic)
     return redirect(url_for("views.view_admin"))
+
+@global_scope.route('/edit_appointment', methods=['GET', 'POST'])
+def edit_appointment():
+    if request.method == 'POST':
+        _id = request.form['_id']
+        appointmentDate = request.form['appointmentDate']
+        observations = request.form['observations']
+        speciality = request.form['speciality']
+        modality = request.form['modality']
+        appointment_form = [appointmentDate, observations, speciality, modality]
+        new_appointment = edit_userAppointment(appointment_form)
+        print(new_appointment)
+    return redirect("portal")
 
 
 # Post : Las siguientes rutas se encargan de agregar data en la base de datos desde el formulario de la sección Admin
@@ -180,3 +199,17 @@ def post_contactIndex():
         contact = post_contact(contact_form)
         print(contact)
     return redirect(url_for("views.view_home"))
+
+@global_scope.route('/post_appointment', methods=['GET', 'POST'])
+def post_appointment():
+    print(request.form)
+    if request.method == 'POST':
+        appointmentDate = request.form['appointmentDate']
+        observations = request.form['observations']
+        speciality = request.form['speciality']
+        modality = request.form['modality']
+        appointment_form = [appointmentDate, observations, speciality, modality]
+        print(appointment_form)
+        new_appointment = post_userAppointment(appointment_form)
+        print(new_appointment)
+    return redirect("portal")

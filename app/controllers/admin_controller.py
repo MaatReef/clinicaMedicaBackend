@@ -1,5 +1,5 @@
 # Acá va lo del admin..
-from app.models.models import Doctors, Clinics, Users, HealthCoverage    # Traigo los modelos que realizan la búsqueda en la bd
+from app.models.models import Doctors, Clinics, Users, HealthCoverage, Appointments    # Traigo los modelos que realizan la búsqueda en la bd
 
 # View_: Funciones que se encargan de presentar la Data
 def view_doctors():
@@ -42,6 +42,16 @@ def view_clinics():
     dblist_clinics.close()
     return total_clinics
 
+def view_appointments():
+    dblist_appointments = Appointments.toList_appointments()
+
+    total_appointments = []
+    for appointment in dblist_appointments:
+        total_appointments.append(appointment)
+    print(total_appointments)
+    dblist_appointments.close()
+    return total_appointments
+
 
 # Delete_ : Funciones para Eliminar la data filtrada en la base de Datos
 def delete_doctorAdmin(_id):
@@ -59,6 +69,10 @@ def delete_coverageAdmin(_id):
 def delete_userAdmin(_id):
     delete_user = Users.delete_userAdmin(_id)
     return delete_user
+
+def delete_appointment(_id):
+    delete_appointment = Appointments.delete_appointment(_id)
+    return delete_appointment
 
 
 # Edit_ : Funciones para Editar la Data filtrada en la base de Datos
@@ -86,6 +100,10 @@ def edit_doctorAdmin(list_doctor):
 def edit_clinicAdmin(list_clinic):
     list_complet = Clinics.edit_clinicAdmin(list_clinic)
     return list_complet
+
+def edit_userAppointment(appointment):
+    appointment = Appointments.edit_userAppointment(appointment)
+    return appointment
 
 
 # Post : Funciones para Agregar filtrando la Data en la base de Datos
@@ -120,3 +138,7 @@ def post_healthAdmin(list_healthCoverage):  # Si la opción es seleccionada le a
 def post_clinicAdmin(list_clinic):
     list_clinic = Clinics.post_clinicAdmin(list_clinic)
     return list_clinic
+
+def post_userAppointment(appointment):
+    appointment = Appointments.post_userAppointment(appointment)
+    return appointment
