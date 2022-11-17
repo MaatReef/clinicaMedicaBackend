@@ -256,5 +256,6 @@ def post_login():
                 return redirect("admin")
             elif clean_spaceDni == dni_bd and clean_spacePassword == clean_passwordBd and status_bd == "Usuario": 
                 return redirect("portal")
-        return redirect("/")
+        return redirect("/")   
+        
         
