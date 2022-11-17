@@ -222,6 +222,7 @@ def post_appointment():
         print(new_appointment)
     return redirect("portal")
 
+# Ruta para registar usuario desde el login
 @global_scope.route('/post_register', methods=['GET', 'POST'])
 def post_register():
     if request.method == 'POST':
@@ -239,23 +240,23 @@ def post_register():
         user_register = post_userRegister(user_register)
     return redirect("/")
 
+# Ruta para realizar el Login, parcial. Toca Agregar WTF 
 @global_scope.route("/", methods=['GET', 'POST'])
 def post_login():
     if request.method == 'POST':
         dni = request.form['dni']
-        clean_spaceDni = dni.strip()                        # Elimino los "posibles" espacios en blanco, para luego comprobar.
+        clean_inputDni = dni.strip()                        # Elimino los "posibles" espacios en blanco, de lo ingresado para luego comprobar.
         password = request.form['password']
-        clean_spacePassword = dni.strip()                   # Idem
+        clean_inputPassword = password.strip()              # Idem para el input del password
         total_Users = get_login()
         for user in total_Users:
             dni_bd = user["dni"]
+            clean_dniBd = dni_bd.strip()                    # Elimino los "posibles" espacios en blanco, de la data en bd para luego comprobar. 
             password_bd = user["password"]
-            clean_passwordBd = password_bd.strip()          # Elimino los "posibles" espacios en blanco, para luego comprobar. 
+            clean_passwordBd = password_bd.strip()          # Idem para el password que viene de la bd
             status_bd = user["status"]
-            if clean_spaceDni == dni_bd and clean_spacePassword == clean_passwordBd and status_bd == "Administrador": 
+            if clean_inputDni == clean_dniBd and clean_inputPassword == clean_passwordBd and status_bd == "Administrador": 
                 return redirect("admin")
-            elif clean_spaceDni == dni_bd and clean_spacePassword == clean_passwordBd and status_bd == "Usuario": 
+            elif clean_inputDni == clean_dniBd and clean_inputPassword == clean_passwordBd and status_bd == "Usuario": 
                 return redirect("portal")
-        return redirect("/")   
-        
-        
+        return redirect("/")     
