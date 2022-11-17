@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    {% include "components/header.html" %}
+    <hr class="mt-4">
+    <hr class="mt-4">
+    <hr class="mt-4">
+    <hr class="mt-4">
+    <div class="container mt-4">
+        <h1 class="modal-title fs-5 d-flex justify-content-center" id="add_patientLabel">Confirmar Registro:</h1>
+    </div>
+    <div class="modal-body d-flex justify-content-center">
+        <form method="POST" action="/post_register" class="needs-validation col-6" novalidate>
+            <input type="hidden" name="active" value="True">
+            <input type="hidden" name="avatar">
+            <input type="hidden" name="status" value="Usuario">
+
+            <div class="mb-3">
+                <label for="name-patient" class="col-form-label">Dni (Requerido):</label>
+                <input class="form-control" id="name-patient" name="dni" placeholder="¿DNI?" required>
+                <div class="valid-feedback">
+                    Bien!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="name-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
+                <input class="form-control" id="name-patient" name="name" placeholder="¿Nombre Completo?" required>
+                <div class="valid-feedback">
+                    Exacto!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password-patient" class="col-form-label">Contraseña (Requerido):</label>
+                <input class="form-control" id="password-patient" type="password" placeholder="¿Contraseña?" name="password" required>
+                <div class="valid-feedback">
+                    Genial!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="editSocialWork-patient" class="col-form-label">Obra social:</label>
+                <select id="editSocialWork-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="healthCoverage">
+                    <option value="OSECAC">OSECAC</option>
+                    <option value="IOMA" selected>IOMA</option>
+                    <option value="OSDE">OSDE</option>
+                    <option value="Swiss-medical">Swiss-medical</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="email-patient" class="col-form-label">Email:</label>
+                <input class="form-control" id="email-patient" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="phone-patient" class="col-form-label">Teléfono:</label>
+                <input class="form-control" id="phone-patient" name="phone">
+            </div>
+            <div class="mb-3">
+                <label for="adress-patient" class="col-form-label">Domicilio:</label>
+                <input class="form-control" id="adress-patient" name="city">
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck"  required>
+                  <label class="form-check-label" for="invalidCheck">
+                    Estoy de Acuerdo con los Términos y Condiciones.
+                  </label>
+                  <div class="invalid-feedback">
+                    Primero Debes confirmar.
+                  </div>
+                </div>
+              </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-secondary rounded-0 mx-3" href="/">Regresar</a>
+                <button type="submit" class="btn btn-primary rounded-0"  id="add_user">REGISTRARME</button>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+        })
+    })()
+    </script>
+    {% include "components/footer.html" %}
+{% endblock %}

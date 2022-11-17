@@ -142,3 +142,11 @@ def post_clinicAdmin(list_clinic):
 def post_userAppointment(appointment):
     appointment = Appointments.post_userAppointment(appointment)
     return appointment
+
+def post_userRegister(user_register):              # Si la imagen no es seleccionada le agrego la imagen por defecto
+    if user_register[0] == '':
+        user_register[0] = "assets/default-user.png" 
+    else:                                   # Si se selecciona alguna también, debido al servidor por el momento
+        user_register[0] = "assets/default-user.png"
+    user_register = Users.post_userRegister(user_register)
+    return user_register

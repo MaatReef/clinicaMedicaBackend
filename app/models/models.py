@@ -149,6 +149,8 @@ class Users:
                 "phone": list_user[6], 
                 "address": { "city": list_user[7] }, 
                 "active": list_user[8],
+                "status": list_user[9],
+                "password": list_user[10]
             }
         }
         editOne_userAdmin = db.users.update_one(search, query)
@@ -163,10 +165,28 @@ class Users:
             "email": list_user[4], 
             "phone": list_user[5],
             "address": { "city": list_user[6] },
-            "active": list_user[7] 
+            "active": list_user[7],
+            "status": list_user[8],
+            "password": list_user[9]
         }
         postOne_userAdmin = db.users.insert_one(query)
         return postOne_userAdmin
+    
+    def post_userRegister(user_register):
+        query = {   
+            "avatar": user_register[0], 
+            "dni": user_register[1], 
+            "name": user_register[2], 
+            "healthCoverage": user_register[3], 
+            "email": user_register[4], 
+            "phone": user_register[5],
+            "address": { "city": user_register[6] },
+            "active": user_register[7], 
+            "status": user_register[8], 
+            "password": user_register[9], 
+        }
+        postOne_userRegister = db.users.insert_one(query)
+        return postOne_userRegister
     
 
 class Specialities:

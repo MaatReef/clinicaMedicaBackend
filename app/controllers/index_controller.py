@@ -1,5 +1,5 @@
 # Traigo el modelo que realiza la búsqueda en la bd
-from app.models.models import Doctors, Clinics, Contacts
+from app.models.models import *
 
 def view_doctors():
     dblist_doctors = Doctors.toList_doctorsAdmin()
@@ -26,3 +26,20 @@ def view_clinics():
 def post_contact(contact):
     user_contact = Contacts.post_contact(contact)
     return user_contact
+
+# Get : User para corroborar en la base de Datos el acceso
+def get_login():
+    dblist_users = Users.toList_usersAdmin()
+    total_Users = []
+    for user in dblist_users:
+        user["dni"]
+        user["name"]
+        user["status"]
+        user["password"]
+        usuario_dniStatus = { "dni" : user["dni"], 
+                            "nombre": user["name"], 
+                            "status": user["status"],
+                            "password": user["password"]}
+        total_Users.append(usuario_dniStatus)
+    dblist_users.close()
+    return total_Users
