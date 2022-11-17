@@ -260,4 +260,3 @@ def post_login():
             elif clean_inputDni == clean_dniBd and clean_inputPassword == clean_passwordBd and status_bd == "Usuario": 
                 return redirect("portal")
         return redirect("/")     
-        
