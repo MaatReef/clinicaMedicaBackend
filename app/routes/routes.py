@@ -1,5 +1,5 @@
 from flask import Blueprint, url_for, render_template, redirect, request
-from app.controllers.index_controller import post_contact, view_doctors, view_clinics                                 # Traigo la listas capturada desde el controlador.
+from app.controllers.index_controller import *                                 # Traigo la listas capturada desde el controlador.
 from app.controllers.admin_controller import *
 
 global_scope = Blueprint("views", __name__)                                                             # La carpeta views posee los ficheros estáticos
@@ -32,6 +32,10 @@ def view_appointment():
 def view_portal():
     list_appointments = view_appointments()
     return render_template("portal.html", list_appointments=list_appointments)
+
+@global_scope.route("/register", methods=['GET'])
+def view_register():
+    return render_template("register.html")
 
 @global_scope.route('/cudi')
 def externals():
@@ -89,7 +93,9 @@ def edit_user():
         phone = request.form['phone']
         city = request.form['city']
         active = request.form['active']
-        list_user = [_id, avatar, dni, name, healthCoverage, email, phone, city, active]
+        status = request.form['status']
+        password = request.form['password']
+        list_user = [_id, avatar, dni, name, healthCoverage, email, phone, city, active, status, password]
         list_complet = edit_userAdmin(list_user)
     return redirect(url_for("views.view_admin"))
 
@@ -162,7 +168,9 @@ def post_user():
         phone = request.form['phone']
         city = request.form['city']
         active = request.form['active']
-        list_user = [avatar, dni, name, healthCoverage, email, phone, city, active]
+        status = request.form['status']
+        password = request.form['password']
+        list_user = [avatar, dni, name, healthCoverage, email, phone, city, active, status, password]
         list_complet = post_userAdmin(list_user)
     return redirect(url_for("views.view_admin"))
 
@@ -213,3 +221,40 @@ def post_appointment():
         new_appointment = post_userAppointment(appointment_form)
         print(new_appointment)
     return redirect("portal")
+
+@global_scope.route('/post_register', methods=['GET', 'POST'])
+def post_register():
+    if request.method == 'POST':
+        avatar = request.form['avatar']
+        dni = request.form['dni']
+        name = request.form['name']
+        password = request.form['password']
+        healthCoverage = request.form['healthCoverage']
+        email = request.form['email']
+        phone = request.form['phone']
+        city = request.form['city']
+        status = request.form['status']
+        active = request.form['active']
+        user_register = [avatar, dni, name, healthCoverage, email, phone, city, active, status, password]
+        user_register = post_userRegister(user_register)
+    return redirect("/")
+
+@global_scope.route("/", methods=['GET', 'POST'])
+def post_login():
+    if request.method == 'POST':
+        dni = request.form['dni']
+        clean_spaceDni = dni.strip()                        # Elimino los "posibles" espacios en blanco, para luego comprobar.
+        password = request.form['password']
+        clean_spacePassword = dni.strip()                   # Idem
+        total_Users = get_login()
+        for user in total_Users:
+            dni_bd = user["dni"]
+            password_bd = user["password"]
+            clean_passwordBd = password_bd.strip()          # Elimino los "posibles" espacios en blanco, para luego comprobar. 
+            status_bd = user["status"]
+            if clean_spaceDni == dni_bd and clean_spacePassword == clean_passwordBd and status_bd == "Administrador": 
+                return redirect("admin")
+            elif clean_spaceDni == dni_bd and clean_spacePassword == clean_passwordBd and status_bd == "Usuario": 
+                return redirect("portal")
+        return redirect("/")
+        

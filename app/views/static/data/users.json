@@ -15,7 +15,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSDE Pym",
-        "active": true
+        "active": true,
+        "status": "Administrador",
+        "password": "123"
     },
     {
         "dni": "23567345",
@@ -33,7 +35,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSDE 410",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "3456387",
@@ -51,7 +55,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "IOMA",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "45635671",
@@ -69,7 +75,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSECAC",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "45674345",
@@ -87,7 +95,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSECAC",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "3657893",
@@ -105,7 +115,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSDE 310",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "7342546",
@@ -123,7 +135,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSDE 110",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "8456327",
@@ -141,7 +155,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSDE 210",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "9475345",
@@ -159,7 +175,9 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSECAC",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     },
     {
         "dni": "10456345",
@@ -177,6 +195,8 @@
         "avatar": "assets/default-user.png",
         "medical-studies": [],
         "healthCoverage": "OSDE 210",
-        "active": true
+        "active": true,
+        "status": "Usuario",
+        "password": "123"
     }
 ]

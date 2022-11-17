@@ -9,7 +9,7 @@
     <div class="py-5 container">
         <h3 class="py-5">
             Panel administrativo | 
-            <small class="text-muted">Médicos y pacientes</small>
+            <small class="text-muted">Médicos y Pacientes</small>
         </h3>
         <ul class="nav nav-tabs" id="adminTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -27,6 +27,10 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="clinics-tab" data-bs-toggle="tab" data-bs-target="#clinics-tab-pane"
                     type="button" role="tab" aria-controls="clinics-tab-pane" aria-selected="false">Clínicas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="administrator-tab" data-bs-toggle="tab" data-bs-target="#administrator-tab-pane"
+                    type="button" role="tab" aria-controls="administrator-tab-pane" aria-selected="false">Administradores</button>
             </li>
         </ul>
         <div class="tab-content py-3 overflow-auto" id="adminTabContent">
@@ -177,7 +181,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/post_doctor">
+                        <form method="POST" action="/post_doctor" class="needs-validation" novalidate>
                             <div class="mb-3">
                                 <label for="formFile" class="col-form-label">Foto:</label>
                                 <input class="form-control" type="file" id="formFile" name="avatar">
@@ -236,10 +240,12 @@
                             <th scope="col">Teléfono</th>
                             <th scope="col">Domicilio</th>
                             <th scope="col">Disponible</th>
+                            <th scope="col">Contraseña</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
                         {% for user in data_admin[1] %}
+                        {% if user["status"] == "Usuario" %}
                         <tr>
                             <th scope="row">{{ user["dni"] }} </th>
 
@@ -256,7 +262,7 @@
                             <td>{{ user["phone"] }}</td>
 
                             <td>{{ user["address"]["city"] }}</td>
-                        
+                            
                             <td>
                                 {% if user["active"]  == "True" %}
                                 <div class="form-check form-switch">
@@ -270,6 +276,7 @@
                                 </div>
                                 {% endif %}
                             </td>
+                            <td>{{ user["password"] }}</td>
                             <td>
                                 <div class="d-grid gap-2">                                
                                     <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ user['_id'] }}">ELIMINAR</button>
@@ -311,6 +318,7 @@
                                                 <form method="POST" action="/edit_user">
                                                     <input type="hidden" value="{{ user['_id'] }}" name="_id">
                                                     <input type="hidden" value="{{ user['avatar'] }}" name="avatar">
+                                                    <input type="hidden" value="{{ user['password'] }}" name="password">
 
                                                     <div class="mb-3">
                                                         <label for="editDni-patient" class="col-form-label">Dni:</label>
@@ -347,7 +355,14 @@
                                                             <option value="True" selected>Disponible</option>
                                                             <option value="False" >No Disponible</option>
                                                         </select>
-                                                    </div>                                                    
+                                                    </div>       
+                                                    <div class="mb-3">
+                                                        <label for="editState-patient" class="col-form-label">Tipo:</label>
+                                                        <select id="editStatus-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="status">
+                                                            <option value="Usuario" selected>Usuario</option>
+                                                            <option value="Administrador" >Administrador</option>
+                                                        </select>
+                                                    </div>                                               
                                                         
                                                 </div>
                                                 <div class="modal-footer">
@@ -361,12 +376,14 @@
                                 <!-- Close Edit modal User -->
                             </td>
                         </tr>
+                        {% endif %}
                         {% endfor %}
                     </tbody>
                 </table>
                 
                 <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#add_patient">AGREGAR PACIENTE</button>
 
+                <!-- Open Modal add User -->
                 <div class="modal fade" id="add_patient" tabindex="-1" aria-labelledby="add_patientLabel" aria-hidden="true">
                 <div class="modal-dialog rounded-3 border border-primary">
                     <div class="modal-content">
@@ -375,7 +392,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/post_user">
+                        <form method="POST" action="/post_user" class="needs-validation" novalidate>
+                            <input type="hidden" value="Usuario" name="status">  
+
                             <div class="mb-3">
                                 <label for="formFile" class="col-form-label">Foto:</label>
                                 <input class="form-control" type="file" id="formFile" name="avatar">
@@ -386,7 +405,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="name-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
-                                <input class="form-control" id="name-patient" name="name" required>
+                                <input class="form-control" id="name-patient" name="name" required>   
                             </div>
                             <div class="mb-3">
                                 <label for="editSocialWork-patient" class="col-form-label">Obra social:</label>
@@ -410,12 +429,17 @@
                                 <input class="form-control" id="adress-patient" name="city">
                             </div>
                             <div class="mb-3">
+                                <label for="password-patient" class="col-form-label">Password:</label>
+                                <input class="form-control" id="password-patient" name="password">
+                            </div>
+                            <div class="mb-3">
                                 <label for="edit-patient" class="col-form-label">Disponibilidad:</label>
                                 <select id="edit-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active">
                                     <option value="True" selected>Disponible</option>
                                     <option value="False" >No Disponible</option>
                                 </select>
                             </div>
+                            
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
                                 <button type="submit" class="btn btn-primary rounded-0" id="add_patientForm">AGREGAR PACIENTE</button>
@@ -431,7 +455,6 @@
                 <table id="table-health" class="table align-middle table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Logo</th>
                             <th scope="col">Obra social</th>
                             <th scope="col">Plan</th>
@@ -441,7 +464,6 @@
                         {% for healthCoverage in data_admin[2] %}
 
                             <tr>
-                                <th scope="row">{{ healthCoverage["id"] }}</th>
                                 
                                 <td>
                                     <img src="../static/{{ healthCoverage['logo'] }}" class="img-fluid img-thumbnail rounded img-table-user" alt="coverage">
@@ -535,7 +557,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/post_healthCoverage">
+                        <form method="POST" action="/post_healthCoverage" class="needs-validation" novalidate>
                             <div class="mb-3">
                                 <label  class="col-form-label">Elegir Logo:</label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="logo">
@@ -547,7 +569,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="socialWork-form" class="col-form-label">Nombre Obra Social:</label>
-                                <input class="form-control" name="name">
+                                <input class="form-control" name="name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="plan-form" class="col-form-label">Plan:</label>
@@ -569,7 +591,6 @@
                 <table id="table-clinics" class="table align-middle table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Clínica</th>
                             <th scope="col">Horario de atención</th>
                             <th scope="col">Email</th>
@@ -580,7 +601,6 @@
                     <tbody class="table-group-divider">
                         {% for clinic in data_admin[3] %}
                             <tr>
-                                <th scope="row"> {{ clinic["id"] }} </th>
                     
                                 <td>{{ clinic["name"] }}</td>
                     
@@ -680,7 +700,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/post_clinic">
+                        <form method="POST" action="/post_clinic" class="needs-validation" novalidate>
                             <div class="mb-3">
                                 <label for="name-clinic" class="col-form-label">Nombre de la Clínica (Requerido):</label>
                                 <input type="text" class="form-control" id="name-clinic" name="name" required>
@@ -716,9 +736,236 @@
                 </div>
                 <!-- Close Modal Add Clinic-->
             </div>
+
+            <!-- Administrator-tab -->
+            <div class="tab-pane fade py-3 overflow-auto" id="administrator-tab-pane" role="tabpanel" aria-labelledby="users-tab" tabindex="0">
+                <table id="table-users" class="table align-middle table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Dni</th>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Nombre y apellido</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Domicilio</th>
+                            <th scope="col">Disponible</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {% for user in data_admin[1] %}
+                        {% if user["status"] == "Administrador" %}
+                        
+                        <tr>
+                            <th scope="row">{{ user["dni"] }} </th>
+
+                            <td>
+                                <img src="../static/{{ user['avatar'] }} " class="img-fluid img-thumbnail rounded img-table-user" alt="user">
+                            </td>
+
+                            <td>{{ user["name"] }}</td>
+
+                            <td>{{ user["email"] }}</td>
+
+                            <td>{{ user["phone"] }}</td>
+
+                            <td>{{ user["address"]["city"] }}</td>
+                            
+                            <td>
+                                {% if user["active"]  == "True" %}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" checked disabled>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                                {%  else %}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" disabled>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td>{{ user["password"] }}</td>
+                            <td>{{ user["status"] }}</td>
+                            <td>
+                                <div class="d-grid gap-2">                                
+                                    <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ user['_id'] }}">ELIMINAR</button>
+                                    <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#id{{ user['_id'] }}">EDITAR</button>
+                                </div>
+
+                                <!-- Confirm the deletion open -->
+                                <div class="modal fade" id="id_delete{{ user['_id'] }}" tabindex="-1" aria-labelledby="edit_doctorLabel" aria-hidden="true">
+                                    <div class="modal-dialog rounded-3 border border-primary">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="edit_doctorLabel">¿Confirmar Eliminación?</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <h4>Nombre: {{ user["name"] }}</h4>
+                                                    <h4>Dni: {{ user["dni"] }}</h4>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CANCELAR</button>
+                                                        <a type="button" class="btn btn-danger rounded-0" href="{{url_for('views.delete_user', _id=user['_id'])}}">ELIMINAR</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Confirm the deletion close -->
+
+                                <!-- Edit modal administrator open -->
+                                <div class="modal fade" id='id{{ user["_id"] }}' tabindex="-1" aria-labelledby="editAdd_doctorLabel" aria-hidden="true">
+                                    <div class="modal-dialog rounded-3 border border-primary">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="editAdd_doctorLabel">EDITAR ADMINISTRADOR:</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="/edit_user">
+                                                    <input type="hidden" value="{{ user['_id'] }}" name="_id">
+                                                    <input type="hidden" value="{{ user['avatar'] }}" name="avatar">
+                                                    <input type="hidden" value="{{ user['healthCoverage'] }}" name="healthCoverage">
+
+                                                    <div class="mb-3">
+                                                        <label for="editDni-patient" class="col-form-label">Dni:</label>
+                                                        <input class="form-control" id="editDni-patient" value="{{ user['dni'] }}" name="dni">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editName-patient" class="col-form-label">Nombre y Apellido:</label>
+                                                        <input class="form-control" id="editName-patient" value="{{ user['name'] }}" name="name">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editEmail-patient" class="col-form-label">Email:</label>
+                                                        <input class="form-control" id="editEmail-patient" value="{{ user['email'] }}" name="email">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editPhone-patient" class="col-form-label">Teléfono:</label>
+                                                        <input class="form-control" id="editPhone-patient" value="{{ user['phone'] }}" name="phone">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editAdress-patient" class="col-form-label">Domicilio:</label>
+                                                        <input class="form-control" id="editAdress-patient" value="{{ user['address']['city'] }}" name="city">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editState-patient" class="col-form-label">Disponibilidad:</label>
+                                                        <select id="editSocialWork-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="active">
+                                                            <option value="True" selected>Disponible</option>
+                                                            <option value="False" >No Disponible</option>
+                                                        </select>
+                                                    </div>       
+                                                    <div class="mb-3">
+                                                        <label for="editPassword-patient" class="col-form-label">Contraseña:</label>
+                                                        <input id="editPassword-patient" class="form-control" value="{{ user['password'] }}"  name="password">
+                                                    </div>       
+                                                    <div class="mb-3">
+                                                        <label for="editState-patient" class="col-form-label">Tipo:</label>
+                                                        <select id="editStatus-patient" class="form-select form-select-sm" aria-label=".form-select-sm example" name="status">
+                                                            <option value="Usuario">Usuario</option>
+                                                            <option value="Administrador" selected>Administrador</option>
+                                                        </select>
+                                                    </div>                                               
+                                                        
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                                    <button type="submit" class="btn btn-primary rounded-0" id="edit_patientForm">CONFIRMAR</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Close Edit modal Administrator -->
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal" data-bs-target="#add_admin">AGREGAR ADMINISTRADOR</button>
+
+                <div class="modal fade" id="add_admin" tabindex="-1" aria-labelledby="add_adminLabel" aria-hidden="true">
+                <div class="modal-dialog rounded-3 border border-primary">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="add_adminLabel">AGREGAR ADMINISTRADOR:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/post_user">
+                            <input type="hidden" value="" name="healthCoverage">
+                            <input type="hidden" value="Administrador" name="status">
+                            <input type="hidden" value="True" name="active">
+
+                            <div class="mb-3">
+                                <label for="formFile" class="col-form-label">Foto:</label>
+                                <input class="form-control" type="file" id="formFile" name="avatar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="name-patient" class="col-form-label">Dni (Requerido):</label>
+                                <input class="form-control" id="name-patient" name="dni" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name-patient" class="col-form-label">Nombre y Apellido (Requerido):</label>
+                                <input class="form-control" id="name-patient" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editPassword-patient" class="col-form-label">Contraseña:</label>
+                                <input id="editPassword-patient" class="form-control" name="password">
+                            </div>       
+                            <div class="mb-3">
+                                <label for="email-patient" class="col-form-label">Email:</label>
+                                <input class="form-control" id="email-patient" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone-patient" class="col-form-label">Teléfono:</label>
+                                <input class="form-control" id="phone-patient" name="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="adress-patient" class="col-form-label">Domicilio:</label>
+                                <input class="form-control" id="adress-patient" name="city">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">CERRAR</button>
+                                <button type="submit" class="btn btn-primary rounded-0" id="add_patientForm">AGREGAR ADMINISTRADOR</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Close Modal Add Pacient -->
+            </div>
         </div>
     </div>
 </section><!-- close tabs-->
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+'use strict'
+
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+var forms = document.querySelectorAll('.needs-validation')
+
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+    }, false)
+    })
+})()
+</script>
 
 {% include "components/footer.html" %}
 {% endblock %}

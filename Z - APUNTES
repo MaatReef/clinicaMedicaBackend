@@ -1,13 +1,15 @@
 --------------------------------------Data Actual------------------------------------
 
+---------------------------------------- 13 - 11
+- CRUD del Admin completo.
+    
+
+---------------------------------------Data Antigua-------------------------------------
 ---------------------------------------- 12 - 11
 - Acción Editar del Admin contra la Base de datos agregada. Usando los Formularios y rutas Correspondientes.
     - < form method="POST" action="/edit_doctor">
 - Accion Agregar Doctor del Admin contra la base de Datos Agregada. Usando los Formularios y rutas Correspondientes..
     - < form method="POST" action="/post_doctor">
-    
-
----------------------------------------Data Antigua-------------------------------------
 
 ---------------------------------------- 11 - 11
 - Acción Eliminar del Admin contra la Base de datos.
