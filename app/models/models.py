@@ -187,7 +187,6 @@ class Users:
         }
         postOne_userRegister = db.users.insert_one(query)
         return postOne_userRegister
-    
 
 class Specialities:
     def toList_specialitiesAdmin():
