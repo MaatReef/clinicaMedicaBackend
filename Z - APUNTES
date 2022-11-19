@@ -4,7 +4,9 @@
 - Agregue WTForms + La llave Secreta
     - Ahora el form de inicio de Sesión genera un código aleatorio, el token 
     El cual valida a modo de autenticación la conexión entre el cliente y el servidor.
-- Revisar el requirments.txt    -> Nueva Data
+- Revisar el requirments.txt de ser necesario    -> Nueva Data
+
+- La data del usuario viaja a través de los templates, desde el login al destino.
 
 ---------------------------------------Data Antigua-------------------------------------
 
