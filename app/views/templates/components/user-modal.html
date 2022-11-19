@@ -8,6 +8,7 @@
             </div>
             <div class="modal-body">
                 <form form method="POST" action="/">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                     <div class="mb-3">
                         <label for="dni-form" class="col-form-label">DNI: Prueba -> (Admin 30 - Usuario 50)</label>
                         <input class="form-control" id="dni-form" name="dni"></input>

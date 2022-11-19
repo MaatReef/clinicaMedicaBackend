@@ -48,7 +48,6 @@ def view_appointments():
     total_appointments = []
     for appointment in dblist_appointments:
         total_appointments.append(appointment)
-    print(total_appointments)
     dblist_appointments.close()
     return total_appointments
 
