@@ -12,6 +12,7 @@
     </div>
     <div class="modal-body d-flex justify-content-center">
         <form method="POST" action="/post_register" class="needs-validation col-6" novalidate>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
             <input type="hidden" name="active" value="True">
             <input type="hidden" name="avatar">
             <input type="hidden" name="status" value="Usuario">

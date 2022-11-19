@@ -1,8 +1,10 @@
-from flask import Blueprint, url_for, render_template, redirect, request
-from app.controllers.index_controller import *                                 # Traigo la listas capturada desde el controlador.
+from flask import Blueprint, url_for, render_template, redirect, request, session, flash
+# from flask_login import logout_user
+# from werkzeug.security import generate_password_hash, check_password_hash     # Para "hashear" contraseñas y luego comparar el hash con el tecto plano
+from app.controllers.index_controller import *                                  # Traigo la listas capturada desde el controlador.
 from app.controllers.admin_controller import *
 
-global_scope = Blueprint("views", __name__)                                                             # La carpeta views posee los ficheros estáticos
+global_scope = Blueprint("views", __name__)                                     # La carpeta views posee los ficheros estáticos
 
 
 # View: Las siguientes rutas se encargan de presentar la data traída desde la Base de DATOS
@@ -229,6 +231,7 @@ def post_register():
         dni = request.form['dni']
         name = request.form['name']
         password = request.form['password']
+        # password_hash = generate_password_hash(password)  # Para hashear contraseñas al momento del registro
         healthCoverage = request.form['healthCoverage']
         email = request.form['email']
         phone = request.form['phone']
@@ -250,12 +253,49 @@ def post_login():
         total_Users = get_login()
         for user in total_Users:
             dni_bd = user["dni"]
+            name = user["name"]
             clean_dniBd = dni_bd.strip()                    # Elimino los "posibles" espacios en blanco, de la data en bd para luego comprobar. 
-            password_bd = user["password"]
-            clean_passwordBd = password_bd.strip()          # Idem para el password que viene de la bd
+            password = user["password"]
+            # password_hash = check_password_hash(password) # Para Hashear las contraseñas
+            # print("password_hash")
             status_bd = user["status"]
-            if clean_inputDni == clean_dniBd and clean_inputPassword == clean_passwordBd and status_bd == "Administrador": 
-                return redirect("admin")
-            elif clean_inputDni == clean_dniBd and clean_inputPassword == clean_passwordBd and status_bd == "Usuario": 
-                return redirect("portal")
+            if clean_inputDni == clean_dniBd and clean_inputPassword == password  and status_bd == "Administrador": 
+                list_adminDoctors = view_doctors()
+                list_adminUsers = view_users()
+                list_healthCoverage = view_healthCoverage()
+                list_adminClinics = view_clinics()
+                data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+                user_login = [{  
+                        "_id": user["_id"], 
+                        "dni": user["dni"], 
+                        "name": user["name"], 
+                        "healthCoverage": user["healthCoverage"], 
+                        "email": user["email"], 
+                        "phone": user["phone"],
+                        "city": user["city"],
+                        "active": user["active"], 
+                        "status": user["status"], 
+                        "password": user["password"] 
+                    }]
+                # login_user()
+                return render_template("admin.html", data_admin=data_admin, internalonline=True, user_login=user_login)
+            elif clean_inputDni == clean_dniBd and clean_inputPassword == password  and status_bd == "Usuario": 
+                user_login = [{  
+                    "_id": user["_id"], 
+                    "dni": user["dni"], 
+                    "name": user["name"], 
+                    "healthCoverage": user["healthCoverage"], 
+                    "email": user["email"], 
+                    "phone": user["phone"],
+                    "city": user["city"],
+                    "active": user["active"], 
+                    "status": user["status"], 
+                    "password": user["password"] 
+                }]
+                return render_template("appointment.html", user_login=user_login)
         return redirect("/")     
+
+@global_scope.route("/logout")
+def logout():
+    # logout_user()
+    return redirect("/")

@@ -32,14 +32,18 @@ def get_login():
     dblist_users = Users.toList_usersAdmin()
     total_Users = []
     for user in dblist_users:
-        user["dni"]
-        user["name"]
-        user["status"]
-        user["password"]
-        usuario_dniStatus = { "dni" : user["dni"], 
-                            "nombre": user["name"], 
-                            "status": user["status"],
-                            "password": user["password"]}
-        total_Users.append(usuario_dniStatus)
+        usuario_unique = {  "_id": user["_id"], 
+                            "dni": user["dni"], 
+                            "name": user["name"], 
+                            "healthCoverage": user["healthCoverage"], 
+                            "email": user["email"], 
+                            "phone": user["phone"],
+                            "city": user["address"]["city"],
+                            "active": user["active"], 
+                            "status": user["status"], 
+                            "password": user["password"] 
+                        }
+        total_Users.append(usuario_unique)
+
     dblist_users.close()
     return total_Users

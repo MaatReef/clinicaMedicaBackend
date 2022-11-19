@@ -131,6 +131,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> <!-- main -->
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h4>¡Buen Día!</h4>
                     <h1 class="h2">Tu salud</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
@@ -181,6 +182,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form>
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                         <h4>Nueva fecha: {{ appointment["appointmentDate"] }} </h4>
                                                         <h4>Observaciones: {{ appointment["observations"] }}</h4>
                                                         <h4>Especialidad: {{ appointment["speciality"] }}</h4>
@@ -210,6 +212,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="POST" action="/edit_appointment">
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                         <input type="hidden" value="{{ appointment['_id'] }}" name="_id">
                     
                                                         <div class="mb-3">
