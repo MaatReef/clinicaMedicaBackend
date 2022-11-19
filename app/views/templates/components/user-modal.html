@@ -7,15 +7,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form form method="POST" action="/">
+                <form form method="POST" action="/" class="needs-validation" novalidate>
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                     <div class="mb-3">
                         <label for="dni-form" class="col-form-label">DNI: Prueba -> (Admin 30 - Usuario 50)</label>
-                        <input class="form-control" id="dni-form" name="dni"></input>
+                        <input class="form-control" id="dni-form" name="dni" required></input>
                     </div>
                     <div class="mb-3">
                         <label for="password-form" class="col-form-label">Password: Prueba -> (Admin 111 - Usuario 123)</label>
-                        <input class="form-control" id="password-form" name="password"></input>
+                        <input class="form-control" id="password-form" name="password" required></input>
                     </div>
                     <div class="mb-3">
                         <p>¿Aún no tienes una cuenta? <a href="/register">Registro</a></p>
@@ -30,4 +30,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+    'use strict'
+    
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+    
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+    
+            form.classList.add('was-validated')
+        }, false)
+        })
+    })()
+</script>
 <!-- Close Modal-->

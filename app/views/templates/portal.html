@@ -181,6 +181,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form>
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                         <h4>Nueva fecha: {{ appointment["appointmentDate"] }} </h4>
                                                         <h4>Observaciones: {{ appointment["observations"] }}</h4>
                                                         <h4>Especialidad: {{ appointment["speciality"] }}</h4>
@@ -210,6 +211,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="POST" action="/edit_appointment">
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                         <input type="hidden" value="{{ appointment['_id'] }}" name="_id">
                     
                                                         <div class="mb-3">

@@ -2,6 +2,7 @@
 <div class="container mb-4">
     <!-- open form -->
     <form method="POST" action="/contact">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Ingresa tu Nombre:</label>
             <input 

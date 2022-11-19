@@ -96,6 +96,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
+                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                     <h4>Nombre: {{ doctor["name"] }} </h4>
                                                     <h4>Dni: {{ doctor["dni"] }}</h4>
                                                     <h4>Especialidad: {{ doctor["speciality"] }}</h4>
@@ -120,6 +121,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <form method="POST" action="/edit_doctor">
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                 <input type="hidden" value="{{ doctor['_id'] }}" name="_id">
                                                 
                                                 <div class="mb-3">
@@ -182,6 +184,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="/post_doctor" class="needs-validation" novalidate>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                             <div class="mb-3">
                                 <label for="formFile" class="col-form-label">Foto:</label>
                                 <input class="form-control" type="file" id="formFile" name="avatar">
@@ -293,6 +296,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
+                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                     <h4>Nombre: {{ user["name"] }}</h4>
                                                     <h4>Dni: {{ user["dni"] }}</h4>
                                                     <div class="modal-footer">
@@ -316,6 +320,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="/edit_user">
+                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                     <input type="hidden" value="{{ user['_id'] }}" name="_id">
                                                     <input type="hidden" value="{{ user['avatar'] }}" name="avatar">
                                                     <input type="hidden" value="{{ user['password'] }}" name="password">
@@ -393,6 +398,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="/post_user" class="needs-validation" novalidate>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                             <input type="hidden" value="Usuario" name="status">  
 
                             <div class="mb-3">
@@ -490,6 +496,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <form>
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                 <h4>Nombre: {{ healthCoverage["name"] }} </h4>
                                                 <h4>Plan: {{ healthCoverage["plan"] }}</h4>
                                                 <div class="modal-footer">
@@ -513,6 +520,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form method="POST" action="/edit_coverage">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                             <input type="hidden" value="{{ healthCoverage['_id'] }}" name="_id">
                                             <input type="hidden" value="{{ healthCoverage['id'] }}" name="id">
 
@@ -558,6 +566,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="/post_healthCoverage" class="needs-validation" novalidate>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                             <div class="mb-3">
                                 <label  class="col-form-label">Elegir Logo:</label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="logo">
@@ -629,6 +638,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <form>
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                 <h4>Nombre: {{ clinic["name"] }} </h4>
                                                 <h4>Sede: {{ clinic["address"]["city"] }}</h4>
                                                 <div class="modal-footer">
@@ -652,6 +662,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <form method="POST" action="/edit_clinic">
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                 <input type="hidden" value="{{ clinic['_id'] }}" name="_id">
 
                                                 <div class="mb-3">
@@ -701,6 +712,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="/post_clinic" class="needs-validation" novalidate>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                             <div class="mb-3">
                                 <label for="name-clinic" class="col-form-label">Nombre de la Clínica (Requerido):</label>
                                 <input type="text" class="form-control" id="name-clinic" name="name" required>
@@ -803,6 +815,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
+                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                     <h4>Nombre: {{ user["name"] }}</h4>
                                                     <h4>Dni: {{ user["dni"] }}</h4>
                                                     <div class="modal-footer">
@@ -826,6 +839,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="/edit_user">
+                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                                                     <input type="hidden" value="{{ user['_id'] }}" name="_id">
                                                     <input type="hidden" value="{{ user['avatar'] }}" name="avatar">
                                                     <input type="hidden" value="{{ user['healthCoverage'] }}" name="healthCoverage">
@@ -896,7 +910,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/post_user">
+                        <form method="POST" action="/post_user" class="needs-validation" novalidate>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                             <input type="hidden" value="" name="healthCoverage">
                             <input type="hidden" value="Administrador" name="status">
                             <input type="hidden" value="True" name="active">
