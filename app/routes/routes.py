@@ -8,9 +8,8 @@ global_scope = Blueprint("views", __name__)                                     
 # View: Las siguientes rutas se encargan de presentar la data traída desde la Base de DATOS
 @global_scope.route("/", methods=['GET'])
 def view_home():
-    list_doctors = view_doctors()
-    list_clinics = view_clinics()
-
+    list_doctors = view_doctorsHome()
+    list_clinics = view_clinicsHome()
     # Se renderiza la plantilla y le paso como argumento la lista
     return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics, title="admin", online=True)
 

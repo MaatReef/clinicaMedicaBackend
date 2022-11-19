@@ -1,7 +1,7 @@
 # Traigo el modelo que realiza la búsqueda en la bd
 from app.models.models import *
 
-def view_doctors():
+def view_doctorsHome():
     dblist_doctors = Doctors.toList_doctorsAdmin()
 
     total_Doctors = []
@@ -12,7 +12,7 @@ def view_doctors():
     return total_Doctors
 
 
-def view_clinics():
+def view_clinicsHome():
     dblist_clinics = Clinics.toList_clinicsAdmin()
 
     total_clinics = []
