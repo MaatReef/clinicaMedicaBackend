@@ -299,3 +299,10 @@ def post_login():
 def logout():
     # logout_user()
     return redirect("/")
+
+@global_scope.context_processor
+def utility_functions():
+    def print_in_console(message):
+        print(str(message))
+
+    return dict(mdebug=print_in_console)

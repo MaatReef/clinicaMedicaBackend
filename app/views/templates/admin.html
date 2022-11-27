@@ -52,6 +52,7 @@
                     <tbody class="table-group-divider">
                         {% for doctor in data_admin[0] %}
                         <tr >
+                            {{doctor}}
                             <th scope="row">
                                 {{ doctor["dni"] }}
                             </th>
@@ -620,7 +621,7 @@
                     
                                 <td>{{ clinic["phone"] }}</td>
                     
-                                <td>{{ clinic["address"]["city"] }}</td>
+                                <td>{{ clinic["address"] }}</td>
                                 <td>
                                     <div class="d-grid gap-2 d-md-block">   
                                         <button type="button" class="btn btn-danger rounded-0" data-bs-toggle="modal" data-bs-target="#id_delete{{ clinic['_id'] }}">ELIMINAR</button>
