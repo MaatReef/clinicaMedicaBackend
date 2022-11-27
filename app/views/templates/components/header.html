@@ -67,12 +67,12 @@
                             </svg>
                         </a>
                     </li>
-                    {% if online %}
+                    {% if firstLogin %}
                     <li class="col-sm-6 col-lg-auto mx-auto px-2 mt-4 mt-md-0">
                         <button type="button" class="btn btn-primary btn-lg rounded-0 fw-bold fs-6"
                             data-bs-toggle="modal" data-bs-target="#login">TURNOS ONLINE</button>
                     </li>
-                    {% elif internalonline %}
+                    {% elif appointmentButton %}
                     <li class="col-sm-6 col-lg-auto mx-auto px-2 mt-4 mt-md-0">
                         <a class="" href="/appointment" rel="noopener">
                             <button type="button" class="btn btn-primary btn-lg rounded-0 fw-bold fs-6">TURNOS ONLINE</button>

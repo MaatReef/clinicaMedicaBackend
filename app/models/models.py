@@ -1,4 +1,5 @@
-from app.database.connection import db          # Traemos la base de datos
+from app.database.connection import db          
+# Traemos la base de datos
 from bson.objectid import ObjectId
 
 # Cada una de las clases en el modelo realiza la conexión correspondiente de acuerdo a lo que sea necesario.
@@ -188,6 +189,7 @@ class Users:
         postOne_userRegister = db.users.insert_one(query)
         return postOne_userRegister
 
+
 class Specialities:
     def toList_specialitiesAdmin():
         db_specialitiesAdmin = db.specialities.find()
@@ -207,13 +209,13 @@ class Appointments:
 
     def edit_userAppointment(appointment):
         print(appointment)
-        search = {"_id": ObjectId(appointment[0])}
+        search = {"_id": ObjectId(appointment[1])}
         query = {
             '$set': {  
-                "appointmentDate": appointment[1], 
-                "observations": appointment[2], 
-                "speciality": appointment[3], 
-                "modality": appointment[4]
+                "appointmentDate": appointment[2],
+                "observations": appointment[3],
+                "speciality": appointment[4],
+                "modality": appointment[5]
             }
         }
         editOne_appointment = db.appointments.update_one(search, query)
@@ -221,10 +223,19 @@ class Appointments:
 
     def post_userAppointment(appointment):
         query = {   
-            "appointmentDate": appointment[0], 
-            "observations": appointment[1], 
-            "speciality": appointment[2], 
-            "modality": appointment[3]
+            "user_id": appointment[0],
+            "appointmentDate": appointment[1], 
+            "observations": appointment[2], 
+            "speciality": appointment[3], 
+            "modality": appointment[4]
         } 
-        postOne_appointment = db.appointments.insert_one(query)
-        return postOne_appointment
+        post_appointment = db.appointments.insert_one(query)
+        post_appointment_into_session_user = db.users.update_one(
+            {"_id": ObjectId(appointment[0])},
+            {
+                '$push': {
+                    'appointments': query
+                }
+            }
+        )
+        return post_appointment_into_session_user

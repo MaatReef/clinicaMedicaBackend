@@ -1,5 +1,5 @@
-# Acá va lo del admin..
-from app.models.models import Doctors, Clinics, Users, HealthCoverage, Appointments    # Traigo los modelos que realizan la búsqueda en la bd
+# Traigo los modelos que realizan la búsqueda en la bd
+from app.models.models import Doctors, Clinics, Users, HealthCoverage, Appointments    
 
 # View_: Funciones que se encargan de presentar la Data
 def view_doctors():
@@ -75,7 +75,8 @@ def delete_appointment(_id):
 
 
 # Edit_ : Funciones para Editar la Data filtrada en la base de Datos
-def edit_coverageAdmin(list_coverage):     # Si la opción es seleccionada le asigno el logo por defecto asociado a la obra social.
+def edit_coverageAdmin(list_coverage):
+    # Si la opción es seleccionada le asigno el logo por defecto asociado a la obra social.    
     if list_coverage[4] == "OSECAC":
         list_coverage[4] = "assets/coverages/osecac.jpeg"
     elif list_coverage[4] == "IOMA":
@@ -106,23 +107,28 @@ def edit_userAppointment(appointment):
 
 
 # Post : Funciones para Agregar filtrando la Data en la base de Datos
-def post_doctorAdmin(list_doctor):          # Si la imagen no es seleccionada le agrego la imagen por defecto
+def post_doctorAdmin(list_doctor):          
+    # Si la imagen no es seleccionada le agrego la imagen por defecto
     if list_doctor[3] == '':
         list_doctor[3] = "assets/default-user.png" 
-    else:                                   # Si se selecciona alguna también, debido al servidor por el momento
+    else:                                   
+        # Si se selecciona alguna también, debido al servidor por el momento
         list_doctor[3] = "assets/default-user.png"
     list_complet = Doctors.post_doctorAdmin(list_doctor)
     return list_complet
 
-def post_userAdmin(list_user):              # Si la imagen no es seleccionada le agrego la imagen por defecto
+def post_userAdmin(list_user):              
+    # Si la imagen no es seleccionada le agrego la imagen por defecto
     if list_user[0] == '':
         list_user[0] = "assets/default-user.png" 
-    else:                                   # Si se selecciona alguna también, debido al servidor por el momento
+    else:                                   
+        # Si se selecciona alguna también, debido al servidor por el momento
         list_user[0] = "assets/default-user.png"
     list_complet = Users.post_userAdmin(list_user)
     return list_complet
 
-def post_healthAdmin(list_healthCoverage):  # Si la opción es seleccionada le asigno el logo por defecto asociado a la obra social
+def post_healthAdmin(list_healthCoverage):  
+    # Si la opción es seleccionada le asigno el logo por defecto asociado a la obra social
     if list_healthCoverage[0] == "OSECAC":
         list_healthCoverage[0] = "assets/coverages/osecac.jpeg"
     elif list_healthCoverage[0] == "IOMA":
@@ -142,10 +148,12 @@ def post_userAppointment(appointment):
     appointment = Appointments.post_userAppointment(appointment)
     return appointment
 
-def post_userRegister(user_register):              # Si la imagen no es seleccionada le agrego la imagen por defecto
+def post_userRegister(user_register):              
+    # Si la imagen no es seleccionada le agrego la imagen por defecto
     if user_register[0] == '':
         user_register[0] = "assets/default-user.png" 
-    else:                                   # Si se selecciona alguna también, debido al servidor por el momento
+    else:                                   
+        # Si se selecciona alguna también, debido al servidor por el momento
         user_register[0] = "assets/default-user.png"
     user_register = Users.post_userRegister(user_register)
     return user_register

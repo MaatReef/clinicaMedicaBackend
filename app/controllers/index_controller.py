@@ -11,7 +11,6 @@ def view_doctorsHome():
     dblist_doctors.close()
     return total_Doctors
 
-
 def view_clinicsHome():
     dblist_clinics = Clinics.toList_clinicsAdmin()
 
@@ -32,17 +31,18 @@ def get_login():
     dblist_users = Users.toList_usersAdmin()
     total_Users = []
     for user in dblist_users:
-        usuario_unique = {  "_id": user["_id"], 
-                            "dni": user["dni"], 
-                            "name": user["name"], 
-                            "healthCoverage": user["healthCoverage"], 
-                            "email": user["email"], 
-                            "phone": user["phone"],
-                            "city": user["address"]["city"],
-                            "active": user["active"], 
-                            "status": user["status"], 
-                            "password": user["password"] 
-                        }
+        usuario_unique = {  
+            "_id": user["_id"], 
+            "dni": user["dni"], 
+            "name": user["name"], 
+            "healthCoverage": user["healthCoverage"], 
+            "email": user["email"], 
+            "phone": user["phone"],
+            "city": user["address"]["city"],
+            "active": user["active"], 
+            "status": user["status"], 
+            "password": user["password"] 
+        }
         total_Users.append(usuario_unique)
 
     dblist_users.close()

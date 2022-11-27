@@ -1,11 +1,14 @@
 from flask import Blueprint, url_for, render_template, redirect, request, session, flash
 # from flask_login import logout_user
-# from werkzeug.security import generate_password_hash, check_password_hash     # Para "hashear" contraseñas y luego comparar el hash con el tecto plano
-from app.controllers.index_controller import *                                  # Traigo la listas capturada desde el controlador.
+# from werkzeug.security import generate_password_hash, check_password_hash     
+# Para "hashear" contraseñas y luego comparar el hash con el tecto plano
+
+# Traigo la listas capturada desde el controlador.
+from app.controllers.index_controller import *                                  
 from app.controllers.admin_controller import *
 
-global_scope = Blueprint("views", __name__)                                     # La carpeta views posee los ficheros estáticos
-
+# La carpeta views posee los ficheros estáticos
+global_scope = Blueprint("views", __name__)                                     
 
 # View: Las siguientes rutas se encargan de presentar la data traída desde la Base de DATOS
 @global_scope.route("/", methods=['GET'])
@@ -13,7 +16,7 @@ def view_home():
     list_doctors = view_doctorsHome()
     list_clinics = view_clinicsHome()
     # Se renderiza la plantilla y le paso como argumento la lista
-    return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics, title="admin", online=True)
+    return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics, title="admin", firstLogin=True)
 
 @global_scope.route("/admin", methods=['GET'])
 def view_admin():
@@ -23,7 +26,7 @@ def view_admin():
     list_adminClinics = view_clinics()
     data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
 
-    return render_template("admin.html", data_admin=data_admin, internalonline=True)
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=True)
 
 @global_scope.route("/appointment", methods=['GET', 'POST'])
 def view_appointment():
@@ -213,11 +216,14 @@ def post_contactIndex():
 def post_appointment():
     print(request.form)
     if request.method == 'POST':
+        user_id = request.form['user_id']
         appointmentDate = request.form['appointmentDate']
         observations = request.form['observations']
         speciality = request.form['speciality']
         modality = request.form['modality']
-        appointment_form = [appointmentDate, observations, speciality, modality]
+        appointment_form = [
+            user_id, appointmentDate, observations, speciality, modality
+        ]
         print(appointment_form)
         new_appointment = post_userAppointment(appointment_form)
         print(new_appointment)
@@ -247,19 +253,22 @@ def post_register():
 def post_login():
     if request.method == 'POST':
         dni = request.form['dni']
-        clean_inputDni = dni.strip()                        # Elimino los "posibles" espacios en blanco, de lo ingresado para luego comprobar.
+        # Elimino "posibles" espacios en blanco
+        clean_inputDni = dni.strip()                        
         password = request.form['password']
-        clean_inputPassword = password.strip()              # Idem para el input del password
+        # Elimino "posibles" espacios en blanco
+        clean_inputPassword = password.strip()              
         total_Users = get_login()
         for user in total_Users:
             dni_bd = user["dni"]
-            name = user["name"]
-            clean_dniBd = dni_bd.strip()                    # Elimino los "posibles" espacios en blanco, de la data en bd para luego comprobar. 
+            # Elimino "posibles" espacios en blanco
+            clean_dniBd = dni_bd.strip()                     
             password = user["password"]
-            # password_hash = check_password_hash(password) # Para Hashear las contraseñas
+            # Para Hashear las contraseñas
+            # password_hash = check_password_hash(password) 
             # print("password_hash")
             status_bd = user["status"]
-            if clean_inputDni == clean_dniBd and clean_inputPassword == password  and status_bd == "Administrador": 
+            if clean_inputDni == clean_dniBd and clean_inputPassword == password and status_bd == "Administrador": 
                 list_adminDoctors = view_doctors()
                 list_adminUsers = view_users()
                 list_healthCoverage = view_healthCoverage()
@@ -278,7 +287,7 @@ def post_login():
                         "password": user["password"] 
                     }]
                 # login_user()
-                return render_template("admin.html", data_admin=data_admin, internalonline=True, user_login=user_login)
+                return render_template("admin.html", data_admin=data_admin, appointmentButton=True, user_login=user_login)
             elif clean_inputDni == clean_dniBd and clean_inputPassword == password  and status_bd == "Usuario": 
                 user_login = [{  
                     "_id": user["_id"], 
