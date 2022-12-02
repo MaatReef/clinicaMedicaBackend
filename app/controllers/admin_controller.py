@@ -12,6 +12,11 @@ def view_doctors():
     dblist_doctors.close()
     return total_Doctors
 
+def get_sessionUser(_id):
+    sessionUser = Users.get_sessionUser(_id)
+    # print(sessionUser)
+    return sessionUser
+
 def view_users():
     dblist_Users = Users.toList_usersAdmin()
 
@@ -42,7 +47,9 @@ def view_clinics():
     dblist_clinics.close()
     return total_clinics
 
-def view_appointments():
+
+def view_appointments(_id):
+    sessionUser = Users.get_sessionUser(_id)
     dblist_appointments = Appointments.toList_appointments()
 
     total_appointments = []
@@ -101,9 +108,9 @@ def edit_clinicAdmin(list_clinic):
     list_complet = Clinics.edit_clinicAdmin(list_clinic)
     return list_complet
 
-def edit_userAppointment(appointment):
-    appointment = Appointments.edit_userAppointment(appointment)
-    return appointment
+# def edit_userAppointment(appointment):
+#     appointment = Appointments.edit_userAppointment(appointment)
+#     return appointment
 
 
 # Post : Funciones para Agregar filtrando la Data en la base de Datos

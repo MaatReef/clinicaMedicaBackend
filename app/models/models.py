@@ -133,6 +133,33 @@ class Users:
         db_usersAdmin = db.users.find()
         return db_usersAdmin
 
+    def get_sessionUser(_id):
+        query = {"_id": ObjectId(_id)}
+        sessionUser = db.users.find_one(query)
+        return sessionUser
+
+    def delete_userApp(appointment_form):
+        deleteOne_userAppointment = db.users.update_one(
+            {"_id": ObjectId(appointment_form[0])},
+            {'$pull': {'appointments': {"_id": ObjectId(appointment_form[1])}}}
+        )   
+        return deleteOne_userAppointment
+
+    def edit_userApp(appointment_form):
+        editOne_userAppointment = db.users.update_one(
+            {
+                '_id': ObjectId(appointment_form[0]),
+                "appointments._id": ObjectId(appointment_form[1])
+            },
+            {'$set': {
+                'appointments.$.appointmentDate': appointment_form[2],
+                'appointments.$.observations': appointment_form[3],
+                'appointments.$.speciality': appointment_form[4],
+                'appointments.$.modality': appointment_form[5]
+            }}
+        )
+        return editOne_userAppointment
+
     def delete_userAdmin(_id):
         query = {"_id": ObjectId(_id)}
         deleteOne_userAdmin = db.users.delete_one(query)
@@ -198,28 +225,28 @@ class Specialities:
 class Appointments:
     def toList_appointments():
         db_appointments = db.appointments.find()
-        print(db_appointments)
         return db_appointments
 
-    def delete_appointment(_id):
-        print(_id)
-        query = {"_id": ObjectId(_id)}
-        deleteOne_appointment = db.appointments.delete_one(query)
-        return deleteOne_appointment
+    # Old code
+    # def delete_appointment(_id):
+    #     # print(_id)
+    #     query = {"_id": ObjectId(_id)}
+    #     deleteOne_appointment = db.appointments.delete_one(query)
+    #     return deleteOne_appointment
 
-    def edit_userAppointment(appointment):
-        print(appointment)
-        search = {"_id": ObjectId(appointment[1])}
-        query = {
-            '$set': {  
-                "appointmentDate": appointment[2],
-                "observations": appointment[3],
-                "speciality": appointment[4],
-                "modality": appointment[5]
-            }
-        }
-        editOne_appointment = db.appointments.update_one(search, query)
-        return editOne_appointment
+    # def edit_userAppointment(appointment):
+    #     print(appointment)
+    #     search = {"_id": ObjectId(appointment[1])}
+    #     query = {
+    #         '$set': {  
+    #             "appointmentDate": appointment[2],
+    #             "observations": appointment[3],
+    #             "speciality": appointment[4],
+    #             "modality": appointment[5]
+    #         }
+    #     }
+    #     editOne_appointment = db.appointments.update_one(search, query)
+    #     return editOne_appointment
 
     def post_userAppointment(appointment):
         query = {   

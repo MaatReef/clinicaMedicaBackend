@@ -13,7 +13,7 @@
                 <a class="nav-link px-3" href="/">Bienvenido</a>
             </div>
             <div class="nav-item text-nowrap mx-3">
-                <img src="static/assets/default-user.png" class="img-fluid img-thumbnail rounded img-table-user my-1" alt="user">
+                <img src="{{ url_for ('static',filename='assets/default-user.png') }}" class="img-fluid img-thumbnail rounded img-table-user my-1" alt="user">
             </div>
         </div>
     </header> <!-- close header -->
@@ -38,15 +38,6 @@
                         <li class="nav-item">
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted px-3 mt-4 mb-1 text-uppercase">
                                 <span>Consultas</span>
-                                <a class="link-secondary" href="/appointment" aria-label="Add a new">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-plus-circle align-text-bottom" aria-hidden="true">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                                    </svg>
-                                </a>
                             </h6>
                         </li>
                         <li class="nav-item">
@@ -152,26 +143,26 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            {% for appointment in list_appointments %}
+                            {% for key in user['appointments'] %}
                             <tr>
-                                <td> {{ appointment["appointmentDate"] }} </td>
+                                <td> {{ key["appointmentDate"] }} </td>
                     
-                                <td> {{ appointment["observations"] }} </td>
+                                <td> {{ key["observations"] }} </td>
                     
-                                <td> {{ appointment["speciality"] }} </td>
+                                <td> {{ key["speciality"] }} </td>
                     
-                                <td> {{ appointment["modality"] }} </td>
+                                <td> {{ key["modality"] }} </td>
 
                                 <td>
                                     <div class="d-grid gap-2">
                                         <button type="button" class="btn btn-danger  rounded-0" data-bs-toggle="modal"
-                                            data-bs-target="#id_delete{{ appointment['_id'] }}">ELIMINAR</button>
+                                            data-bs-target="#id_delete{{ key['_id'] }}">ELIMINAR</button>
                                         <button type="button" class="btn btn-primary rounded-0" data-bs-toggle="modal"
-                                            data-bs-target="#id{{ appointment['_id'] }}">EDITAR</button>
+                                            data-bs-target="#id{{ key['_id'] }}">EDITAR</button>
                                     </div>
                     
                                     <!-- Confirm the deletion open -->
-                                    <div class="modal fade" id="id_delete{{ appointment['_id'] }}" tabindex="-1"
+                                    <div class="modal fade" id="id_delete{{ key['_id'] }}" tabindex="-1"
                                         aria-labelledby="edit_appointmentLabel" aria-hidden="true">
                                         <div class="modal-dialog rounded-3 border border-primary">
                                             <div class="modal-content">
@@ -181,17 +172,19 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form>
+                                                    <form method="POST" action="/delete_appointment" class="row">
                                                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
-                                                        <h4>Nueva fecha: {{ appointment["appointmentDate"] }} </h4>
-                                                        <h4>Observaciones: {{ appointment["observations"] }}</h4>
-                                                        <h4>Especialidad: {{ appointment["speciality"] }}</h4>
-                                                        <h4>Modalidad: {{ appointment["modality"] }}</h4>
+                                                        <input type="hidden" name="user_id" value="{{ key['user_id'] }}"></input>
+                                                        <input type="hidden" name="_id" value="{{ key['_id'] }}"></input>
+                                                        <h4>Nueva fecha: {{ key["appointmentDate"] }} </h4>
+                                                        <h4>Observaciones: {{ key["observations"] }}</h4>
+                                                        <h4>Especialidad: {{ key["speciality"] }}</h4>
+                                                        <h4>Modalidad: {{ key["modality"] }}</h4>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary rounded-0"
                                                                 data-bs-dismiss="modal">CANCELAR</button>
-                                                            <a type="button" class="btn btn-danger rounded-0"
-                                                                href="{{url_for('views.delete_appointment', _id=appointment['_id'])}}">ELIMINAR</a>
+                                                            <button type="submit" class="btn btn-danger rounded-0" 
+                                                                id="delete_userAppointment">ELIMINAR</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -201,7 +194,7 @@
                                     <!-- Confirm the deletion close -->
                     
                                     <!-- Edit modal appointment open -->
-                                    <div class="modal fade" id="id{{ appointment['_id'] }}" tabindex="-1" aria-labelledby="edit_appointmentLabel"
+                                    <div class="modal fade" id="id{{ key['_id'] }}" tabindex="-1" aria-labelledby="edit_appointmentLabel"
                                         aria-hidden="true">
                                         <div class="modal-dialog rounded-3 border border-primary">
                                             <div class="modal-content">
@@ -213,27 +206,28 @@
                                                 <div class="modal-body">
                                                     <form method="POST" action="/edit_appointment">
                                                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
-                                                        <input type="hidden" value="{{ appointment['_id'] }}" name="_id">
+                                                        <input type="hidden" name="user_id" value="{{ key['user_id'] }}"></input>
+                                                        <input type="hidden" value="{{ key['_id'] }}" name="_id">
                     
                                                         <div class="mb-3">
                                                             <label for="editDate-appointment" class="form-label">Nueva fecha:</label>
                                                             <input type="text" class="form-control" id="appointmentDate"
-                                                                value="{{ appointment['appointmentDate'] }}" name="appointmentDate">
+                                                                value="{{ key['appointmentDate'] }}" name="appointmentDate">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="editobservations-appointment" class="form-label">Observaciones:</label>
                                                             <input type="text" class="form-control" id="observations"
-                                                                value="{{ appointment['observations'] }}" name="observations">
+                                                                value="{{ key['observations'] }}" name="observations">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="specialty-appointment" class="form-label">Especialidad:</label>
                                                             <input type="text" class="form-control" id="speciality"
-                                                                value="{{ appointment['speciality'] }}" name="speciality">
+                                                                value="{{ key['speciality'] }}" name="speciality">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="editModality-appointment" class="col-form-label">Modalidad:</label>
                                                             <input type="text" class="form-control" id="modality"
-                                                                value="{{ appointment['modality'] }}" name="modality">
+                                                                value="{{ key['modality'] }}" name="modality">
                                                         </div>
                                                 </div>
                     

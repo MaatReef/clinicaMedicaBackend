@@ -64,16 +64,23 @@
             }
             const picker = window.pickadate.create(initialState);
             pickadate.render(document.getElementById('pickadate'), picker);
-            const onChange = formattedValue => {
-                value = picker.getValue('YYYY-MM-DD')
-                $('#appointment').val(value);
-            }
+            const onChange = event => {
+                event.stopPropagation();
+                event.preventDefault();
+                console.log('ADEN>>>>>>>', event);
+                value = picker.getValue('YYYY-MM-DD');
+                $('#appointmentDate').val(value);
+            };
+            document.getElementById('pickadate').click(function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            });
             document.getElementById('pickadate').addEventListener('pickadate:change', onChange);
 
-            let add_appointment = document.getElementById("add_appointmentForm");
+            // let add_appointment = document.getElementById("add_appointmentForm");
 
             // Formulario de turnos
-            add_appointment?.addEventListener("click", function () {
+            add_appointment?.addEventListener("click", function (event) {
                 // Validación sencilla
                 let day = document.getElementById("appointmentDate").value;
                 let speciality = document.getElementById("speciality").value;
@@ -88,10 +95,6 @@
                         text: "No olvide tener a mano su documento de identidad, la credencial de su obra social y cargar sus estudios en el portal de salud",
                         icon: "success",
                         button: "Confirmar",
-                    }).then((result) => {
-                        if (result) {
-                            window.location = "portal"
-                        }
                     });
                 } else {
                     swal({
