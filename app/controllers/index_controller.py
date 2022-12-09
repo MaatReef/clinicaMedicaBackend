@@ -1,5 +1,11 @@
 # Traigo el modelo que realiza la búsqueda en la bd
-from app.models.models import *
+from app.models.Doctors import Doctors
+from app.models.Clinics import Clinics
+from app.models.Contacts import Contacts
+from app.models.Doctors import Doctors
+from app.models.HealthCoverage import HealthCoverage
+from app.models.Specialities import Specialities
+from app.models.Users import Users
 
 def view_doctorsHome():
     dblist_doctors = Doctors.toList_doctorsAdmin()

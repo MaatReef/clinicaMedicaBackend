@@ -12,4 +12,6 @@ class Config:
     TEMPLATE_FOLDER = "views/templates/"
     STATIC_FOLDER = "views/static/"
 
-    SECRET_KEY = "Q1@*2R2mFxk7bGt"
+    SECRET_KEY = "Q1@*2R2mFxka7bGat"
+
+    

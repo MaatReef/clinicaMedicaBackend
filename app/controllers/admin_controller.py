@@ -1,5 +1,12 @@
 # Traigo los modelos que realizan la búsqueda en la bd
-from app.models.models import Doctors, Clinics, Users, HealthCoverage, Appointments    
+from app.models.Doctors import Doctors
+from app.models.Clinics import Clinics
+from app.models.Contacts import Contacts
+from app.models.Doctors import Doctors
+from app.models.HealthCoverage import HealthCoverage
+from app.models.Specialities import Specialities
+from app.models.Users import Users 
+from app.models.Appointments import Appointments
 
 # View_: Funciones que se encargan de presentar la Data
 def view_doctors():

@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form form method="POST" action="/" class="needs-validation" novalidate>
+                <form form method="POST" action="/login" class="needs-validation" novalidate>
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></input>
                     <div class="mb-3">
                         <label for="dni-form" class="col-form-label">DNI: Prueba -> (Admin 30 - Usuario 50)</label>
@@ -17,6 +17,20 @@
                         <label for="password-form" class="col-form-label">Password: Prueba -> (Admin 111 - Usuario 123)</label>
                         <input class="form-control" id="password-form" name="password" required></input>
                     </div>
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flashes">
+                        {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+
                     <div class="mb-3">
                         <p>¿Aún no tienes una cuenta? <a href="/register">Registro</a></p>
                     </div>
