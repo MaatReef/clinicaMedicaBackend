@@ -6,6 +6,7 @@ from flask import Blueprint, url_for, render_template, redirect, request, sessio
 # Traigo la listas capturada desde el controlador.
 from app.controllers.index_controller import *                                  
 from app.controllers.admin_controller import *
+from app.controllers.utils_controller import *
 from app import login_manager
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -16,6 +17,8 @@ post_scope = Blueprint("post", __name__)
 # Post : Las siguientes rutas se encargan de agregar data en la base de datos desde el formulario de la sección Admin
 @post_scope.route('/post_doctor', methods=['GET', 'POST'])
 def post_doctor():
+    
+    print(session['user_name'])
     if request.method == 'POST':
         dni = request.form['dni']
         name = request.form['name']
@@ -27,7 +30,12 @@ def post_doctor():
         attention = request.form['attention']
         list_doctor = [dni, name, email, avatar, scheduleAttention, speciality, active, attention]
         list_complet = post_doctorAdmin(list_doctor)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @post_scope.route('/post_user', methods=['GET', 'POST'])
 def post_user():
@@ -44,7 +52,12 @@ def post_user():
         password = request.form['password']
         list_user = [avatar, dni, name, healthCoverage, email, phone, city, active, status, password]
         list_complet = post_userAdmin(list_user)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @post_scope.route('/post_healthCoverage', methods=['GET', 'POST'])
 def post_healthCoverage():
@@ -54,7 +67,12 @@ def post_healthCoverage():
         plan = request.form['plan']
         list_healthCoverage = [logo, name, plan]
         list_complet = post_healthAdmin(list_healthCoverage)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @post_scope.route('/post_clinic', methods=['GET', 'POST'])
 def post_clinic():
@@ -67,7 +85,12 @@ def post_clinic():
         photo = request.form['photo']
         list_clinic = [name, scheduleAttention, email, phone, city, photo]
         list_complet = post_clinicAdmin(list_clinic)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @post_scope.route('/contact', methods=['GET', 'POST'])
 def post_contactIndex():
@@ -91,8 +114,7 @@ def post_appointment():
             user_id, appointmentDate, observations, speciality, modality
         ]
         new_appointment = post_userAppointment(appointment_form)
-        userSession = user_id
-        load_user(userSession)
+
     return redirect(url_for("view.view_portal_appointments", _id=user_id))
 
 # Ruta para registar usuario desde el login
@@ -119,17 +141,14 @@ def post_register():
 def post_login():
     if request.method == 'POST':
         dni = request.form['dni']
-        # Elimino "posibles" espacios en blanco
-        clean_inputDni = dni.strip()                        
+        clean_inputDni = dni.strip()                        # Elimino "posibles" espacios en blanco
         password = request.form['password']
-        # Elimino "posibles" espacios en blanco
-        clean_inputPassword = password.strip()              
+        clean_inputPassword = password.strip()              # Elimino "posibles" espacios en blanco
         total_Users = get_login()
         for user in total_Users:
             dni_bd = user["dni"]
-            # Elimino "posibles" espacios en blanco
-            clean_dniBd = dni_bd.strip()                     
-            password = user["password"]             # Para Hashear las contraseñas | password_hash = check_password_hash(password) 
+            clean_dniBd = dni_bd.strip()                    # Elimino "posibles" espacios en blanco
+            password = user["password"]                     # Para Hashear las contraseñas | password_hash = check_password_hash(password) 
             status_bd = user["status"]
             if clean_inputDni == clean_dniBd and clean_inputPassword == password and status_bd == "Administrador": 
                 list_adminDoctors = view_doctors()
@@ -149,7 +168,7 @@ def post_login():
                         "status": user["status"], 
                         "password": user["password"] 
                     }]
-                userSession = user["dni"]
+                userSession = user_login
                 load_user(userSession)
                 return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=user_login, firstLogin=False)
             elif clean_inputDni == clean_dniBd and clean_inputPassword == password  and status_bd == "Usuario": 
@@ -165,7 +184,7 @@ def post_login():
                     "status": user["status"], 
                     "password": user["password"] 
                 }]
-                userSession = user["dni"]
+                userSession = user_login
                 load_user(userSession)
                 return render_template("appointment.html", user_login=user_login)
         if clean_inputDni != clean_dniBd and clean_inputPassword != password:
@@ -175,12 +194,6 @@ def post_login():
             list_clinics = view_clinicsHome()
             return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics, title="admin", firstLogin=True)
                                 
-
-@login_manager.user_loader
-def load_user(user_id):
-    session['user_id'] = user_id
-    # user_data = session[user_id]
-    return user_id
 
 @login_manager.unauthorized_handler
 def unauthorized():
