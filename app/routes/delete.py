@@ -14,23 +14,44 @@ delete_scope = Blueprint("delete", __name__)
 # Delete: Las siguientes rutas se encargan de eliminar la data en la base de datos desde el formulario de la sección admin
 @delete_scope.route('/delete_doctor/<_id>')
 def delete_doctor(_id):
+    print(session['user_dni'])
     delete = delete_doctorAdmin(_id)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
     
 @delete_scope.route('/delete_clinic/<_id>' )
 def delete_clinic(_id):
     delete = delete_clinicAdmin(_id)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
     
 @delete_scope.route('/delete_coverage/<_id>')
 def delete_coverage(_id):
     delete = delete_coverageAdmin(_id)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @delete_scope.route('/delete_user/<_id>')
 def delete_user(_id):
     delete = delete_userAdmin(_id)
-    return redirect(url_for("view.view_admin"))
+    list_adminDoctors = view_doctors()
+    list_adminUsers = view_users()
+    list_healthCoverage = view_healthCoverage()
+    list_adminClinics = view_clinics()
+    data_admin = [list_adminDoctors, list_adminUsers, list_healthCoverage, list_adminClinics]
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @delete_scope.route('/delete_appointment', methods=['GET', 'POST'])
 def delete_userAppointment():

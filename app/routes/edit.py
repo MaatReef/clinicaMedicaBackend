@@ -6,6 +6,7 @@ from flask import Blueprint, url_for, render_template, redirect, request, sessio
 # Traigo la listas capturada desde el controlador.
 from app.controllers.index_controller import *                                  
 from app.controllers.admin_controller import *
+from app.controllers.renderAdmin_controller import *
 from app.models.Users import Users
 
 # La carpeta views posee los ficheros estáticos
@@ -22,7 +23,8 @@ def edit_coverage():
         logo = request.form['logo']
         list_coverage = [_id, id, name, plan, logo]
         list_complet = edit_coverageAdmin(list_coverage)
-    return redirect(url_for("view.view_admin"))
+    data_admin = renderAdmin()      # Método para renderizar el admin luego del login
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @edit_scope.route('/edit_user', methods=['GET', 'POST'])
 def edit_user():
@@ -40,7 +42,8 @@ def edit_user():
         password = request.form['password']
         list_user = [_id, avatar, dni, name, healthCoverage, email, phone, city, active, status, password]
         list_complet = edit_userAdmin(list_user)
-    return redirect(url_for("view.view_admin"))
+    data_admin = renderAdmin() 
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @edit_scope.route('/edit_doctor', methods=['GET', 'POST'])
 def edit_doctor():
@@ -55,11 +58,13 @@ def edit_doctor():
         active = request.form['active']
         list_doctor = [_id, dni, name, speciality, email, city, scheduleAttention, active]
         list_complet = edit_doctorAdmin(list_doctor)
-    return redirect(url_for("view.view_admin"))
+    data_admin = renderAdmin() 
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @edit_scope.route('/edit_clinic', methods=['GET', 'POST'])
 def edit_clinic():
     if request.method == 'POST':
+        data_admin = renderAdmin() 
         _id = request.form['_id']
         name = request.form['name']
         scheduleAttention = request.form['scheduleAttention']
@@ -68,7 +73,8 @@ def edit_clinic():
         city = request.form['city']
         list_clinic = [_id, name, scheduleAttention, email, phone, city]
         list_complet = edit_clinicAdmin(list_clinic)
-    return redirect(url_for("view.view_admin"))
+    data_admin = renderAdmin()      # Método para renderizar el admin luego del login
+    return render_template("admin.html", data_admin=data_admin, appointmentButton=False, user_login=session['user_name'], firstLogin=False)
 
 @edit_scope.route('/edit_appointment', methods=['GET', 'POST'])
 def edit_appointment():

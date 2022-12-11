@@ -32,7 +32,6 @@ def view_admin():
     return render_template("admin.html", data_admin=data_admin, appointmentButton=True)
 
 @view_scope.route("/appointment", methods=['GET', 'POST'])
-@login_required
 def view_appointment():
     return render_template("appointment.html")
 
@@ -43,7 +42,7 @@ def view_appointment():
 
 @view_scope.route("/portal/<_id>", methods=['GET'])
 def view_portal_appointments(_id):
-    if session.get('user_id'):
+    if session.get('user_dni'):
         userSession = Users.get_sessionUser(_id)
         return render_template("portal.html", user=userSession)
     else:

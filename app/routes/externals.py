@@ -17,33 +17,10 @@ def externals():
 
 @global_scope.route("/logout")
 def logout():
-    if session.get('user_id'):
-        del session['user_id']
-        logout_user()
-        # prevent flashing automatically logged out message
-    
-    print("*")
-    print("*")
-    print("*")
-    print("*")
-    print("*")
-    print("*")
-    print("*")
-    print("*")
-    # user_id = session[user_id] 
-    # # salir = session[user_id]
-    # ahora = session['user_id']
-    # print("Ahoooora")
-    # print(ahora)
-    # print("session['user_id']")
-    # session.clear()
-    # print(ahora)
-
-    # session['user_id'] = ""
-    # print(session[user_id] )
-    # session[user_id] 
-    # logout_user()
-    
+    # if session.get('user_name'):
+    session['user_name'] = None
+    session['user_dni'] = None
+    logout_user()
     list_doctors = view_doctorsHome()
     list_clinics = view_clinicsHome()
     return render_template("index.html", list_doctors=list_doctors, list_clinics=list_clinics, title="admin", firstLogin=True)

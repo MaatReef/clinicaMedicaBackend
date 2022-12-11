@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, session
 from config import Config
 from flask_wtf.csrf import CSRFProtect     
 from flask_login import login_user, LoginManager, login_required, logout_user, current_user
+# from flask_session import Session
 
 csrf = CSRFProtect()
 login_manager = LoginManager()
@@ -18,6 +19,10 @@ app = Flask(__name__, static_folder=Config.STATIC_FOLDER, template_folder=Config
 app.config.from_object(Config)
 csrf.init_app(app)                      # Le paso la Instancia de CSRFProtect
 login_manager.init_app(app)           # Para crear la sesión
+
+# app.config["SESSION_PERMANENT"] = False
+# app.config["SESSION_TYPE"] = "filesystem"
+# Session(app)
 
 app.register_blueprint(global_scope, url_prefix="/")    
 app.register_blueprint(delete_scope, url_prefix="/")    
